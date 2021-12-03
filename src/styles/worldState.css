@@ -1,0 +1,4 @@
+.stateWrapper {
+    display: flex;
+    flex-direction: column;
+}
