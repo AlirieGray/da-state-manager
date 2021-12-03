@@ -1,4 +1,4 @@
-// import '../styles/protagonist.css'
+import '../styles/protagonist.css'
 
 function Protagonist(props) {
     const {name, romance, type} = props

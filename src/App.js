@@ -1,12 +1,14 @@
 import './App.css'
 import { useSelector } from 'react-redux'
 import WorldState from './components/WorldState'
+import AddNewState from './components/AddNewState'
 
 function App() {
   const worldStates = useSelector(state => state.worldStates)
 
   return (
     <div className="wrapper">
+      <AddNewState />
       <div className="states">
         {worldStates.map(world => (
           <WorldState key={world.name} world={world}/>

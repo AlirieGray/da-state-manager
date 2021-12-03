@@ -1,4 +1,10 @@
 .stateWrapper {
     display: flex;
     flex-direction: column;
+    background-color: blue;
+    padding: 20px;
+}
+
+.worldStateName {
+    font-size: 22px;
 }

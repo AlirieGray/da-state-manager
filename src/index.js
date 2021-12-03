@@ -30,7 +30,8 @@ const store = createStore(() => ({
         romance: "Cassandra",
         disband: true,
       },
-    }
+    },
+    
   ],
 }))
 

@@ -6,7 +6,7 @@ function WorldState(props) {
  
   return (
     <div className="stateWrapper">
-        <div>
+        <div className="worldStateName">
             World State: {name}
         </div>
         <Protagonist name={warden.name} romance={warden.romance} type={"warden"}/>
