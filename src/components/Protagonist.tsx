@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import '../styles/protagonist.css'
 import React from 'react';
 
@@ -12,8 +11,12 @@ class Protagonist extends React.Component<Props> {
     const {name, romance} = this.props
     return (
       <div className="protagWrapper">
-          {name}
-          {romance}
+          <div className="attribute">
+            Name: {name}
+          </div>
+          <div className="attribute">
+            Romance: {romance}
+          </div>
       </div>
     )
   }

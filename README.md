@@ -5,7 +5,6 @@ This is a world state manager for the Dragon Age RPG series from Bioware. It all
 This project was made with React and Redux.
 
 ## To-do
-1. Ability to add a new state
 1. Ability to modify a state
 1. Mobile responsive
 1. Add/remove companions (canon and custom)

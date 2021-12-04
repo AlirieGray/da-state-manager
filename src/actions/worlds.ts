@@ -7,9 +7,10 @@ export type Action =
     | ReturnType<typeof addWorldState>
     | ReturnType<typeof setWorldState>
 
-export const addWorldState = (world: World) => ({
+// addWorldState adds a default world to the worldsState array
+// it can be edited later 
+export const addWorldState = () => ({
     type: ADD_WORLD_STATE,
-    payload: world,
 })
 
 export const setWorldState = () => ({
