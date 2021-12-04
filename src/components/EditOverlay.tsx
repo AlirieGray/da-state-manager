@@ -23,7 +23,7 @@ class EditOverlay extends React.Component<Props> {
                             <img src={close} className="closeImg"/>
                         </button>
                     </div>
-                    <WorldForm />
+                    {/* <WorldForm /> */}
                     <button className="deleteButton" onClick={this.handleDelete}>
                         Delete This World State
                     </button>

@@ -10,7 +10,6 @@ interface Props {
     discardChanges: () => void 
     formView: World
     formEdit: World
-    
 }
 
 class WorldForm extends React.Component<Props> {
