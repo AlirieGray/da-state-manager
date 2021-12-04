@@ -1,6 +1,7 @@
-import { ADD_WORLD_STATE } from './actions'
+import { ADD_WORLD_STATE } from '../actions/actions'
+import { WorldsState, World } from '../types'
 
-const defaultWorld = {
+const defaultWorld = (): World => ({
     name: "default",
     ficLinks: [],
     warden: {
@@ -9,6 +10,7 @@ const defaultWorld = {
         class: "Warrior",
         romance: "Alistair",
         ruler: "Anora",
+        alive: true,
     },
     hawke: {
         name: "Marian Hawke",
@@ -22,23 +24,23 @@ const defaultWorld = {
         romance: "Cassandra",
         disband: true,
     },
-}
+})
 
-const initialState = {
-    worldStates: [
-        defaultWorld,
+const initialState = (): WorldsState => ({
+    worlds: [
+        defaultWorld(),
     ],
-}
+})
 
 
 
-export default (state = initialState, action) => {
+export default (state: WorldsState = initialState(), action) => {
     switch (action.type) {
         case ADD_WORLD_STATE: {
             return {
                 ...state,
                 worldStates: [
-                    ...state.worldStates,
+                    ...state.worlds,
                     action.payload,
                 ]
             }

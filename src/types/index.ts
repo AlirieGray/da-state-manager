@@ -1,3 +1,4 @@
+
 export interface World {
     name: string
     ficLinks: string[]
@@ -24,4 +25,8 @@ export interface Hawke extends Protagonist  {
 
 export interface Inky extends Protagonist  {
     disband: boolean
+}
+
+export interface WorldsState {
+    worlds: World[]
 }

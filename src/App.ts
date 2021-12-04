@@ -4,7 +4,7 @@ import WorldState from './components/WorldState'
 import AddNewState from './components/AddNewState'
 
 function App() {
-  const worldStates = useSelector(state => state.worldStates)
+
 
   return (
     <div className="wrapper">
@@ -15,7 +15,7 @@ function App() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 export default App
