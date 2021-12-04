@@ -39,9 +39,9 @@ export default (state: WorldsState = initialState(), action: Action) => {
         case ADD_WORLD_STATE: {
             return {
                 ...state,
-                worldStates: [
+                worlds: [
                     ...state.worlds,
-                    action.payload,
+                    defaultWorld(),
                 ]
             }
         }
