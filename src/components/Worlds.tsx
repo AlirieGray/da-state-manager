@@ -2,7 +2,8 @@ import React from 'react'
 import {connect, ConnectedProps} from 'react-redux'
 import {AppState} from '../types'
 import WorldDisplay from './WorldDisplay'
-import { addWorldState } from '../actions/worlds'
+import { addWorldState, removeWorldState } from '../actions/worlds'
+import { showEditOverlay, hideEditOverlay } from '../actions/overlays'
 import AddNewWorld from './AddNewWorld'
 import '../styles/worlds.css'
 
@@ -15,15 +16,21 @@ class Worlds extends React.Component<Props> {
     }
 
     render() {
-        const {worlds} = this.props
+        const {worlds, editOverlayOn} = this.props
+
         return (
             <div className="wrapper">
                 <AddNewWorld onAddWorld={this.handleAddWorld}/>
                 <div className="worldsContainer">
                     {worlds.map(world => {
-                        return <WorldDisplay key={world.name} world={world} />
+                        return <WorldDisplay key={world.name} 
+                            world={world} 
+                            editOverlayOn={editOverlayOn}
+                            onShowOverlay={this.handleShowEditOverlay} 
+                            onHideOverlay={this.handleHideEditOverlay} />
                     })}
                 </div>
+
             </div>
         )
     }
@@ -31,19 +38,34 @@ class Worlds extends React.Component<Props> {
     private handleAddWorld = () => {
         this.props.addWorldState()
     }
+
+    private handleRemoveWorld = (ID: string) => {
+        this.props.removeWorldState(ID)
+    }
+
+    private handleShowEditOverlay = () => {
+        this.props.showEditOverlay()
+    }
+
+    private handleHideEditOverlay = () => {
+        this.props.hideEditOverlay()
+    }
 }
 
 const mstp = (state: AppState) => {
     const {worlds} = state.worlds
-    console.log("got name: ")
-    console.log(worlds[0].name)
+    const {editOverlayOn} = state.overlays
     return {
-        worlds,   
+        worlds,  
+        editOverlayOn 
     }
 }
 
 const mdtp = {
     addWorldState,
+    removeWorldState,
+    showEditOverlay, 
+    hideEditOverlay,
 }
 
 const connector = connect(mstp, mdtp)

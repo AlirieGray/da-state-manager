@@ -1,8 +1,10 @@
-import { Action, ADD_WORLD_STATE } from '../actions/worlds'
+import { Action, ADD_WORLD_STATE, REMOVE_WORLD_STATE } from '../actions/worlds'
 import { WorldsState, World } from '../types'
+import { v4 as uuid4 } from "uuid"
 
 const defaultWorld = (): World => ({
     name: "Default World State",
+    ID: uuid4(),
     ficLinks: [],
     warden: {
         name: "Kallian Tabris",
@@ -43,6 +45,15 @@ export default (state: WorldsState = initialState(), action: Action) => {
                     ...state.worlds,
                     defaultWorld(),
                 ]
+            }
+        }
+        case REMOVE_WORLD_STATE: {
+            const {type, ID} = action
+            return {
+                ...state,
+                worlds: state.worlds.filter((world) => {
+                    return world.ID != action.ID
+                })
             }
         }
         default:

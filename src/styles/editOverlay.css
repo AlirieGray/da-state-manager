@@ -1,0 +1,36 @@
+.overlayBackground {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editForm {
+    background-color: #FFFFFF;
+    border: 1px solid #bebebe;
+    border-radius: 2px;
+    padding: 12px 16px;
+}
+
+.formHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.closeImg {
+    max-width: 10px;
+    max-height: 10px;
+    padding-left: 6px;
+}
+
+.deleteButton {
+    background-color: red;
+    padding: 6px;
+    border-radius: 5px;
+}

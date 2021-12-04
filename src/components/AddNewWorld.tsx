@@ -8,9 +8,7 @@ interface Props {
 
 class AddNewWorld extends React.Component<Props> {
 
-    handleClick = () => {
-        this.props.onAddWorld();
-    }
+
  
     render() {
         return (
@@ -23,6 +21,10 @@ class AddNewWorld extends React.Component<Props> {
                 </div>
             </div>
         )
+    }
+
+    private handleClick = () => {
+        this.props.onAddWorld()
     }
 
 }
