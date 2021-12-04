@@ -28,5 +28,9 @@ export interface Inky extends Protagonist  {
 }
 
 export interface WorldsState {
-    worlds: World[]
+    worlds: World[],
+}
+
+export interface AppState {
+    worlds: WorldsState
 }

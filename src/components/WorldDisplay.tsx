@@ -7,7 +7,7 @@ type Props = {
   world: World
 }
 
-class WorldState extends React.Component<Props> {
+class WorldDisplay extends React.Component<Props> {
   render() {
     const {name, warden, hawke, inky} = this.props.world
  
@@ -24,4 +24,4 @@ class WorldState extends React.Component<Props> {
   }
 }
 
-export default WorldState
+export default WorldDisplay

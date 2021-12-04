@@ -1,4 +1,4 @@
-import { ADD_WORLD_STATE } from '../actions/actions'
+import { Action, ADD_WORLD_STATE } from '../actions/worlds'
 import { WorldsState, World } from '../types'
 
 const defaultWorld = (): World => ({
@@ -34,7 +34,7 @@ const initialState = (): WorldsState => ({
 
 
 
-export default (state: WorldsState = initialState(), action) => {
+export default (state: WorldsState = initialState(), action: Action) => {
     switch (action.type) {
         case ADD_WORLD_STATE: {
             return {

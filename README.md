@@ -11,6 +11,9 @@ This project was made with React and Redux.
 1. Add/remove companions (canon and custom)
 1. Add or remove a property from a protag or world state
 1. Database: User creation
+    - User profile
+    - Associate world state with user
+    - Secure password/recovery/email confirmation
 1. Main quest party composition and decisions 
 1. Custom protagonists
 1. Fan works links
@@ -19,3 +22,4 @@ This project was made with React and Redux.
 1. Update styles
 1. Download/upload world state as JSON
 1. Add testing
+1. Add React-Router

@@ -1,8 +1,8 @@
 import React from 'react'
 import plus from '../images/plus.png'
-import '../styles/addNewState.css'
+import '../styles/addNewWorld.css'
 
-class AddNewState extends React.Component {
+class AddNewWorld extends React.Component {
 
     handleClick = () => {
         console.log("adding state...")
@@ -15,11 +15,11 @@ class AddNewState extends React.Component {
                 <img className="addButtonImg" src={plus} />
             </button>
             <div className="label">
-                Add New State
+                Add New World State
             </div>
         </div>
         )
     }
 }
 
-export default AddNewState
+export default AddNewWorld
