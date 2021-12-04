@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/worldState.css'
+import '../styles/worldDisplay.css'
+import edit from '../images/edit.png'
 import Protagonist from './Protagonist'
 import {World} from '../types'
 
@@ -14,12 +15,16 @@ class WorldDisplay extends React.Component<Props> {
 
   render() {
     const {name, warden, hawke, inky} = this.props.world
-    console.log("props dispaly?? ")
-    console.log(inky.name)
+
     return (
       <div className="stateWrapper">
-          <div className="worldStateName">
-              World State: {name}
+          <div className="worldStateHeader">
+            <div className="worldStateName">
+                {name}
+            </div>
+            <button className="editButton">
+              <img className="editImg" src={edit} />
+            </button>
           </div>
           <Protagonist name={warden.name} romance={warden.romance} />
           <Protagonist name={hawke.name} romance={hawke.romance} />

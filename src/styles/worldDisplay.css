@@ -1,10 +1,19 @@
 .stateWrapper {
     display: flex;
     flex-direction: column;
-    background-color: blue;
     padding: 20px;
 }
 
 .worldStateName {
     font-size: 22px;
+}
+
+.worldStateHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.editImg {
+    max-width: 25px;
+    max-height: 25px;
 }

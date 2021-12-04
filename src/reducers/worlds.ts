@@ -2,7 +2,7 @@ import { Action, ADD_WORLD_STATE } from '../actions/worlds'
 import { WorldsState, World } from '../types'
 
 const defaultWorld = (): World => ({
-    name: "default",
+    name: "Default World State",
     ficLinks: [],
     warden: {
         name: "Kallian Tabris",
