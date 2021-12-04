@@ -10,6 +10,7 @@ interface Props {
   editOverlayOn: boolean
   onShowOverlay: () => void
   onHideOverlay: () => void
+  onRemoveWorld: (ID: string) => void
 }
 
 class WorldDisplay extends React.Component<Props> {
@@ -18,10 +19,10 @@ class WorldDisplay extends React.Component<Props> {
   }
 
   render() {
-    const {editOverlayOn, onHideOverlay, world: {name, warden, hawke, inky}} = this.props
+    const {editOverlayOn, onRemoveWorld, onHideOverlay, world: {ID, name, warden, hawke, inky}} = this.props
     let editOverlay;
     if (editOverlayOn) {
-        editOverlay = <EditOverlay onClose={onHideOverlay}/>
+        editOverlay = <EditOverlay onClose={onHideOverlay} ID={ID} onRemoveWorld={onRemoveWorld} />
     } else {
         <div />
     }

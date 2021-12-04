@@ -1,9 +1,12 @@
 import React from 'react'
 import '../styles/editOverlay.css'
 import close from '../images/close.png'
+import WorldForm from './WorldForm'
 
 interface Props {
+    ID: string
     onClose: () => void
+    onRemoveWorld: (ID: string) => void
 }
 
 class EditOverlay extends React.Component<Props> {
@@ -13,13 +16,14 @@ class EditOverlay extends React.Component<Props> {
 
         return (
             <div className="overlayBackground">
-                <div className="editForm">
+                <div className="overlayContainer">
                     <div className="formHeader">
                         <div>Edit World State </div>
                         <button onClick={onClose}>
                             <img src={close} className="closeImg"/>
                         </button>
                     </div>
+                    <WorldForm />
                     <button className="deleteButton" onClick={this.handleDelete}>
                         Delete This World State
                     </button>
@@ -30,7 +34,9 @@ class EditOverlay extends React.Component<Props> {
 
 
     private handleDelete = () => {
-        const {onClose, }
+        const {onClose, onRemoveWorld, ID} = this.props
+        onRemoveWorld(ID)
+        onClose()
     }
 }
 

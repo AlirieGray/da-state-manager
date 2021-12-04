@@ -22,3 +22,6 @@ This project was made with React and Redux.
 1. Download/upload world state as JSON
 1. Add testing
 1. Add React-Router
+1. Warn user before removing a world state
+1. Pictures for default companions/romances
+1. Allow user to upload custom pictures for protags, companions, romances

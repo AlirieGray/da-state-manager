@@ -36,7 +36,25 @@ export interface OverlaysState {
     editOverlayOn: boolean 
 }
 
+export interface WorldViewState {
+    status: null | string
+    world: World
+}
+
+export interface WorldEditState {
+    status: null | string
+    world: null | World
+    changed: null | boolean
+}
+
+export interface WorldFormState {
+    view: WorldViewState
+    edit: WorldEditState
+}
+
+
 export interface AppState {
     worlds: WorldsState
+    worldForm: WorldFormState
     overlays: OverlaysState
 }

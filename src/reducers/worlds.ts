@@ -2,7 +2,7 @@ import { Action, ADD_WORLD_STATE, REMOVE_WORLD_STATE } from '../actions/worlds'
 import { WorldsState, World } from '../types'
 import { v4 as uuid4 } from "uuid"
 
-const defaultWorld = (): World => ({
+export const defaultWorld = (): World => ({
     name: "Default World State",
     ID: uuid4(),
     ficLinks: [],

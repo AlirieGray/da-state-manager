@@ -26,6 +26,7 @@ class Worlds extends React.Component<Props> {
                         return <WorldDisplay key={world.name} 
                             world={world} 
                             editOverlayOn={editOverlayOn}
+                            onRemoveWorld={this.handleRemoveWorld}
                             onShowOverlay={this.handleShowEditOverlay} 
                             onHideOverlay={this.handleHideEditOverlay} />
                     })}
