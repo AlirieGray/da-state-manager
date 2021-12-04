@@ -6,4 +6,5 @@
 
 .states {
   display: flex;
+  flex-direction: row;
 }

@@ -1,4 +1,37 @@
+.addButtonImg {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+    border-radius: 100px;
+}
+
+.addButtonImg:hover {
+    background-color: rgb(163, 163, 163);
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 50px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
 .addButton {
-    max-width: 20px;
-    max-height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.label {
+
 }

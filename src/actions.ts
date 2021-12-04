@@ -1,0 +1,1 @@
+export const ADD_WORLD_STATE = 'ADD_WORLD_STATE'

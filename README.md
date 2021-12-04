@@ -7,7 +7,15 @@ This project was made with React and Redux.
 ## To-do
 1. Ability to add a new state
 1. Ability to modify a state
+1. Mobile responsive
+1. Add/remove companions (canon and custom)
+1. Add or remove a property from a protag or world state
 1. Database: User creation
 1. Main quest party composition and decisions 
 1. Custom protagonists
 1. Fan works links
+1. Sticky header
+1. Graph/timeline feature
+1. Update styles
+1. Download/upload world state as JSON
+1. Add testing
