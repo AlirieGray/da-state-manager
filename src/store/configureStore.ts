@@ -14,12 +14,12 @@ const initialState: AppState = {
     overlays: initialOverlays(),
 }
 
-function configureStore() {
-    return createStore(
-        rootReducer,
-        initialState,
-        composeWithDevTools(applyMiddleware(...[thunkMiddleware]))
-    )
-}
+const store = createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...[thunkMiddleware]))
+)
 
-export default configureStore
+export type AppDispatch = typeof store.dispatch
+
+export default store

@@ -37,14 +37,14 @@ export interface OverlaysState {
 }
 
 export interface WorldViewState {
-    status: null | string
+    status: string
     world: World
 }
 
 export interface WorldEditState {
-    status: null | string
-    world: null | World
-    changed: null | boolean
+    status: string
+    world: World
+    changed: boolean
 }
 
 export interface WorldFormState {

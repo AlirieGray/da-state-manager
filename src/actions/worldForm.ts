@@ -9,6 +9,7 @@ export const ADD_CHANGE = 'ADD_CHANGE'
 export type Action =
     | ReturnType<typeof editFormSuccess>
     | ReturnType<typeof editFormPending>
+    | ReturnType<typeof setNewEditableForm>
     | ReturnType<typeof addChange>
 
 export const editFormSuccess = (world: World) => ({
@@ -20,7 +21,7 @@ export const editFormPending = () => ({
     type: EDIT_FORM_PENDING,
 } as const)
 
-export const setUpEditForm = (world: World) => ({
+export const setNewEditableForm = (world: World) => ({
     type: SET_UP_EDIT_FORM,
     world,
 })

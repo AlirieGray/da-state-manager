@@ -4,6 +4,7 @@ import {AppState} from '../types'
 import WorldDisplay from './WorldDisplay'
 import { addWorldState, removeWorldState } from '../actions/worlds'
 import { showEditOverlay, hideEditOverlay } from '../actions/overlays'
+import { addChange, setNewEditableForm } from '../actions/worldForm'
 import AddNewWorld from './AddNewWorld'
 import '../styles/worlds.css'
 
@@ -56,9 +57,12 @@ class Worlds extends React.Component<Props> {
 const mstp = (state: AppState) => {
     const {worlds} = state.worlds
     const {editOverlayOn} = state.overlays
+    const {view, edit} = state.worldForm
     return {
         worlds,  
-        editOverlayOn 
+        editOverlayOn,
+        view,
+        edit
     }
 }
 
@@ -67,6 +71,8 @@ const mdtp = {
     removeWorldState,
     showEditOverlay, 
     hideEditOverlay,
+    addChange,
+    setNewEditableForm,
 }
 
 const connector = connect(mstp, mdtp)
