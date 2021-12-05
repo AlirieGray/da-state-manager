@@ -1,7 +1,7 @@
 import { OverlaysState } from "../types"
 import { Action, SHOW_EDIT_OVERLAY, HIDE_EDIT_OVERLAY } from '../actions/overlays'
 
-const initialState = (): OverlaysState => ({
+export const initialState = (): OverlaysState => ({
     editOverlayOn: false,
 })
 

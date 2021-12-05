@@ -4,8 +4,7 @@ import { Action, EDIT_FORM_PENDING, EDIT_FORM_SUCCESS, ADD_CHANGE, SET_UP_EDIT_F
 import { combineReducers } from 'redux'
 
 
-
-const initialState = {
+export const initialState = (): WorldFormState => ({
     view: {
         status: null,
         world: defaultWorld(),
@@ -15,10 +14,10 @@ const initialState = {
         world: null,
         changed: null,
     }
-}
+})
 
 
-const viewReducer = (state: WorldViewState = initialState.view, action: Action) => {
+const viewReducer = (state: WorldViewState = initialState().view, action: Action) => {
     switch (action.type) {
         case EDIT_FORM_SUCCESS:
             return {
@@ -31,7 +30,7 @@ const viewReducer = (state: WorldViewState = initialState.view, action: Action) 
     }
 }
 
-const editReducer = (state: WorldEditState = initialState.edit, action: Action) => {
+const editReducer = (state: WorldEditState = initialState().edit, action: Action) => {
     switch (action.type) {
         case ADD_CHANGE:
             return {

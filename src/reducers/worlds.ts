@@ -28,7 +28,7 @@ export const defaultWorld = (): World => ({
     },
 })
 
-const initialState = (): WorldsState => ({
+export const initialState = (): WorldsState => ({
     worlds: [
         defaultWorld(),
     ],
