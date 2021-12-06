@@ -29,6 +29,11 @@ class WorldForm extends React.Component<Props> {
         return (
             <div>
                 <TextInput 
+                    handleChange={(newValue) => this.updateWorldName(newValue)}
+                    title="World State Name"
+                    value={formEdit.name}
+                />
+                <TextInput 
                     handleChange={(newValue) => this.updateWardenName(newValue)}
                     title="Warden"
                     value={formEdit.warden.name}
@@ -46,6 +51,13 @@ class WorldForm extends React.Component<Props> {
                 {/* <SaveBar onSave={saveChanges} onDiscard={discardChanges} /> */}
             </div>
         )
+    }
+
+    private updateWorldName = (newValue: string) => {
+        const {onAddChange, world} = this.props
+        var newWorld = world
+        newWorld.name = newValue
+        onAddChange(newWorld)
     }
 
     private updateWardenName = (newValue: string) => {

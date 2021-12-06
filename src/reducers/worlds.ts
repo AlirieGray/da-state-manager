@@ -48,7 +48,6 @@ export default (state: WorldsState = initialState(), action: Action) => {
             }
         }
         case REMOVE_WORLD_STATE: {
-            const {type, ID} = action
             return {
                 ...state,
                 worlds: state.worlds.filter((world) => {
