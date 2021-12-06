@@ -4,26 +4,6 @@ This is a world state manager for the Dragon Age RPG series from Bioware. It all
 ## Development
 This project was made with React and Redux.
 
-## To-do
-1. Ability to modify a state
-1. Mobile responsive
-1. Add/remove companions (canon and custom)
-1. Add or remove a property from a protag or world state
-1. Database: User creation
-    - User profile
-    - Associate world state with user
-    - Secure password/recovery/email confirmation
-1. Main quest party composition and decisions 
-1. Custom protagonists
-1. Fan works links
-1. Sticky header
-1. Graph/timeline feature
-1. Update styles
-1. Download/upload world state as JSON
-1. Add testing
-1. Add React-Router
-1. Warn user before removing a world state
-1. Pictures for default companions/romances
-1. Allow user to upload custom pictures for protags, companions, romances
-1. Add thunks/selectors/async for editing state
-1. Store world states in localstorage
+To run locally:
+1. Clone this repo. Make sure you have Node.js installed.
+1. Run `npm run start` in the root directory of the project. By default the project will run on http://localhost:3000/
