@@ -25,3 +25,5 @@ This project was made with React and Redux.
 1. Warn user before removing a world state
 1. Pictures for default companions/romances
 1. Allow user to upload custom pictures for protags, companions, romances
+1. Add thunks/selectors/async for editing state
+1. Store world states in localstorage

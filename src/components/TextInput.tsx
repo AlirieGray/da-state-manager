@@ -8,11 +8,11 @@ interface Props {
 
 class TextInput extends React.Component<Props> {
     render() {
-        const {handleChange, title} = this.props
+        const {handleChange, title, value} = this.props
         return (
             <div>
                 {title}
-                <input type="text" onChange={(event) => handleChange(event.target.value)} />
+                <input type="text" value={value} onChange={(event) => handleChange(event.target.value)} />
             </div>
         )
     }

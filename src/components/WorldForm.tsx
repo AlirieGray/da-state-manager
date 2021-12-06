@@ -4,22 +4,23 @@ import TextInput from './TextInput'
 import {World} from '../types'
 
 interface Props {
-    setUpEditableForm: () => void
-    addChange: (field: string, value: string) => void
-    saveChanges: () => void
-    discardChanges: () => void 
-    formView: World
-    formEdit: World
+    world: World
+    setNewEditableForm: (world: World) => void
+    onAddChange: (world: World) => void
+    // saveChanges: () => void
+    // discardChanges: () => void 
+    formView: World | null
+    formEdit: World | null
 }
 
 class WorldForm extends React.Component<Props> {
     componentWillMount() {
-        this.props.setUpEditableForm()
+        this.props.setNewEditableForm(this.props.world)
     }
 
     
     render() {
-        const {formEdit, formView, addChange, saveChanges, discardChanges} = this.props
+        const {formEdit, formView} = this.props
 
         if (!formEdit || !formView) {
             return <span>LOADING...</span>
@@ -28,13 +29,44 @@ class WorldForm extends React.Component<Props> {
         return (
             <div>
                 <TextInput 
-                    handleChange={(newValue) => addChange('warden', newValue)}
+                    handleChange={(newValue) => this.updateWardenName(newValue)}
                     title="Warden"
                     value={formEdit.warden.name}
                 />
-                <SaveBar onSave={saveChanges} onDiscard={discardChanges} />
+                 <TextInput 
+                    handleChange={(newValue) => this.updateHawkeName(newValue)}
+                    title="Hawke"
+                    value={formEdit.hawke.name}
+                />
+                <TextInput 
+                    handleChange={(newValue) => this.updateInkyName(newValue)}
+                    title="Inquisitor"
+                    value={formEdit.inky.name}
+                />
+                {/* <SaveBar onSave={saveChanges} onDiscard={discardChanges} /> */}
             </div>
         )
+    }
+
+    private updateWardenName = (newValue: string) => {
+        const {onAddChange, world} = this.props
+        var newWorld = world
+        newWorld.warden.name = newValue
+        onAddChange(newWorld)
+    }
+
+    private updateHawkeName = (newValue: string) => {
+        const {onAddChange, world} = this.props
+        var newWorld = world
+        newWorld.hawke.name = newValue
+        onAddChange(newWorld)
+    }
+
+    private updateInkyName = (newValue: string) => {
+        const {onAddChange, world} = this.props
+        var newWorld = world
+        newWorld.inky.name = newValue
+        onAddChange(newWorld)
     }
 }
 

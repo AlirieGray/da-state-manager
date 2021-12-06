@@ -8,9 +8,13 @@ import EditOverlay from './EditOverlay'
 interface Props {
   world: World
   editOverlayOn: boolean
+  onAddChange: (world: World) => void
   onShowOverlay: () => void
   onHideOverlay: () => void
   onRemoveWorld: (ID: string) => void
+  setNewEditableForm: (world: World) => void
+  formView: World | null
+  formEdit: World | null
 }
 
 class WorldDisplay extends React.Component<Props> {
@@ -19,10 +23,27 @@ class WorldDisplay extends React.Component<Props> {
   }
 
   render() {
-    const {editOverlayOn, onRemoveWorld, onHideOverlay, world: {ID, name, warden, hawke, inky}} = this.props
-    let editOverlay;
+    const {editOverlayOn, 
+      onRemoveWorld, 
+      onHideOverlay, 
+      onAddChange,
+      setNewEditableForm,
+      world,
+      formView,
+      formEdit
+    } = this.props
+    
+    
+      let editOverlay
     if (editOverlayOn) {
-        editOverlay = <EditOverlay onClose={onHideOverlay} ID={ID} onRemoveWorld={onRemoveWorld} />
+        editOverlay = <EditOverlay 
+          world={world}
+          onAddChange={onAddChange}
+          onClose={onHideOverlay}
+          formEdit={formEdit}
+          formView={formView}
+          setNewEditableForm={setNewEditableForm}
+          onRemoveWorld={onRemoveWorld} />
     } else {
         <div />
     }
@@ -31,16 +52,16 @@ class WorldDisplay extends React.Component<Props> {
       <div className="stateWrapper">
           <div className="worldStateHeader">
             <div className="worldStateName">
-                {name}
+                {world.name}
             </div>
             <button className="editButton">
               <img className="editImg" src={edit} onClick={this.handleClick}/>
             </button>
           </div>
           {editOverlay}
-          <Protagonist name={warden.name} romance={warden.romance} />
-          <Protagonist name={hawke.name} romance={hawke.romance} />
-          <Protagonist name={inky.name} romance={inky.romance} />
+          <Protagonist name={world.warden.name} romance={world.warden.romance} />
+          <Protagonist name={world.hawke.name} romance={world.hawke.romance} />
+          <Protagonist name={world.inky.name} romance={world.inky.romance} />
       </div>
     )
   }

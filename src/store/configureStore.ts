@@ -1,6 +1,6 @@
-import { applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
+// import { applyMiddleware } from 'redux'
+// import thunkMiddleware from 'redux-thunk'
+// import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore } from 'redux'
 import rootReducer from '../reducers/index'
 import { AppState } from '../types'
@@ -17,9 +17,7 @@ const initialState: AppState = {
 const store = createStore(
     rootReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(...[thunkMiddleware]))
+    // composeWithDevTools(applyMiddleware(...[thunkMiddleware]))
 )
-
-export type AppDispatch = typeof store.dispatch
 
 export default store

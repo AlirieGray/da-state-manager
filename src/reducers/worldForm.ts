@@ -1,6 +1,6 @@
 import { defaultWorld } from './worlds'
 import { WorldViewState, WorldEditState, WorldFormState, World } from '../types'
-import { Action, EDIT_FORM_PENDING, EDIT_FORM_SUCCESS, ADD_CHANGE, SET_UP_EDIT_FORM} from '../actions/worldForm'
+import { Action, EDIT_FORM_PENDING, EDIT_FORM_SUCCESS, ADD_CHANGE, SET_UP_EDIT_FORM, SAVE_CHANGES} from '../actions/worldForm'
 import { combineReducers } from 'redux'
 
 
@@ -43,6 +43,13 @@ const editReducer = (state: WorldEditState = initialState().edit, action: Action
                 ...state,
                 changed: false,
                 world: action.world,
+            }
+        case SAVE_CHANGES:
+            return {
+                ...state,
+                changed: false,
+                world: action.world,
+                status: EDIT_FORM_SUCCESS,
             }
         case EDIT_FORM_PENDING:
             return {

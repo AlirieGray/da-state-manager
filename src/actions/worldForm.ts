@@ -4,6 +4,7 @@ export const EDIT_FORM_SUCCESS = 'EDIT_FORM_SUCCESS'
 export const EDIT_FORM_PENDING = 'EDIT_FORM_PENDING'
 export const SET_UP_EDIT_FORM = 'SET_UP_EDIT_FORM'
 export const ADD_CHANGE = 'ADD_CHANGE'
+export const SAVE_CHANGES = 'SAVE_CHANGES'
 
 
 export type Action =

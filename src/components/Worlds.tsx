@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect, ConnectedProps} from 'react-redux'
-import {AppState} from '../types'
+import {AppState, World} from '../types'
 import WorldDisplay from './WorldDisplay'
 import { addWorldState, removeWorldState } from '../actions/worlds'
 import { showEditOverlay, hideEditOverlay } from '../actions/overlays'
-import { addChange, setNewEditableForm } from '../actions/worldForm'
+import { addChange, setNewEditableForm, editFormSuccess } from '../actions/worldForm'
 import AddNewWorld from './AddNewWorld'
 import '../styles/worlds.css'
 
@@ -17,7 +17,7 @@ class Worlds extends React.Component<Props> {
     }
 
     render() {
-        const {worlds, editOverlayOn} = this.props
+        const {worlds, editOverlayOn, view, edit} = this.props
 
         return (
             <div className="wrapper">
@@ -29,13 +29,23 @@ class Worlds extends React.Component<Props> {
                             editOverlayOn={editOverlayOn}
                             onRemoveWorld={this.handleRemoveWorld}
                             onShowOverlay={this.handleShowEditOverlay} 
-                            onHideOverlay={this.handleHideEditOverlay} />
+                            onHideOverlay={this.handleHideEditOverlay} 
+                            onAddChange={this.handleAddChange}
+                            // onSave={handleOnSave}
+                            setNewEditableForm={this.setUpForm}
+                            formView={view.world}
+                            formEdit={edit.world}
+                            />
                     })}
                 </div>
 
             </div>
         )
     }
+
+    // private handleOnSave = () => {
+    //     this.props.editFormSuccess()
+    // }
 
     private handleAddWorld = () => {
         this.props.addWorldState()
@@ -51,6 +61,14 @@ class Worlds extends React.Component<Props> {
 
     private handleHideEditOverlay = () => {
         this.props.hideEditOverlay()
+    }
+
+    private handleAddChange = (world: World) => {
+        this.props.addChange(world)
+    }
+
+    private setUpForm = (world: World) => {
+        this.props.setNewEditableForm(world)
     }
 }
 
@@ -69,9 +87,10 @@ const mstp = (state: AppState) => {
 const mdtp = {
     addWorldState,
     removeWorldState,
-    showEditOverlay, 
+    showEditOverlay,
     hideEditOverlay,
     addChange,
+    editFormSuccess,
     setNewEditableForm,
 }
 
