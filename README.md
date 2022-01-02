@@ -6,5 +6,5 @@ This project was made with React and Redux.
 
 To run locally:
 1. Clone this repo. Make sure you have Node.js installed.
-2. Run 'npm install' in the root directory of the project to install required Node modules.
+2. Run `npm install` in the root directory of the project to install required Node modules.
 3. Run `npm run start` in the root directory of the project. By default the project will run on http://localhost:3000/
