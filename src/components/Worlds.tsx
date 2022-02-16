@@ -24,7 +24,7 @@ class Worlds extends React.Component<Props> {
                 <AddNewWorld onAddWorld={this.handleAddWorld}/>
                 <div className="worldsContainer">
                     {worlds.map(world => {
-                        return <WorldDisplay key={world.name} 
+                        return world.active && <WorldDisplay key={world.name} 
                             world={world} 
                             editOverlayOn={editOverlayOn}
                             onRemoveWorld={this.handleRemoveWorld}

@@ -2,6 +2,7 @@
 export interface World {
     name: string
     ID: string
+    active: boolean
     ficLinks: string[]
     warden: Warden
     hawke: Hawke
@@ -12,6 +13,7 @@ export interface Protagonist {
     name: string
     class: string
     romance: string
+    companions: string[],
 }
 
 export interface Warden extends Protagonist {

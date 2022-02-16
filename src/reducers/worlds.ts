@@ -5,12 +5,14 @@ import { v4 as uuid4 } from "uuid"
 export const defaultWorld = (): World => ({
     name: "Default World State",
     ID: uuid4(),
+    active: true,
     ficLinks: [],
     warden: {
         name: "Kallian Tabris",
         origin: "City Elf",
         class: "Warrior",
         romance: "Alistair",
+        companions: ["Alistair", "Morrigan", "Leliana", "Zevran", "Wynne", "Oghren", "Sten", "Shale"],
         ruler: "Anora",
         alive: true,
     },
@@ -18,12 +20,14 @@ export const defaultWorld = (): World => ({
         name: "Marian Hawke",
         class: "Mage",
         romance: "Isabela",
+        companions: ["Varric", "Isabela", "Anders", "Fenris", "Merrill", "Sebastian", "Carver"],
         sided: "mages",
     },
     inky: {
         name: "Herah Adaar",
         class: "Rogue",
         romance: "Cassandra",
+        companions: ["Cassandra", "Solas", "Varric", "Vivienne", "Sera", "The Iron Bull", "Dorian", "Blackwall"],
         disband: true,
     },
 })

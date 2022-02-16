@@ -1,13 +1,14 @@
 import './App.css'
 import Worlds from './components/Worlds'
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 
 
   return (
-    <div className="wrapper">
-      <Worlds />
-    </div>
+    <Routes> 
+      <Route path="/" element={<Worlds />} />
+    </Routes>
   )
 }
 
