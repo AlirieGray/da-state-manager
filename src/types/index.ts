@@ -5,6 +5,7 @@ export interface World {
     wip: boolean
     imageLink: string
     summary: string
+    active: boolean
     ficLinks: string[]
     warden: Warden
     hawke: Hawke
@@ -15,6 +16,7 @@ export interface Protagonist {
     name: string
     class: string
     romance: string
+    companions: string[],
 }
 
 export interface Warden extends Protagonist {
@@ -58,6 +60,4 @@ export interface WorldFormState {
 
 export interface AppState {
     worlds: WorldsState
-    // worldForm: WorldFormState
-    // overlays: OverlaysState
 }

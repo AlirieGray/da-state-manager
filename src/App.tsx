@@ -1,15 +1,13 @@
 import './App.css'
-import Worlds from './components/Worlds'
 import Dashboard from './components/Dashboard'
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-
-
   return (
-    <div className="wrapper">
-      <Dashboard />
-      {/* <Worlds /> */}
-    </div>
+    <Routes> 
+      <Route path="/" element={<Dashboard />} />
+    </Routes>
+
   )
 }
 
