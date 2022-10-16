@@ -8,7 +8,7 @@ export const defaultWorld = (): World => ({
     wip: false,
     imageLink: "",
     ficLinks: ["https://bit.ly/shortenedao3link"],
-    summary: "Sariel Surana becomes mistress to King Alistair Theriin. Rosalind Hawke becomes a pirate with Isabela. Yonazli Adaar conscripts the mages and lives as Tal-Vashoth with Iron Bull.",
+    summary: "Sariel Surana becomes mistress to King Alistair Theirin. Rosalind Hawke becomes a pirate with Isabela. Yonazli Adaar conscripts the mages and lives as Tal-Vashoth with Iron Bull.",
     warden: {
         name: "Sariel Surana",
         origin: "Circle Mage Elf",

@@ -1,32 +1,45 @@
-.stateWrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
 
-.worldStateName {
-    font-size: 22px;
-}
 
-.worldStateHeader {
-    display: flex;
-    flex-direction: row;
+.worldImg {
+    width: 150px;
+    border-radius: 100px;
 }
 
 .worldHeader {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.worldName {
+    font-size: 30px;
+}
+
+.worldButton {
+    padding-top: 5px;
+    padding-right: 5px;
 }
 
 .worldCard {
     background-color: rgb(32,46,72);
     padding: 15px;
     margin: 10px;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.worldHeaderDetails {
+    display: flex;
+    flex-direction: column;
 }
 
 .worldCardButtons {
     color: rgb(160,160,160);
     font-size: 14px;
+    display: flex;
+    flex-direction: row;
 }
 
 .worldContent {
@@ -37,4 +50,27 @@
 .summaryHeader {
     color: rgb(160,160,160);
     font-size: 14px;
+    margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .worldCardButtons {
+        display: flex;
+        flex-direction: column !important;
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    .worldCard {
+        min-width: 900px;
+        max-width: 900px;
+    }
+
+    .worldHeader {
+        justify-content: flex-start;
+    }
+
+    .worldImg {
+        margin-right: 20px;
+    }
 }
