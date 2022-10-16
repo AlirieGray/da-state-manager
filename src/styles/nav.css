@@ -1,0 +1,27 @@
+.navWrapper {
+    width: 90%;
+    max-width: 1480px;
+    padding-top: 40px;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.currentView{
+    font-size: 36px;
+}
+
+.navButton {
+    padding-right: 15px;
+}
+
+hr.navDivider {
+    border-top: 1px solid #fff;
+}
+
+/* todo: hamburger menu for mobile view */

@@ -2,6 +2,9 @@
 export interface World {
     name: string
     ID: string
+    wip: boolean
+    imageLink: string
+    summary: string
     ficLinks: string[]
     warden: Warden
     hawke: Hawke
@@ -55,6 +58,6 @@ export interface WorldFormState {
 
 export interface AppState {
     worlds: WorldsState
-    worldForm: WorldFormState
-    overlays: OverlaysState
+    // worldForm: WorldFormState
+    // overlays: OverlaysState
 }

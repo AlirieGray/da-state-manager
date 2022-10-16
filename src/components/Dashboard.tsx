@@ -1,14 +1,14 @@
 import React from 'react'
 import {connect, ConnectedProps} from 'react-redux'
 import {AppState, World} from '../types'
-import WorldDisplay from './WorldDisplay'
-import { addWorldState, removeWorldState } from '../actions/worlds'
-import '../styles/worlds.css'
+import Nav from './Nav'
+import Worlds from './Worlds'
+import '../styles/dashboard.css'
 
 type ReduxProps = ConnectedProps<typeof connector>
 type Props = ReduxProps
 
-class Worlds extends React.Component<Props> {
+class Dashboard extends React.Component<Props> {
     constructor(props: Props) {
         super(props)
     }
@@ -17,13 +17,9 @@ class Worlds extends React.Component<Props> {
         const {worlds} = this.props
 
         return (
-            <div className="worldsContainer">
-                {worlds.map(world => {
-                    console.log(world)
-                    return <WorldDisplay key={world.name} 
-                        world={world} 
-                    />
-                })}
+            <div className="dashboardWrapper">
+                <Nav viewing={true} pageName={"World States At-a-Glance"}/>
+                <Worlds />       
             </div>
         )
     }
@@ -39,10 +35,9 @@ const mstp = (state: AppState) => {
 }
 
 const mdtp = {
-    addWorldState,
-    removeWorldState,
+
 }
 
 const connector = connect(mstp, mdtp)
 
-export default connector(Worlds)
+export default connector(Dashboard)

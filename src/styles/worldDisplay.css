@@ -13,7 +13,28 @@
     flex-direction: row;
 }
 
-.editImg {
-    max-width: 25px;
-    max-height: 25px;
+.worldHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.worldCard {
+    background-color: rgb(32,46,72);
+    padding: 15px;
+    margin: 10px;
+}
+
+.worldCardButtons {
+    color: rgb(160,160,160);
+    font-size: 14px;
+}
+
+.worldContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryHeader {
+    color: rgb(160,160,160);
+    font-size: 14px;
 }

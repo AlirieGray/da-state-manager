@@ -27,8 +27,6 @@ const store = createStore(
 store.subscribe(throttle(() => {
     saveState({
         worlds: store.getState().worlds,
-        worldForm: store.getState().worldForm,
-        overlays: store.getState().overlays,
     })
 }))
 
