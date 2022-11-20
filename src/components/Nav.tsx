@@ -1,38 +1,36 @@
 import React from 'react'
 import '../styles/nav.css'
-
-// type ReduxProps = ConnectedProps<typeof connector>
-// type Props = ReduxProps
+import {DashViewType} from '../types'
 
 type Props = {
-    viewing: boolean;
+    view: DashViewType;
     pageName: string;
 }
 
-class Nav extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props)
-    }
-
-    render() {
-        const {viewing, pageName} = this.props;
-        return (
-            <div className="navWrapper">
-                <div className="navContainer"> 
-                    <div className="currentView">
-                        {viewing ? "Viewing: " + pageName: "Editing: " + pageName} 
-                    </div>   
-                    <div className="navButtons">
-                        <span className="navButton">Settings</span>
-                        <span className="navButton">About</span>
-                        <span className="navButton">Profile</span>
-                    </div>  
-                </div>
-                <hr className="navDivider"></hr>
+function Nav(props: Props) {
+    const {view, pageName} = props;
+    return (
+        <div className='navWrapper'>
+            <div className='navContainer'> 
+                <div className='currentView'>
+                    {view == DashViewType.OVERVIEW && pageName} 
+                    {view == DashViewType.VIEWING && 'Viewing: ' + pageName} 
+                    {view == DashViewType.EDITING && 'Editing: ' + pageName}
+                    {(view == DashViewType.LOGIN || view == DashViewType.REGISTER) && pageName}
+                </div>   
+                {view != DashViewType.LOGIN && view != DashViewType.REGISTER && (
+                    <div className='navButtons'>
+                    <span className='navButton'>Settings</span>
+                    <span className='navButton'>About</span>
+                    <span className='navButton'>Profile</span>
+                    <span className='navButton'>Logout</span>
+                </div> 
+                )}
+                    
             </div>
-        )
-    }
-
+            <hr className='navDivider'></hr>
+        </div>
+    )
 }
 
 export default Nav

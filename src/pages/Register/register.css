@@ -1,0 +1,85 @@
+.registerWrapper {
+    background-color: rgb(38,37,53);
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register {
+    margin-top: 100px;
+}
+
+.inputHeader {
+    color: rgb(160,160,160);
+    font-size: 12px;
+    text-align: left;
+}
+
+.registerInput {
+    border: none;
+    padding: 6px;
+    line-height: 120%;
+    min-width: 100%;
+    margin-top: 3px;
+    border-radius: 5px;
+    width: 300px
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.registerSection {
+    margin-bottom: 10px;
+}
+
+.forgot {
+    color: rgb(160,160,160);
+    font-size: 12px;
+    text-align: end;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.login {
+    color: rgb(160,160,160);
+    font-size: 12px;
+    text-align: center;
+}
+
+.registerHeader {
+    font-size: 30px;
+    text-align: center;
+}
+
+.inputWrapper {
+    margin-top: 10px;
+    width: 320px;
+}
+
+.registerButtonWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.registerButton{
+    all:unset;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+}
+
+.linkText {
+    text-decoration: none;
+    color: white;
+
+}

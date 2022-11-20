@@ -3,7 +3,6 @@ import '../styles/worldDisplay.css'
 import edit from '../images/edit.png'
 import Protagonist from './Protagonist'
 import {World} from '../types'
-import EditOverlay from './EditOverlay'
 import imgSrc from '../images/isabela.jpeg'
 
 interface Props {
@@ -21,22 +20,22 @@ class WorldDisplay extends React.Component<Props> {
     } = this.props
 
     return (
-      <div className="worldCard">
-        <div className="worldHeader">
-          <img src={imgSrc} className="worldImg"></img>
-          <div className="worldHeaderDetails">
-            <div className="worldName">
+      <div className='worldCard'>
+        <div className='worldHeader'>
+          <img src={imgSrc} className='worldImg'></img>
+          <div className='worldHeaderDetails'>
+            <div className='worldName'>
               {world.name}
             </div>
-            <div className="worldCardButtons">
-              <div className="worldButton">Export</div>
-              <div className="worldButton">Edit</div>
-              <div className="worldButton">Expanded View</div>
+            <div className='worldCardButtons'>
+              <div className='worldButton'>Export</div>
+              <div className='worldButton'>Edit</div>
+              <div className='worldButton'>Expanded View</div>
             </div>
           </div>
         </div>
-        <div className="worldContent">
-          <span className="summaryHeader">Summary</span>
+        <div className='worldContent'>
+          <span className='summaryHeader'>Summary</span>
           {world.summary}
         </div>
       </div>
