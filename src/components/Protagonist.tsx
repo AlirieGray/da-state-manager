@@ -10,11 +10,11 @@ class Protagonist extends React.Component<Props> {
   render() {
     const {name, romance} = this.props
     return (
-      <div className="protagWrapper">
-          <div className="attribute">
+      <div className='protagWrapper'>
+          <div className='attribute'>
             Name: {name}
           </div>
-          <div className="attribute">
+          <div className='attribute'>
             Romance: {romance}
           </div>
       </div>

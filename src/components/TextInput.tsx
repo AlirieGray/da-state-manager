@@ -6,16 +6,14 @@ interface Props {
     value: string
 }
 
-class TextInput extends React.Component<Props> {
-    render() {
-        const {handleChange, title, value} = this.props
-        return (
-            <div>
-                {title}
-                <input type="text" value={value} onChange={(event) => handleChange(event.target.value)} />
-            </div>
-        )
-    }
+function TextInput(props: Props) {
+    const {handleChange, title, value} = props
+    return (
+        <div>
+            {title}
+            <input type='text' value={value} onChange={(event) => handleChange(event.target.value)} />
+        </div>
+    )
 }
 
 export default TextInput
