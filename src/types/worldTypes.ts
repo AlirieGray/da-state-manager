@@ -4,9 +4,11 @@ export interface World {
     wip: boolean
     summary: string
     active: boolean
-    ficLinks: string[]
+    fanWorks: string[]
     games: Game[]
 }
+
+export interface CreateWorldForm extends Omit<World, 'ID'> {}
 
 export interface Decision {
     name: string 
@@ -16,6 +18,7 @@ export interface Decision {
 export interface Quest {
     name: string
     decisions: Decision[]
+    companions?: string[]
 }
 
 export interface Game {
@@ -27,7 +30,7 @@ export interface Game {
 export interface Protagonist {
     name: string
     class: string
-    origin: string
+    origin?: string
     romances: string[]
     companions: string[]
     rivals: string[]

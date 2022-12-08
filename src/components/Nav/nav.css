@@ -12,12 +12,16 @@
     padding-right: 15px;
 }
 
-.currentView{
+.homeButton{
     font-size: 36px;
+    text-decoration: none;
+    color: white;
 }
 
 .navButton {
     padding-right: 15px;
+    text-decoration: none;
+    color: white;
 }
 
 hr.navDivider {

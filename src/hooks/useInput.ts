@@ -1,11 +1,13 @@
+import React from 'react'
 import {useLocalStorage} from './useLocalStorage'
+import {InputAttributes} from '../types'
 
 const useInput = (key: string, initValue: string) => {
     const [value, setValue] = useLocalStorage(key, initValue)
 
-    const resetUser = () => setValue(initValue)
+    const resetValue = () => setValue(initValue)
 
-    const userAttributes = {
+    const inputAttributes: InputAttributes = {
         value,
         onChange: (e: React.FormEvent<HTMLInputElement>) => {
             const target = e.target as HTMLInputElement
@@ -13,7 +15,7 @@ const useInput = (key: string, initValue: string) => {
         }
     }
 
-    return [value, resetUser, userAttributes] as const
+    return [value, resetValue, inputAttributes] as const
 }
 
 export default useInput

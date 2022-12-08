@@ -1,0 +1,12 @@
+.textInputWrapper {
+    display: flex;
+    width: 260px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+label {
+    font-size: 12px;
+    margin-bottom: 2px;
+    color: rgb(160,160,160);
+}
