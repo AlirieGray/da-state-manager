@@ -1,16 +1,46 @@
 import { CreateWorldForm, Game } from '../types'
 
-// todo: use immer
+// todo: use immer ?
+// use consts for world form action types
+// todo: persist state in local storage
 
-export type CreateWorldFormAction = 
+export type WorldFormAction = 
+    | { type: 'SET_WORLD_NAME', payload: string }
+    | { type: 'SET_WORLD_SUMMARY', payload: string }
     | { type: 'SET_ORIGINS_PROTAG_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_REDCLIFFE_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_URN_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_CIRCLE_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_NATURE_OF_THE_BEAST_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_PARAGON_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_LANDSMEET_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_AWAKENING_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_DA2_PROTAG_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_ACT_ONE_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_ACT_TWO_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_ACT_THREE_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_MOTA_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_LEGACY_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_INQ_PROTAG_ATTR', payload: {key: string, value: string} }
-    | { type: 'CLEAR_FORM'}
+    | { type: 'SET_IYHSB_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_IHW_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_COTJ_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_HLTA_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_WEWH_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_WPHW_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_DUATW_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_TRESPASSER_ATTR', payload: {key: string, value: string} }
+    | { type: 'CLEAR_FORM' }
 
-export const createWorldFormReducer = (state: CreateWorldForm, action: CreateWorldFormAction) => {
-    console.log(state)
+    // todo: set summary not working? 
+
+export const createWorldFormReducer = (state: CreateWorldForm, action: WorldFormAction) => {
     switch (action.type) {
+        case 'SET_WORLD_NAME':
+            return {...state, name: action.payload}
+        case 'SET_WORLD_NAME':
+            return {...state, summary: action.payload}
         case 'SET_ORIGINS_PROTAG_ATTR':
             const originsKey = action.payload.key
             let newOriginsProtag = {...state.games[0].protagonist}
@@ -69,8 +99,111 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: CreateWor
                 return game
             })}
 
+        // origins decisions
+        case 'SET_REDCLIFFE_ATTR':
+            const redcliffeKey = action.payload.key
+            let newRedcliffeChoices = {...state.games[0].quests[2].decisions}
+            newRedcliffeChoices[`${redcliffeKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[2].decisions = newRedcliffeChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_URN_ATTR':
+            const urnKey = action.payload.key
+            let newUrnChoices = {...state.games[0].quests[3].decisions}
+            newUrnChoices[`${urnKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[3].decisions = newUrnChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_CIRCLE_ATTR':
+            const circleKey = action.payload.key
+            let newCircleChoices = {...state.games[0].quests[4].decisions}
+            newCircleChoices[`${circleKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[4].decisions = newCircleChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_NATURE_OF_THE_BEAST_ATTR':
+            const natureKey = action.payload.key
+            let newNatureChoices = {...state.games[0].quests[5].decisions}
+            newNatureChoices[`${natureKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[5].decisions = newNatureChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_PARAGON_ATTR':
+            const paragonKey = action.payload.key
+            let newParagonChoices = {...state.games[0].quests[6].decisions}
+            newParagonChoices[`${paragonKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[6].decisions = newParagonChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_AWAKENING_ATTR':
+            return {...state}
+    
+        // set da2 decisions
+        case 'SET_ACT_ONE_ATTR':
+            return {...state}
+        case 'SET_ACT_TWO_ATTR':
+            return {...state}
+        case 'SET_ACT_THREE_ATTR':
+            return {...state}
+        case 'SET_MOTA_ATTR':
+            return {...state}
+        case 'SET_LEGACY_ATTR':
+            return {...state}
+
+        // inquisition decisions
+        case 'SET_IYHSB_ATTR':
+            return {...state}
+        case 'SET_IHW_ATTR':
+            return {...state}
+        case 'SET_COTJ_ATTR':
+            return {...state}
+        case 'SET_HLTA_ATTR':
+            return {...state}
+        case 'SET_WEWH_ATTR':
+            return {...state}
+        case 'SET_WPHW_ATTR':
+            return {...state}
+        case 'SET_DUATW_ATTR':
+            return {...state}
+        case 'SET_TRESPASSER_ATTR':
+            return {...state}
+
         case 'CLEAR_FORM':
-            console.log(state)
             return {...defaultCreateWorldForm}
 
         default: 
@@ -96,46 +229,78 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                 rivals: [],
                 summary: '',
             },
+            // TODO:  iterate over decisions key/value pairs to create array for the backend
             quests: [
                 {
                     name: 'Prologue',
-                    decisions: [],
+                    decisions: {},
                 },
                 {
                     name: 'Lothering',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'The Arl of Redcliffe',
-                    decisions: []
+                    decisions: {
+                        'connor': '',
+                        'prepare': '',
+                        'isolde': '',
+                        'bella': ''
+                    }
                 },
                 {
                     name: 'The Urn of Sacred Ashes',
-                    decisions: []
+                    decisions: {
+                        'defiled': '',
+                        'dragon': ''
+                    }
                 },
                 {
                     name: 'Broken Circle',
-                    decisions: []
-                },
-                {
-                    name: 'Paragon of her Kind',
-                    decisions: []
+                    decisions: {
+                        'side': '',
+                        'cullen': '',
+                        'irving': ''
+                    }
                 },
                 {
                     name: 'Nature of the Beast',
-                    decisions: []
+                    decisions: {
+                        'side': '',
+                        'cammen': '',
+                        'deygan': '',
+                        'halla': '',
+                        'athras': ''
+                    }
+                },
+                {
+                    name: 'Paragon of her Kind',
+                    decisions: {
+                        'king': '',
+                        'anvil': '',
+                        'ruck': '',
+                        'zerlinda': ''
+                    }
                 },
                 {
                     name: 'The Landsmeet',
-                    decisions: []
+                    decisions: {
+                        'ruler': '',
+                        'loghain': ''
+                    }
                 },
                 {
                     name: 'Battle of Denerim',
-                    decisions: []
+                    decisions: {
+                        'archdemon': '',
+                        'ritual': ''
+                    }
                 },
                 {
                     name: 'Awakening DLC',
-                    decisions: []
+                    decisions: {
+                        'architect': ''
+                    }
                 },  
             ]
         },
@@ -152,23 +317,23 @@ export const defaultCreateWorldForm: CreateWorldForm = {
             quests: [
                 {
                     name: 'Act One',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Act Two',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Act Three',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Mark of the Assassin DLC',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Legacy DLC',
-                    decisions: []
+                    decisions: {}
                 }
             ]
         },
@@ -186,35 +351,35 @@ export const defaultCreateWorldForm: CreateWorldForm = {
             quests: [
                 {
                     name: 'In Hushed Whispers',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Champions of the Just',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'In Your Heart Shall Burn',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Here Lies the Abyss',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Wicked Eyes and Wicked Hearts',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'What Pride Had Wrought',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Doom Upon All the World',
-                    decisions: []
+                    decisions: {}
                 },
                 {
                     name: 'Trespasser DLC',
-                    decisions: []
+                    decisions: {}
                 },
             ]
         }

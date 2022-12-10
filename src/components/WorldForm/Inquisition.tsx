@@ -1,12 +1,12 @@
 import { Dispatch } from 'react'
-import { CreateWorldFormAction } from '../../reducers/createWorldForm'
+import { WorldFormAction } from '../../reducers/createWorldForm'
 import {Game} from '../../types'
 import {get} from 'lodash'
 import TextInput from '../TextInput/TextInput'
 
 type InquisitionProps = {
     gameState: Game
-    onChange: Dispatch<CreateWorldFormAction>
+    onChange: Dispatch<WorldFormAction>
 } 
 
 // todo: checkboxes for yes/no choices (ex. helped redcliffe prepare, stop/redeem solas, etc)
@@ -31,11 +31,6 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                     title='Summary'
                     value={get(gameState, 'protagonist.summary')}
                     handleChange={(value) => onChange({type: 'SET_INQ_PROTAG_ATTR', payload: {key: 'summary', value}})} />
-            <h2>Redcliffe</h2>
-                <div>
-                    <label>Helped Recliffe prepare?</label>
-                    <input type="checkbox" />
-                </div>
             <h2>In Your Heart Shall Burn</h2>
             <h2>In Hushed Whispers</h2>
             <h2>Champions of the Just</h2>

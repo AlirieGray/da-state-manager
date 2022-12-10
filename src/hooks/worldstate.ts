@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import {World, Game, Protagonist} from '../types'
+import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
 
+// todo: dev value and production value
 const GET_WORLDS_URL = 'http://localhost:5555/worldstates/get'
+const CREATE_WORLD_URL = 'http://localhost:5555/worldstates/create'
 // todo: handle loading, API errors, etc
 
 export function useGetWorldstates(accessToken: string) {
@@ -39,12 +41,78 @@ export function useGetWorldstates(accessToken: string) {
             })
         } catch(err) {
             console.log(err)
-            // set fetch state to error
+            // todo set fetch state to error
         }
     }
     return [worlds, getWorlds] as const
 }
 
+// TODO
+export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string) {
+    const reqBody = convertWorldStateToCreateReqBody(worldstate)
+    const [worldErr, setWorlds] = useState('')
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-type': 'application/json'
+        },
+        body: reqBody // todo: type safety
+    }
+    
+    let err = ''
+    console.log("req body: ")
+    console.log(reqBody)
+
+    const postWorld = async () => {
+        try {
+            fetch(CREATE_WORLD_URL, options).then(res => {
+                if (res.status !== 201) {
+                    console.error('error ', res.statusText)
+                    return -1
+                }
+                return res.json()
+            }).then(worldRes => {
+                console.log(worldRes)
+            })
+        } catch (e) {
+            console.error(e)
+            // todo set fetch state to err
+        }
+        // console.log(reqBody)
+    }
+
+    return [err, postWorld] as const
+}
+
+// todo: move to util ?
+const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
+    const {name, wip, summary, active, fanWorks, games} = worldstate
+    const convertedGames = games.map((game: Game) => {
+        const convertedQuests = game.quests.map((quest: Quest) => {
+            const convertedDecisions = Object.entries(quest.decisions).map((decisionEntry) => {
+                const [name, choice] = decisionEntry
+                return {
+                    name, 
+                    choice
+                }
+            })
+            return {name: quest.name, decisions: convertedDecisions}
+        })
+        return {name: game.name, protagonist: game.protagonist, quests: convertedQuests}
+    })
+    let worldJSON = {
+        name,
+        wip,
+        summary,
+        active,
+        fanWorks,
+        games: convertedGames
+    }
+    console.log(worldJSON)
+    return JSON.stringify(worldJSON)
+}
 // todo: separate function to validate response, type safety
 // error messageing
 
@@ -68,6 +136,7 @@ const convertWorldstateJSON = (json: any): World => {
     return world
 }
 
+// todo: type safety
 const convertGameJSON = (json: any): Game => {
     const { name, protagonist, quests } = json
     const {origin, romances, companions, rivals, summary} = protagonist
@@ -87,3 +156,4 @@ const convertGameJSON = (json: any): Game => {
     }
     return newGame
 }
+

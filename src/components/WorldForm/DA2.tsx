@@ -1,5 +1,5 @@
 import { Dispatch } from 'react'
-import { CreateWorldFormAction } from '../../reducers/createWorldForm'
+import { WorldFormAction } from '../../reducers/createWorldForm'
 import {Game} from '../../types'
 import {get} from 'lodash'
 import TextInput from '../TextInput/TextInput'
@@ -7,7 +7,7 @@ import TextInput from '../TextInput/TextInput'
 
 type DA2Props = {
     gameState: Game
-    onChange: Dispatch<CreateWorldFormAction>
+    onChange: Dispatch<WorldFormAction>
 } 
 
 function DA2({ gameState, onChange }: DA2Props) {

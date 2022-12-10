@@ -1,6 +1,6 @@
 .textInputWrapper {
     display: flex;
-    width: 260px;
+    width: 320px;
     margin-top: 10px;
     flex-direction: column;
 }
