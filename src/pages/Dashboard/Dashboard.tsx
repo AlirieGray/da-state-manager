@@ -1,23 +1,17 @@
-import React from 'react'
-import {World, DashViewType} from '../../types'
-import Nav from '../../components/Nav'
-import { Navigate } from 'react-router-dom';
-import Worlds from '../../components/Worlds'
+import Worlds from './Worlds'
+import  {useContext} from 'react'
+import { PageViewContext } from '../../context/pageView'
+import { PageViewContextType, PageViewType } from '../../types'
 import './dashboard.css'
-import {getLocalValue} from '../../hooks/useLocalStorage'
 
-
+// todo: use auth context
+// and protected routes
+// use context for nav page name and state
 function Dashboard() {
-    const authToken = getLocalValue('accessToken', '')
-    if (authToken == '') {
-        return (
-            <Navigate replace to="/login" />
-        )
-    }
-
+    const { setPageView } = useContext(PageViewContext) as PageViewContextType
+    setPageView(PageViewType.OVERVIEW)
     return (
-        <div className="dashboardWrapper">
-            <Nav view={DashViewType.OVERVIEW} pageName={"World States At-a-Glance"}/>
+        <div>
             <Worlds />
         </div>
     )  

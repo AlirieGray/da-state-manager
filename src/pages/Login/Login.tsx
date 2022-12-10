@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import './login.css'
-import Nav from '../../components/Nav'
 import { Link, useNavigate } from 'react-router-dom'
-import {DashViewType} from '../../types'
-import {useLocalStorage} from '../../hooks/useLocalStorage'
 import useInput from '../../hooks/useInput'
+import {AuthContext, UserContextType} from '../../context/auth'
+import { PageViewContext } from '../../context/pageView'
+import { PageViewContextType, PageViewType } from '../../types'
 // todo: move to config file
 const LOGIN_URL = 'http://localhost:5555/session/login'
 
@@ -12,9 +12,10 @@ const LOGIN_URL = 'http://localhost:5555/session/login'
 function Login() {
     const [email, resetEmail, emailAttributes] = useInput('email', '')
     const [password, setPassword] = useState('')
-    const [accessToken, setAccessToken] = useLocalStorage('accessToken', '')
-    const [refreshToken, setrefreshToken] = useLocalStorage('refreshToken', '')
+    const { setAccessToken, setRefreshToken } = useContext(AuthContext) as UserContextType
+    const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const navigate = useNavigate()
+    setPageView(PageViewType.LOGIN)
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -37,7 +38,8 @@ function Login() {
                 const accessToken = resJSON['accessToken']
                 const refreshToken = resJSON['refreshToken']
                 setAccessToken(accessToken)
-                setrefreshToken(refreshToken)
+                setRefreshToken(refreshToken)
+                // todo: set user email and username in context
                 resetEmail()
                 navigate("/")
             })
@@ -53,7 +55,6 @@ function Login() {
 
     return (
         <div className='loginWrapper'>
-            <Nav view={DashViewType.LOGIN} pageName={'Dragon Age World State Manager'}/>
             <form onSubmit = {handleSubmit}>
                 <div className='login'>
                     <div className='loginHeader'>

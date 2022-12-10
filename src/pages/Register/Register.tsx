@@ -1,19 +1,23 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import './register.css'
-import Nav from '../../components/Nav'
-import {DashViewType} from '../../types'
 import { Link, useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
-import {useLocalStorage} from '../../hooks/useLocalStorage'
+import {AuthContext, UserContextType} from '../../context/auth'
+import { PageViewContext } from '../../context/pageView'
+import { PageViewContextType, PageViewType } from '../../types'
 
 const REGISTER_URL = 'http://localhost:5555/users/create' // todo move to config
+
+// todo: use text input component
 
 function Register() {
     const [user, resetUser, userAttributes] = useInput('user', '')
     const [email, resetEmail, emailAttr] = useInput('email', '')
     const [password, setPassword] = useState('')
-    const [accessToken, setAccessToken] = useLocalStorage('accessToken', '')
+    const { setAccessToken, setRefreshToken } = useContext(AuthContext) as UserContextType
+    const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const navigate = useNavigate()
+    setPageView(PageViewType.REGISTER)
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -33,12 +37,14 @@ function Register() {
                 }
                 return res.json()
             }).then((resJSON) => {
-                // todo: set auth 
-                // redirect to private home route
-                console.log(resJSON)
-                resetUser()
+                const accessToken = resJSON['accessToken']
+                const refreshToken = resJSON['refreshToken']
+                setAccessToken(accessToken)
+                setRefreshToken(refreshToken)
+                // todo: set user email and username in auth context
                 resetEmail()
-                navigate("/dashboard")
+                resetUser()
+                navigate("/")
             })
             
         } catch (err) {
@@ -48,7 +54,6 @@ function Register() {
 
     return (
         <div className='registerWrapper'>
-            <Nav view={DashViewType.REGISTER} pageName={'Dragon Age World State Manager'}/>
             <form onSubmit={handleSubmit} >
                 <div className='register'>
                     <div className='registerHeader'>

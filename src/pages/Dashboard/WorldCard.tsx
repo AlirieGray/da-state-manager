@@ -1,15 +1,13 @@
 import React from 'react';
-import '../styles/worldDisplay.css'
-import edit from '../images/edit.png'
-import Protagonist from './Protagonist'
-import {World} from '../types'
-import imgSrc from '../images/isabela.jpeg'
+import './worldCard.css'
+import {World} from '../../types'
+import imgSrc from '../../images/isabela.jpeg'
 
 interface Props {
   world: World
 }
 
-class WorldDisplay extends React.Component<Props> {
+class WorldCard extends React.Component<Props> {
   constructor(props: Props) {
     super(props)
   }
@@ -45,4 +43,4 @@ class WorldDisplay extends React.Component<Props> {
 
 }
 
-export default WorldDisplay
+export default WorldCard

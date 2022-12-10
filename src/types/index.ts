@@ -1,11 +1,15 @@
-// import {WorldsState} from './worldTypes'
-
-export enum DashViewType {
-    VIEWING, EDITING, OVERVIEW, LOGIN, REGISTER
+export enum PageViewType {
+    VIEWING, EDITING, CREATING, OVERVIEW, LOGIN, REGISTER
 }
 
-// export interface AppState {
-//     worlds: WorldsState
-// }
+export type PageViewContextType = {
+    pageView: PageViewType
+    setPageView: (page: PageViewType) => void
+}
+
+export type InputAttributes = {
+    value: string
+    onChange: (e: React.FormEvent<HTMLInputElement>) => void
+}
 
 export * from './worldTypes'
