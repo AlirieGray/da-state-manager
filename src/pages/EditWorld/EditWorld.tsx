@@ -30,6 +30,7 @@ function EditWorld( ) {
         view={PageViewType.EDITING} 
         handleSubmit={putWorld} 
         state={world} 
+        id={world.ID}
         dispatch={dispatch} />
 }
 

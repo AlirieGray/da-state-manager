@@ -1,6 +1,7 @@
 
 import {CreateWorldForm, PageViewType} from '../../types'
 import React, { Dispatch } from 'react'
+import {Link} from 'react-router-dom'
 import { WorldFormAction } from '../../reducers/createWorldForm'
 import Origins from './Origins'
 import DA2 from './DA2'
@@ -14,6 +15,7 @@ type Props = {
     handleSubmit: () => void //formState: CreateWorldForm
     state: CreateWorldForm
     dispatch: Dispatch<WorldFormAction>
+    id?: string
 }
 
 
@@ -23,8 +25,9 @@ type Props = {
 // todo: store form state in local storage ? and use context
 // todo: RESTYLE
 // todo: restructure to use same types for create and edit (?)
+// TODO: add link to view IFF view type is editing, not creating
 
-function WorldForm({handleSubmit, state, dispatch}: Props) {
+function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
     return (
         <div>
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -47,6 +50,8 @@ function WorldForm({handleSubmit, state, dispatch}: Props) {
                     <div className='formButtons'>
                         <button onClick={() => dispatch({type: 'CLEAR_FORM'})} className='clearButton'> CLEAR FORM </button>
                         <button type="submit" className='submit'> SUBMIT </button>
+                        {(view === PageViewType.EDITING && id !== undefined) && 
+                            <Link to={`/world/${id}/view`} className='viewLink'> VIEW </Link>}
                     </div>
                 </div>
                 <div className='gamesWrapper'>

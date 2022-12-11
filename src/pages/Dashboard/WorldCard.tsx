@@ -31,9 +31,9 @@ class WorldCard extends React.Component<Props> {
               {world.name}
             </div>
             <div className='worldCardButtons'>
+              <Link className='worldButton' to={`/world/${world.ID}/edit`}>Edit |</Link> 
+              <Link className='worldButton'to={`/world/${world.ID}/view`}>Expanded View |</Link> 
               <div className='worldButton'>Export</div>
-              <Link className='worldButton' to={`/world/${world.ID}/edit`}>Edit</Link>
-              <div className='worldButton'>Expanded View</div>
             </div>
           </div>
         </div>

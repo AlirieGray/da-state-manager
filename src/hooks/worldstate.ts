@@ -1,6 +1,7 @@
 import { useState, useReducer } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
+import { useNavigate } from 'react-router-dom'
 import { editWorldFormReducer, defaultWorld } from '../reducers/editWorldFormReducer'
 
 // todo: dev value and production value
@@ -37,7 +38,6 @@ export function useGetAllWorldstates(accessToken: string) {
                     worldObjects.push(convertWorldstateJSON(world)) 
                 })
                 setWorlds(worldObjects)
-                console.log(worlds)
             }).catch((err) => {
                 return err
             })
@@ -76,7 +76,6 @@ export function useGetWorldstate(worldID: string, accessToken: string) {
                 const worldObj = convertWorldstateJSON(worldRes)
                 // setWorld(worldObj)
                 dispatch({type: 'SET_WORLD', payload: worldObj})
-
             }).catch((err) => {
                 return err
             })
@@ -92,6 +91,7 @@ export function useGetWorldstate(worldID: string, accessToken: string) {
 export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
     const [worldErr, setWorlds] = useState('')
+    const navigate = useNavigate()
 
     const options = {
         method: 'POST',
@@ -113,13 +113,13 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
                 }
                 return res.json()
             }).then(worldRes => {
-                console.log(worldRes)
+                const worldObj = convertWorldstateJSON(worldRes)
+                navigate(`/world/${worldObj.ID}/view`)
             })
         } catch (e) {
             console.error(e)
             // todo set fetch state to err
         }
-        // console.log(reqBody)
     }
 
     return [err, postWorld] as const
@@ -128,6 +128,7 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
 export function usePutWorldstate(worldstate: World, accessToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
     const [worlds, setWorlds] = useState('')
+    const navigate = useNavigate()
 
     const options = {
         method: 'PUT',
@@ -149,13 +150,12 @@ export function usePutWorldstate(worldstate: World, accessToken: string) {
                 }
                 return res.json()
             }).then(worldRes => {
-                console.log(worldRes)
+                navigate(`/world/${worldstate.ID}/view`)
             })
         } catch (e) {
             console.error(e)
             // todo set fetch state to err
         }
-        // console.log(reqBody)
     }
 
     return [err, putWorld] as const
@@ -185,7 +185,6 @@ const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
         fanWorks,
         games: convertedGames
     }
-    console.log(worldJSON)
     return JSON.stringify(worldJSON)
 }
 
@@ -199,7 +198,6 @@ const convertWorldstateJSON = (json: any): World => {
     games.forEach((game: any) => {
         gamesArray.push(convertGameJSON(game))
     });
-
     const world: World =  {
         ID: _id,
         name, 
@@ -225,10 +223,24 @@ const convertGameJSON = (json: any): Game => {
         rivals: rivals,
         summary: summary
     }
+    const convertedQuests = quests.map((quest: any) => {
+        const convertedDecisions: Decisions = {}
+        
+        quest.decisions.map((decision: any) => {
+            const decisionName = decision.name;
+            const decisionChoice = decision.choice;
+            convertedDecisions[decisionName] = decisionChoice
+            // return newDecision
+        })
+        return {
+            name: quest.name,
+            decisions: convertedDecisions
+        }
+    })
     const newGame: Game = {
         name,
         protagonist: protag,
-        quests, // todo: parse quests correctly, validate
+        quests: convertedQuests, // todo: parse quests correctly, validate
     }
     return newGame
 }

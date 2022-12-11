@@ -6,7 +6,7 @@ import { PageViewContext } from '../../context/pageView'
 
 function Nav() {
     const {pageView} = useContext(PageViewContext) as PageViewContextType
-    console.log(pageView)
+
     return (
         <div className='navWrapper'>
             <div className='navContainer'> 

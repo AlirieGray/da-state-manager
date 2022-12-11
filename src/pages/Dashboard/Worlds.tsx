@@ -17,7 +17,6 @@ function Worlds() {
     return (
         <div className='worldsContainer'>
             {worlds && worlds.map(world => {
-                console.log(world)
                 return <WorldCard key={world.ID} 
                     world={world} 
                 />
