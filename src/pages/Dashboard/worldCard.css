@@ -1,3 +1,13 @@
+.worldCard {
+    background-color: rgb(70,62,103);
+    margin: 10px;
+    min-width: 400px;
+    max-width: 400px;
+    border-radius: 30px;
+    padding-bottom: 25px;
+    outline-style: solid;
+    outline-color: rgb(116,104,162);
+}
 
 
 .worldImg {
@@ -11,6 +21,10 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 20px;
+    border-bottom: solid;
+    border-color: rgb(116,104,162);
+    padding: 15px;
+    padding-bottom: 15px;
 }
 
 .worldName {
@@ -28,13 +42,6 @@
     color: white;
 }
 
-.worldCard {
-    background-color: rgb(70,62,103);
-    padding: 15px;
-    margin: 10px;
-    min-width: 400px;
-    max-width: 400px;
-}
 
 .worldHeaderDetails {
     display: flex;
@@ -51,12 +58,18 @@
 .worldContent {
     display: flex;
     flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.summaryHeader {
+.contentHeader {
     color: rgb(160,160,160);
     font-size: 14px;
     margin-bottom: 6px;
+}
+
+.contentEntry {
+    margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -79,4 +92,12 @@
     .worldImg {
         margin-right: 20px;
     }
+}
+
+@media only screen and (max-width: 1200px) {
+    .worldCard {
+        min-width: 400px;
+        max-width: 400px;
+    }
+
 }

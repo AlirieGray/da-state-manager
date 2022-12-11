@@ -1,12 +1,12 @@
 import React, {useState, useContext} from 'react'
-import './login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import {AuthContext, UserContextType} from '../../context/auth'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType } from '../../types'
-// todo: move to config file
-const LOGIN_URL = 'http://localhost:5555/session/login'
+import './login.css'
+// todo: move to config file, use variable for dev/production
+const LOGIN_URL = 'http://localhost:5555/session/new'
 
 
 function Login() {
@@ -35,6 +35,7 @@ function Login() {
                 }
                 return res.json()
             }).then((resJSON) => {
+                console.log(resJSON)
                 const accessToken = resJSON['accessToken']
                 const refreshToken = resJSON['refreshToken']
                 setAccessToken(accessToken)

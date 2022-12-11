@@ -6,8 +6,8 @@ import {AuthContext, UserContextType} from '../../context/auth'
 
 
 function Worlds() {
-    const { accessToken } = useContext(AuthContext) as UserContextType
-    const [worlds, getWorlds] = useGetAllWorldstates(accessToken)
+    const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
+    const [worlds, getWorlds] = useGetAllWorldstates(accessToken, refreshToken)
 
     useEffect(() => {
         // let mounted = true

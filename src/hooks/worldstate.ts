@@ -2,7 +2,7 @@ import { useState, useReducer } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
 import { useNavigate } from 'react-router-dom'
-import { editWorldFormReducer, defaultWorld } from '../reducers/editWorldFormReducer'
+import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
 
 // todo: dev value and production value
 const GET_WORLDS_URL = 'http://localhost:5555/worldstates/get'
@@ -10,7 +10,7 @@ const EDIT_WORLD_URL = 'http://localhost:5555/worldstates/edit'
 const CREATE_WORLD_URL = 'http://localhost:5555/worldstates/create'
 // todo: handle loading, API errors, etc
 
-export function useGetAllWorldstates(accessToken: string) {
+export function useGetAllWorldstates(accessToken: string, refreshToken: string) {
     const [worlds, setWorlds] = useState<Array<World>>([])
     // todo: use context for this
     // const authToken = getLocalValue('accessToken', '')
@@ -19,7 +19,8 @@ export function useGetAllWorldstates(accessToken: string) {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'x-refresh': `${refreshToken}`
         }
     }
 
@@ -49,9 +50,9 @@ export function useGetAllWorldstates(accessToken: string) {
     return [worlds, getWorlds] as const
 }
 
-export function useGetWorldstate(worldID: string, accessToken: string) {
+export function useGetWorldstate(worldID: string, accessToken: string, refreshToken: string) {
     // const [world, setWorld] = useState<World>()
-    const [world, dispatch] = useReducer(editWorldFormReducer, defaultWorld)
+    const [world, dispatch] = useReducer(editWorldForm, defaultWorld)
     // todo: use context for this
     // const authToken = getLocalValue('accessToken', '')
 
@@ -59,7 +60,8 @@ export function useGetWorldstate(worldID: string, accessToken: string) {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'x-refresh': `${refreshToken}`
         }
     }
 
@@ -88,7 +90,7 @@ export function useGetWorldstate(worldID: string, accessToken: string) {
 }
 
 // TODO
-export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string) {
+export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
     const [worldErr, setWorlds] = useState('')
     const navigate = useNavigate()
@@ -97,7 +99,8 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'x-refresh': refreshToken
         },
         body: reqBody // todo: type safety
     }
@@ -125,7 +128,7 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
     return [err, postWorld] as const
 }
 
-export function usePutWorldstate(worldstate: World, accessToken: string) {
+export function usePutWorldstate(worldstate: World, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
     const [worlds, setWorlds] = useState('')
     const navigate = useNavigate()
@@ -134,7 +137,8 @@ export function usePutWorldstate(worldstate: World, accessToken: string) {
         method: 'PUT',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'x-refresh': `${refreshToken}`
         },
         body: reqBody // todo: type safety
     }

@@ -1,12 +1,37 @@
 .textInputWrapper {
     display: flex;
-    width: 320px;
+    width: 360px;
     margin-top: 10px;
     flex-direction: column;
+}
+
+textarea {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 label {
     font-size: 12px;
     margin-bottom: 2px;
     color: rgb(160,160,160);
+}
+
+.dropdown {
+    display: flex !important;
+    background-color: white;
+    color: black;
+    flex-direction: column;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.suggestion {
+    padding: 5px;
+}
+
+.suggestion:hover {
+    background-color: rgb(226, 226, 226);
 }

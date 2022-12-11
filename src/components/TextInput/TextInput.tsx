@@ -1,20 +1,86 @@
+import { useState } from 'react'
 import './textInput.css'
 
-interface Props {	
-    handleChange: (value: string) => void	
+interface TextInputProps {	
+    handleChange: (value: string) => void
+    suggestedValues?: string[]	
+    multiLine?: boolean
     title: string	
     value: string	
 }	
 
 // todo: prop to change style (for long form input, ex summary)
-// todo: onfocus to prevent autocomplete?
 
-function TextInput(props: Props) {	
-    const {handleChange, title, value} = props	
+function TextInput({handleChange, title, value, suggestedValues, multiLine}: TextInputProps) {	
+    const [showDropdown, setShowDropdown] = useState(false)
+
+    const dropdown = () => {
+        if (suggestedValues && showDropdown) {
+            return (
+                <div className='dropdown'>
+                    {suggestedValues.map((suggestion: string) => {
+                        console.log(suggestion)
+                        return (
+                        <span 
+                            key={suggestion}
+                            className='suggestion'
+                            onClick={() => {
+                                console.log('click!')
+                                setShowDropdown(false)
+                                handleChange(suggestion)}}>
+                            {suggestion}
+                            </span>
+                        )
+                    })}
+                </div>
+            )
+        }
+    }
+
+    if (multiLine) {
+        return (	
+            <div className="textInputWrapper">	
+                <label> {title} </label>	
+                <textarea 
+                    className='textInput'
+                    spellCheck='false'
+                    value={value} 
+                    onFocus={() => setShowDropdown(true)}
+                    onBlur={() => {
+                        setTimeout(() => {
+                            setShowDropdown(false)
+                        }, 200)   
+                    }}
+                    onChange={(event) => {
+                        setShowDropdown(false)
+                        handleChange(event.target.value)
+                    }} autoComplete='new-password'
+                />	
+                {dropdown()}
+            </div>	
+        )	
+    }
+
     return (	
         <div className="textInputWrapper">	
             <label> {title} </label>	
-            <input type='text' value={value} onChange={(event) => handleChange(event.target.value)} autoComplete='new-password'/>	
+            <input 
+                className='textInput'
+                spellCheck='false'
+                type='text' 
+                value={value} 
+                onFocus={() => setShowDropdown(true)}
+                onBlur={() => {
+                    setTimeout(() => {
+                        setShowDropdown(false)
+                    }, 200)   
+                }}
+                onChange={(event) => {
+                    setShowDropdown(false)
+                    handleChange(event.target.value)
+                }} autoComplete='new-password'
+            />	
+            {dropdown()}
         </div>	
     )	
 }	

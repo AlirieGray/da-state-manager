@@ -4,12 +4,23 @@
     padding-top: 40px;
 }
 
+
+@media only screen and (max-width: 1200px) {
+    .navButtons {
+        display: flex;
+        flex-direction: column;
+    }
+    .homeButton {
+        font-size: 24px !important;
+    }
+}
+
 .navContainer {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 15px;        
 }
 
 .homeButton{
@@ -22,6 +33,11 @@
     padding-right: 15px;
     text-decoration: none;
     color: white;
+}
+
+.navButton:hover {
+    color: rgb(133, 133, 133);
+    cursor: pointer;
 }
 
 hr.navDivider {
