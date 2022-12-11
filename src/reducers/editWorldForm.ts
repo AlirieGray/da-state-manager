@@ -1,12 +1,12 @@
 import { World, Game } from '../types'
 // todo: move to types
-import { WorldFormAction } from './createWorldForm'
+import { defaultCreateWorldForm, WorldFormAction } from './createWorldForm'
 
 // todo: use immer ?
 // use consts for world form action types
 // todo: persist state in local storage
 
-export const editWorldFormReducer = (state: World, action: WorldFormAction) => {
+export const editWorldForm = (state: World, action: WorldFormAction) => {
     switch (action.type) {
         case 'SET_WORLD_NAME':
             return {...state, name: action.payload}
@@ -73,6 +73,34 @@ export const editWorldFormReducer = (state: World, action: WorldFormAction) => {
             })}
 
         // origins decisions
+        case 'SET_PROLOGUE_ATTR':
+            const prologueKey = action.payload.key
+            let newPrologueChoices = {...state.games[0].quests[0].decisions}
+            newPrologueChoices[`${prologueKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[0].decisions = newPrologueChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_LOTHERING_ATTR':
+            const lotheringKey = action.payload.key
+            let newLotheringChoices = {...state.games[0].quests[1].decisions}
+            newLotheringChoices[`${lotheringKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[1].decisions = newLotheringChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
         case 'SET_REDCLIFFE_ATTR':
             const redcliffeKey = action.payload.key
             let newRedcliffeChoices = {...state.games[0].quests[2].decisions}
@@ -142,19 +170,90 @@ export const editWorldFormReducer = (state: World, action: WorldFormAction) => {
                 }
                 return game
             })}
+    
+        case 'SET_LANDSMEET_ATTR':
+            const landsmeetKey = action.payload.key
+            let newLandsmeetChoices = {...state.games[0].quests[7].decisions}
+            newLandsmeetChoices[`${landsmeetKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[7].decisions = newLandsmeetChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+        case 'SET_BATTLE_DENERIM_ATTR':
+            const battleKey = action.payload.key
+            let newBattleChoices = {...state.games[0].quests[8].decisions}
+            newBattleChoices[`${battleKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[8].decisions = newBattleChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
 
         case 'SET_AWAKENING_ATTR':
             return {...state}
     
         // set da2 decisions
         case 'SET_ACT_ONE_ATTR':
-            return {...state}
+            const actOneKey = action.payload.key
+            let newActOneChoices = {...state.games[1].quests[0].decisions}
+            newActOneChoices[`${actOneKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 1) {
+                    let newQuests = [...state.games[1].quests]
+                    newQuests[0].decisions = newActOneChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
         case 'SET_ACT_TWO_ATTR':
-            return {...state}
+            const actTwoKey = action.payload.key
+            let newActTwoChoices = {...state.games[1].quests[0].decisions}
+            newActTwoChoices[`${actTwoKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 1) {
+                    let newQuests = [...state.games[1].quests]
+                    newQuests[1].decisions = newActTwoChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
         case 'SET_ACT_THREE_ATTR':
-            return {...state}
+            const actThreeKey = action.payload.key
+            let newActThreeChoices = {...state.games[1].quests[0].decisions}
+            newActThreeChoices[`${actThreeKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 1) {
+                    let newQuests = [...state.games[1].quests]
+                    newQuests[2].decisions = newActThreeChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
         case 'SET_MOTA_ATTR':
-            return {...state}
+            const motaKey = action.payload.key
+            let newMotaChoices = {...state.games[1].quests[0].decisions}
+            newMotaChoices[`${motaKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 1) {
+                    let newQuests = [...state.games[1].quests]
+                    newQuests[2].decisions = newMotaChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
         case 'SET_LEGACY_ATTR':
             return {...state}
 
@@ -181,196 +280,4 @@ export const editWorldFormReducer = (state: World, action: WorldFormAction) => {
     }
 }
 
-export const defaultWorld: World = {
-    name: '',
-    ID: '',
-    wip: true,
-    summary: '',
-    active: true,
-    fanWorks: [],
-    games: [
-        {
-            name: 'Origins',
-            protagonist: {
-                name: '',
-                class: '',
-                origin: '',
-                romances: [],
-                companions: [],
-                rivals: [],
-                summary: '',
-            },
-            // TODO:  iterate over decisions key/value pairs to create array for the backend
-            quests: [
-                {
-                    name: 'Prologue',
-                    decisions: {},
-                },
-                {
-                    name: 'Lothering',
-                    decisions: {}
-                },
-                {
-                    name: 'The Arl of Redcliffe',
-                    decisions: {
-                        'connor': '',
-                        'prepare': '',
-                        'isolde': '',
-                        'bella': ''
-                    }
-                },
-                {
-                    name: 'The Urn of Sacred Ashes',
-                    decisions: {
-                        'defiled': '',
-                        'dragon': ''
-                    }
-                },
-                {
-                    name: 'Broken Circle',
-                    decisions: {
-                        'side': '',
-                        'cullen': '',
-                        'irving': ''
-                    }
-                },
-                {
-                    name: 'Nature of the Beast',
-                    decisions: {
-                        'side': '',
-                        'cammen': '',
-                        'deygan': '',
-                        'halla': '',
-                        'athras': ''
-                    }
-                },
-                {
-                    name: 'Paragon of her Kind',
-                    decisions: {
-                        'king': '',
-                        'anvil': '',
-                        'ruck': '',
-                        'zerlinda': ''
-                    }
-                },
-                {
-                    name: 'The Landsmeet',
-                    decisions: {
-                        'ruler': '',
-                        'loghain': ''
-                    }
-                },
-                {
-                    name: 'Battle of Denerim',
-                    decisions: {
-                        'archdemon': '',
-                        'ritual': ''
-                    }
-                },
-                {
-                    name: 'Awakening DLC',
-                    decisions: {
-                        'architect': ''
-                    }
-                },  
-            ]
-        },
-        {
-            name: 'Dragon Age 2',
-            protagonist: {
-                name: '',
-                class: '',
-                romances: [],
-                companions: [],
-                rivals: [],
-                summary: ''
-            },
-            quests: [
-                {
-                    name: 'Act One',
-                    decisions: {
-                        'ketojan': '',
-                        'feynriel': '',
-                        'saemus': ''
-                    }
-                },
-                {
-                    name: 'Act Two',
-                    decisions: {
-                        'feynriel': '',
-                        'isabelaReturn': '',
-                        'isabelaArishok': '',
-                        'arishok': ''
-                    }
-                },
-                {
-                    name: 'Act Three',
-                    decisions: {}
-                },
-                {
-                    name: 'Mark of the Assassin DLC',
-                    decisions: {}
-                },
-                {
-                    name: 'Legacy DLC',
-                    decisions: {}
-                }
-            ]
-        },
-        {
-            name: 'Inquisition',
-            protagonist: {
-                name: '',
-                class: '',
-                origin: '',
-                romances: [],
-                companions: [],
-                rivals: [],
-                summary: ''
-            },
-            quests: [
-                {
-                    name: 'In Your Heart Shall Burn',
-                    decisions: {}
-                },
-                {
-                    name: 'Champions of the Just',
-                    decisions: {
-                        'templars': '',
-                        'barris': ''
-                    }
-                },
-                {
-                    name: 'In Hushed Whispers',
-                    decisions: {
-                        'mages': '',
-                        'dorian': ''
-                    }
-                },
-                {
-                    name: 'Here Lies the Abyss',
-                    decisions: {
-                        'gw': '',
-                        'sacrifice': ''
-                    }
-                },
-                {
-                    name: 'Wicked Eyes and Wicked Hearts',
-                    decisions: {}
-                },
-                {
-                    name: 'What Pride Had Wrought',
-                    decisions: {}
-                },
-                {
-                    name: 'Doom Upon All the World',
-                    decisions: {}
-                },
-                {
-                    name: 'Trespasser DLC',
-                    decisions: {}
-                },
-            ]
-        }
-    ]
-}
+export const defaultWorld: World = {...defaultCreateWorldForm, ID: ''}

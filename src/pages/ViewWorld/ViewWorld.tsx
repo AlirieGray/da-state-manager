@@ -13,8 +13,8 @@ import './viewWorld.css'
 function ViewWorld() {
     const { id } = useParams()
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
-    const { accessToken } = useContext(AuthContext) as UserContextType
-    const [world, getWorld] = useGetWorldstate(id as string, accessToken)
+    const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
+    const [world, getWorld] = useGetWorldstate(id as string, accessToken, refreshToken)
     const [gameView, setGameView] = useState('all')
     
     useEffect(() => {

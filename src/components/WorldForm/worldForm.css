@@ -3,6 +3,14 @@
     flex-direction: column;
 }
 
+h2 {
+    margin-bottom: 5px;
+}
+
+.questSection {
+    margin-bottom: 20px;
+}
+
 .gameSection {
     display: flex;
     flex-direction: column;
@@ -16,6 +24,10 @@
     color: white;
 }
 
+.worldFormContainer {
+    margin-bottom: 25px;
+}
+
 .formWrapper {
     display: flex;
     flex-direction: column;
@@ -25,6 +37,8 @@
     padding: 30px;
     margin-top: 20px;
     border-radius: 30px;
+    outline-style: solid;
+    outline-color: rgb(116,104,162);
 }
 
 .gamesWrapper {
@@ -52,10 +66,18 @@
     outline: 0;
 }
 
+.clearButton:hover {
+    cursor: pointer;
+}
+
 .submit {
     background-color: green;
     padding: 10px;
     border: 0;
     border-radius: 30px;
     outline: 0;
+}
+
+.submit:hover {
+    cursor: pointer;
 }

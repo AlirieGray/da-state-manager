@@ -12,8 +12,8 @@ import {AuthContext, UserContextType} from '../../context/auth'
 function CreateWorld() {
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const [formState, dispatch] = useReducer(createWorldFormReducer, defaultCreateWorldForm)
-    const { accessToken } = useContext(AuthContext) as UserContextType
-    const [worldErr, postWorld] = usePostWorldstate(formState, accessToken)
+    const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
+    const [worldErr, postWorld] = usePostWorldstate(formState, accessToken, refreshToken)
     
     useEffect(() => {
         setPageView(PageViewType.CREATING)

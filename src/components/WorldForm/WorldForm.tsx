@@ -29,7 +29,7 @@ type Props = {
 
 function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
     return (
-        <div>
+        <div className='worldFormContainer'>
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault()
                 handleSubmit()}} 
@@ -43,6 +43,7 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                         <TextInput 
                             title='Summary'
                             value={get(state, 'summary')} 
+                            multiLine={true}
                             handleChange={(value) => {dispatch({type: 'SET_WORLD_SUMMARY', payload: value})}}/>
                         <label> Save as work in progress? </label>
                         <input type='checkbox' />
