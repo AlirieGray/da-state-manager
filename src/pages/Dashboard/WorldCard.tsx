@@ -1,10 +1,15 @@
 import React from 'react';
 import './worldCard.css'
 import {World} from '../../types'
+import { Link } from 'react-router-dom'
 import imgSrc from '../../images/isabela.jpeg'
 
 interface Props {
   world: World
+}
+
+function truncateSummary(summary: string): string {
+  return summary.length > 100 ? summary.substring(0, 99) + '...' : summary
 }
 
 class WorldCard extends React.Component<Props> {
@@ -27,20 +32,18 @@ class WorldCard extends React.Component<Props> {
             </div>
             <div className='worldCardButtons'>
               <div className='worldButton'>Export</div>
-              <div className='worldButton'>Edit</div>
+              <Link className='worldButton' to={`/world/${world.ID}/edit`}>Edit</Link>
               <div className='worldButton'>Expanded View</div>
             </div>
           </div>
         </div>
         <div className='worldContent'>
           <span className='summaryHeader'>Summary</span>
-          {world.summary}
+          {truncateSummary(world.summary)}
         </div>
       </div>
     )
   }
-
-
 }
 
 export default WorldCard

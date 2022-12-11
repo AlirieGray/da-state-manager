@@ -10,14 +10,13 @@ export interface World {
 
 export interface CreateWorldForm extends Omit<World, 'ID'> {}
 
-export interface Decision {
-    name: string 
-    choice: string
+export interface Decisions {
+    [key: string]: string
 }
 
 export interface Quest {
     name: string
-    decisions: Decision[]
+    decisions: Decisions
     companions?: string[]
 }
 

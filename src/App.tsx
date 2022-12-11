@@ -9,6 +9,7 @@ import AuthContextProvider from './context/auth'
 import Nav from './components/Nav/Nav'
 import PageViewContextProvider from './context/pageView'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import EditWorld from './pages/EditWorld/EditWorld'
 
 // todo: protected routes using auth context provider
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='/' element={<PrivateRoute outlet={<Dashboard />} />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/world/:id/edit' element={<EditWorld />} />
             <Route path='/create' element={<PrivateRoute outlet={<CreateWorld />} />} />
           </Routes>
         </div>

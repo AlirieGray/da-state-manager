@@ -1,13 +1,13 @@
 import { useEffect, useContext} from 'react'
 import WorldCard from './WorldCard'
 import './worlds.css'
-import { useGetWorldstates } from '../../hooks/worldstate'
+import { useGetAllWorldstates } from '../../hooks/worldstate'
 import {AuthContext, UserContextType} from '../../context/auth'
 
 
 function Worlds() {
     const { accessToken } = useContext(AuthContext) as UserContextType
-    const [worlds, getWorlds] = useGetWorldstates(accessToken)
+    const [worlds, getWorlds] = useGetAllWorldstates(accessToken)
 
     useEffect(() => {
         // let mounted = true
