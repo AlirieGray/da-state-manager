@@ -1,0 +1,107 @@
+.viewWorldWrapper {
+    background-color: rgb(70,62,103);
+    margin-top: 20px;
+    border-radius: 30px;
+    outline-style: solid;
+    outline-color: rgb(116,104,162);
+    width: 80vw;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+.protagButtons {
+    margin-top: 10px;
+}
+.viewWorldHeader {
+    padding-bottom: 15px;
+    border-bottom: solid;
+    border-color: rgb(116,104,162);
+    /* margin: 30px; */
+}
+.protagButton{
+    background-color: rgb(116,104,162);
+    border-radius: 30px;
+    border: none;
+    color: white;
+    width: 200px;
+    padding: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.summary {
+    max-width: 1200px;
+    padding-bottom: 20px;
+}
+
+.editLink {
+    color: white;
+    text-decoration: none;
+    background-color: rgb(116,104,162);
+    padding: 10px 15px 10px 15px;
+    border-radius: 30px;
+}
+
+.worldName {
+    font-size: 36px;
+}
+
+.viewWorldHeader {
+    padding: 30px 30px 10px 30px;
+}
+
+.protagButton:hover {
+    background-color: rgb(63, 57, 85);;
+}
+
+.protagButton:active {
+    outline: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.protagButton:focus {
+    outline-style: solid;
+    outline-color: white;
+    outline-width: 3px;
+}
+
+.gameViewsWrapper {
+    padding: 10px 30px 10px 30px;
+}
+
+.questHeader {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.questViewWrapper {
+    margin-bottom: 25px;
+}
+
+.decisions {
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.protagDetails {
+    margin-bottom: 10px;
+}
+.protagDetail {
+    margin-bottom: 5px;;
+}
+.protagName {
+    font-size: 36px;
+}
+
+.gameViewWrapper {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
