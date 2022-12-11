@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useState, useReducer } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
+import { editWorldFormReducer, defaultWorld } from '../reducers/editWorldFormReducer'
 
 // todo: dev value and production value
 const GET_WORLDS_URL = 'http://localhost:5555/worldstates/get'
+const EDIT_WORLD_URL = 'http://localhost:5555/worldstates/edit'
 const CREATE_WORLD_URL = 'http://localhost:5555/worldstates/create'
 // todo: handle loading, API errors, etc
 
-export function useGetWorldstates(accessToken: string) {
+export function useGetAllWorldstates(accessToken: string) {
     const [worlds, setWorlds] = useState<Array<World>>([])
     // todo: use context for this
     // const authToken = getLocalValue('accessToken', '')
@@ -47,6 +49,45 @@ export function useGetWorldstates(accessToken: string) {
     return [worlds, getWorlds] as const
 }
 
+export function useGetWorldstate(worldID: string, accessToken: string) {
+    // const [world, setWorld] = useState<World>()
+    const [world, dispatch] = useReducer(editWorldFormReducer, defaultWorld)
+    // todo: use context for this
+    // const authToken = getLocalValue('accessToken', '')
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-type': 'application/json'
+        }
+    }
+
+    const getWorld = async () => {
+        try {
+            // set fetch state to loading
+            fetch(GET_WORLDS_URL + `/${worldID}`, options).then(res => {
+                if (res.status !== 200) {
+                    console.error("error: ", res.statusText)
+                    return -1
+                }
+                return res.json()
+            }).then((worldRes) => {
+                const worldObj = convertWorldstateJSON(worldRes)
+                // setWorld(worldObj)
+                dispatch({type: 'SET_WORLD', payload: worldObj})
+
+            }).catch((err) => {
+                return err
+            })
+        } catch(err) {
+            console.log(err)
+            // todo set fetch state to error
+        }
+    }
+    return [world, getWorld, dispatch] as const
+}
+
 // TODO
 export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
@@ -62,8 +103,6 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
     }
     
     let err = ''
-    console.log("req body: ")
-    console.log(reqBody)
 
     const postWorld = async () => {
         try {
@@ -84,6 +123,42 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
     }
 
     return [err, postWorld] as const
+}
+
+export function usePutWorldstate(worldstate: World, accessToken: string) {
+    const reqBody = convertWorldStateToCreateReqBody(worldstate)
+    const [worlds, setWorlds] = useState('')
+
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-type': 'application/json'
+        },
+        body: reqBody // todo: type safety
+    }
+    
+    let err = ''
+
+    const putWorld = async () => {
+        try {
+            fetch(EDIT_WORLD_URL + `/${worldstate.ID}`, options).then(res => {
+                if (res.status !== 200) {
+                    console.error('error ', res.statusText)
+                    return -1
+                }
+                return res.json()
+            }).then(worldRes => {
+                console.log(worldRes)
+            })
+        } catch (e) {
+            console.error(e)
+            // todo set fetch state to err
+        }
+        // console.log(reqBody)
+    }
+
+    return [err, putWorld] as const
 }
 
 // todo: move to util ?
@@ -113,6 +188,7 @@ const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
     console.log(worldJSON)
     return JSON.stringify(worldJSON)
 }
+
 // todo: separate function to validate response, type safety
 // error messageing
 

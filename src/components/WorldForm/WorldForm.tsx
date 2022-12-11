@@ -17,9 +17,7 @@ type Props = {
 }
 
 
-// todo: handle multi-select options (such as romances, companions)
-// pre load with default values
-// todo: move reducer hook to hooks directory
+// todo: handle multi-select options and default options
 // todo: useReducer for login and auth
 // todo: use different reducers depending on props view
 // todo: store form state in local storage ? and use context

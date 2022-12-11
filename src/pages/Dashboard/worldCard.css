@@ -20,6 +20,12 @@
 .worldButton {
     padding-top: 5px;
     padding-right: 5px;
+    text-decoration: none;
+    color: rgb(160,160,160);
+}
+
+.worldButton:hover {
+    color: white;
 }
 
 .worldCard {
