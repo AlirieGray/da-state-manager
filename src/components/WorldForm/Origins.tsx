@@ -1,18 +1,59 @@
-import { Dispatch } from 'react'
+import { Dispatch, useState } from 'react'
 import { WorldFormAction } from '../../reducers/createWorldForm'
 import {Game} from '../../types'
 import {get} from 'lodash'
 import TextInput from '../TextInput/TextInput'
+import MultiSelectDropdown from '../MultiSelectDropdown/MultiSelectDropdown'
+import { MultiSelectOption } from '../../types'
 
 type OriginsProps = {
     gameState: Game
     onChange: Dispatch<WorldFormAction>
 } 
 
+const defaultRomances: MultiSelectOption[] = [
+    {name: 'Morrigan', id: 0 },
+    {name: 'Leliana', id: 1 }, 
+    {name: 'Zevran', id: 2 },
+    {name: 'Alistair', id: 3 },
+    {name: 'Sten', id: 4 },
+    {name: 'Nathaniel', id: 5 },
+    {name: 'Loghain', id: 6 },
+    {name: 'Anora', id: 7 },
+    {name:  'Jowan', id: 8 }
+]
+
+const defaultCompanions: MultiSelectOption[] = [
+    {name: 'Morrigan', id: 0 },
+    {name: 'Leliana', id: 1 }, 
+    {name: 'Zevran', id: 2 },
+    {name: 'Alistair', id: 3 },
+    {name: 'Sten', id: 4 },
+    {name: 'Oghren', id: 5},
+    {name: 'Wynne', id: 6},
+    {name: 'Shale', id: 7},
+    {name: 'Loghain', id: 8 },
+    {name: 'Dog', id: 9},
+    {name:  'Jowan', id: 10 },
+    {name: 'Anders', id: 11},
+    {name: 'Nathaniel', id: 12 },
+    {name: 'Sigrun', id: 13},
+    {name: 'Velanna', id: 14},
+    {name: 'Justice', id: 15}
+]
+
+const defaultSelected: MultiSelectOption[] = []
+
 // todo: checkboxes for yes/no choices (ex. helped redcliffe prepare, stop/redeem solas, etc)
 // todo: multi-select for romances, companions, etc
 
 function Origins({ gameState, onChange }: OriginsProps) {
+    // todo: reducer to connect to form state, use onChange prop
+    // todo: use reducer to get default selected rivals companions and romances in form
+    const [romances, setRomances] = useState(defaultRomances)
+    const [companions, setCompanions] = useState(defaultCompanions)
+    const [rivals, setRivals] = useState(defaultCompanions)
+    
     return (
         <div className='formSection'>
             <div className='questSection'>
@@ -51,12 +92,50 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     multiLine={true}
                     value={get(gameState, 'protagonist.summary')}
                     handleChange={(value) => onChange({type: 'SET_ORIGINS_PROTAG_ATTR', payload: {key: 'summary', value}})} />
+            <MultiSelectDropdown 
+                title='Romance'
+                options={romances}
+                selected={get(gameState, 'protagonist.romances')}
+                setOptions={(romanceOptions) => setRomances(romanceOptions)}
+                setSelected={(romanceSelection) => {
+                    const romances = romanceSelection.map((romance) => {
+                        return romance.name
+                    })
+                    console.log("new romances setting ")
+                    console.log(romances)
+                    onChange({type: 'SET_ORIGINS_MULTI', payload: {key: 'romances', value: romances}})
+                }}
+            />
+            <MultiSelectDropdown 
+                title='Companions'
+                options={companions}
+                selected={get(gameState, 'protagonist.companions')}
+                setOptions={(companionOptions) => setRomances(companionOptions)}
+                setSelected={(companionSelection) => {
+                    const companions = companionSelection.map((companion) => {
+                        return companion.name
+                    })
+                    onChange({type: 'SET_ORIGINS_MULTI', payload: {key: 'companions', value: companions}})
+                }}
+            />
+            <MultiSelectDropdown 
+                title='Rivals'
+                options={rivals}
+                selected={get(gameState, 'protagonist.rivals')}
+                setOptions={(rivalOptions) => setRivals(rivalOptions)}
+                setSelected={(rivalSelection) => {
+                    const rivals = rivalSelection.map((rival) => {
+                        return rival.name
+                    })
+                    onChange({type: 'SET_ORIGINS_MULTI', payload: {key: 'rivals', value: rivals}})
+                }}
+            />
             </div>
             <div className='questSection'>
                 <h2>Prologue</h2>
                 <TextInput
                     title={`What were the events that led to the Warden's conscription into the Grey Wardens?`}
-                    value={get(gameState, 'quests.0.decisions.prisoner')}
+                    value={get(gameState, 'quests.0.decisions.summary')}
                     multiLine={true}
                     handleChange={(value) => onChange({type: 'SET_PROLOGUE_ATTR', payload: {key: 'summary', value}})} />    
                 <TextInput

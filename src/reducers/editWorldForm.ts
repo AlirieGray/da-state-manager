@@ -34,6 +34,24 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
                 return game
             })}
 
+        case 'SET_ORIGINS_MULTI':
+            const multiKey = action.payload.key
+            let newOriginsProtagMultiOption = {...state.games[0].protagonist}
+            if (multiKey === 'romances') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, romances: action.payload.value}
+            } else if (multiKey === 'companions') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, companions: action.payload.value}
+            } else if (multiKey === 'rivals') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, rivals: action.payload.value}
+            }
+            
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    return {...game, protagonist: newOriginsProtagMultiOption}
+                }
+                return game
+            })}
+
         case 'SET_DA2_PROTAG_ATTR': 
             const da2Key = action.payload.key
             let newDA2Protag = {...state.games[1].protagonist}

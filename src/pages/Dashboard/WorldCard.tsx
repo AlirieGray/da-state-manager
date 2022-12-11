@@ -36,7 +36,7 @@ function WorldCard({ world }: CardProps)  {
         </span> 
         {world.games.map((game) => {
           if (game.protagonist.name !== '') {
-            return <span>{game.protagonist.name}</span>
+            return <span key={game.protagonist.name}>{game.protagonist.name}</span>
           }
         })}
       </div>

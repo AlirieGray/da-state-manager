@@ -8,6 +8,7 @@ export type WorldFormAction =
     | { type: 'SET_WORLD_NAME', payload: string }
     | { type: 'SET_WORLD_SUMMARY', payload: string }
     | { type: 'SET_ORIGINS_PROTAG_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_ORIGINS_MULTI', payload: {key: string, value: string[]} }
     | { type: 'SET_PROLOGUE_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_LOTHERING_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_REDCLIFFE_ATTR', payload: {key: string, value: string} }
@@ -48,13 +49,13 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             const originsKey = action.payload.key
             let newOriginsProtag = {...state.games[0].protagonist}
             if (originsKey === 'name') {
-                newOriginsProtag = {...state.games[0].protagonist, name: action.payload.value}
+                newOriginsProtag = {...newOriginsProtag, name: action.payload.value}
             } else if (originsKey === 'class') {
-                newOriginsProtag = {...state.games[0].protagonist, class: action.payload.value}
+                newOriginsProtag = {...newOriginsProtag, class: action.payload.value}
             } else if (originsKey === 'origin') {
-                newOriginsProtag = {...state.games[0].protagonist, origin: action.payload.value}
+                newOriginsProtag = {...newOriginsProtag, origin: action.payload.value}
             } else if (originsKey === 'summary') {
-                newOriginsProtag = {...state.games[0].protagonist, summary: action.payload.value}
+                newOriginsProtag = {...newOriginsProtag, summary: action.payload.value}
             }
 
             return {...state, games: state.games.map((game: Game, index) => {
@@ -64,15 +65,33 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                 return game
             })}
 
+        case 'SET_ORIGINS_MULTI':
+            const multiKey = action.payload.key
+            let newOriginsProtagMultiOption = {...state.games[0].protagonist}
+            if (multiKey === 'romances') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, romances: action.payload.value}
+            } else if (multiKey === 'companions') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, companions: action.payload.value}
+            } else if (multiKey === 'rivals') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, rivals: action.payload.value}
+            }
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    return {...game, protagonist: newOriginsProtagMultiOption}
+                }
+                return game
+            })}
+
         case 'SET_DA2_PROTAG_ATTR': 
             const da2Key = action.payload.key
             let newDA2Protag = {...state.games[1].protagonist}
             if (da2Key === 'name') {
-                newDA2Protag = {...state.games[1].protagonist, name: action.payload.value}
+                newDA2Protag = {...newDA2Protag, name: action.payload.value}
             } else if (da2Key === 'class') {
-                newDA2Protag = {...state.games[1].protagonist, class: action.payload.value}
+                newDA2Protag = {...newDA2Protag, class: action.payload.value}
             } else if (da2Key === 'summary') {
-                newDA2Protag = {...state.games[1].protagonist, summary: action.payload.value}
+                newDA2Protag = {...newDA2Protag, summary: action.payload.value}
             }
 
             return {...state, games: state.games.map((game: Game, index) => {
@@ -86,13 +105,13 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             const daiKey = action.payload.key
             let newDAIProtag = {...state.games[2].protagonist}
             if (daiKey === 'name') {
-                newDAIProtag = {...state.games[2].protagonist, name: action.payload.value}
+                newDAIProtag = {...newDAIProtag, name: action.payload.value}
             } else if (daiKey === 'class') {
-                newDAIProtag = {...state.games[2].protagonist, class: action.payload.value}
+                newDAIProtag = {...newDAIProtag, class: action.payload.value}
             } else if (daiKey === 'origin') {
-                newDAIProtag = {...state.games[2].protagonist, origin: action.payload.value}
+                newDAIProtag = {...newDAIProtag, origin: action.payload.value}
             } else if (daiKey === 'summary') {
-                newDAIProtag = {...state.games[2].protagonist, summary: action.payload.value}
+                newDAIProtag = {...newDAIProtag, summary: action.payload.value}
             }
 
             return {...state, games: state.games.map((game: Game, index) => {
@@ -384,8 +403,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                 {
                     name: 'Prologue',
                     decisions: {
+                        'summary': '',
                         'prisoner': '',
-                        'summary': ''
                     },
                 },
                 {
