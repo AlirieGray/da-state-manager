@@ -1,7 +1,7 @@
 import React from 'react';
 import {World} from '../../types'
 import { Link } from 'react-router-dom'
-import imgSrc from '../../images/isabela.jpeg'
+import defaultImgSrc from '../../images/inqLogo.png'
 import './worldCard.css'
 
 interface CardProps {
@@ -16,7 +16,7 @@ function WorldCard({ world }: CardProps)  {
   return (
     <div className='worldCard'>
       <div className='worldHeader'>
-        <img src={imgSrc} className='worldImg'></img>
+        <img src={world.imgLink && world.imgLink !== '' ? world.imgLink: defaultImgSrc} className='worldImg'></img>
         <div className='worldHeaderDetails'>
           <div className='worldName'>
             {world.name}

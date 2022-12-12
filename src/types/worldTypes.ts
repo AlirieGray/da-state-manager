@@ -1,6 +1,7 @@
 export interface World {
     name: string
     ID: string
+    imgLink?: string
     wip: boolean
     summary: string
     active: boolean
@@ -12,6 +13,10 @@ export interface CreateWorldForm extends Omit<World, 'ID'> {}
 
 export interface Decisions {
     [key: string]: string
+}
+
+export interface CompanionMap {
+    [key: string]: number
 }
 
 export interface Quest {

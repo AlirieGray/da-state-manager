@@ -130,7 +130,6 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
 
 export function usePutWorldstate(worldstate: World, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
-    const [worlds, setWorlds] = useState('')
     const navigate = useNavigate()
 
     const options = {
@@ -167,7 +166,7 @@ export function usePutWorldstate(worldstate: World, accessToken: string, refresh
 
 // todo: move to util ?
 const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
-    const {name, wip, summary, active, fanWorks, games} = worldstate
+    const {name, wip, summary, active, fanWorks, games, imgLink} = worldstate
     const convertedGames = games.map((game: Game) => {
         const convertedQuests = game.quests.map((quest: Quest) => {
             const convertedDecisions = Object.entries(quest.decisions).map((decisionEntry) => {
@@ -184,6 +183,7 @@ const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
     let worldJSON = {
         name,
         wip,
+        imgLink,
         summary,
         active,
         fanWorks,
@@ -196,7 +196,7 @@ const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
 // error messageing
 
 const convertWorldstateJSON = (json: any): World => {
-    const {name, _id, summary, wip, games, fanWorks} = json
+    const {name, _id, summary, wip, games, fanWorks, imgLink} = json
     const gamesArray = new Array<Game>()
 
     games.forEach((game: any) => {
@@ -206,6 +206,7 @@ const convertWorldstateJSON = (json: any): World => {
         ID: _id,
         name, 
         summary, 
+        imgLink,
         games: gamesArray,
         wip,
         active: true,

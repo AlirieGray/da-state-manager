@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
-import { WorldFormAction } from '../../reducers/createWorldForm'
-import {Game} from '../../types'
-import {get} from 'lodash'
+import { Game, CompanionMap, MultiSelectOption, WorldFormAction } from '../../types'
+import MultiSelectDropdown from '../MultiSelectDropdown/MultiSelectDropdown'
+import { get } from 'lodash'
 import TextInput from '../TextInput/TextInput'
 
 
@@ -10,7 +10,36 @@ type DA2Props = {
     onChange: Dispatch<WorldFormAction>
 } 
 
+const romancesMap: CompanionMap = {
+    'Isabela': 0,
+    'Fenris': 1,
+    'Merrill': 2,
+    'Anders': 3,
+    'Sebastian': 4,
+    'Varric': 5,
+    'Tallis': 6,
+    'Arishok': 7,
+    'Aveline': 8
+}
+
+const defaultRomances: MultiSelectOption[] = [
+    {name: 'Isabela', id: 0 },
+    {name: 'Fenris', id: 1 }, 
+    {name: 'Merrill', id: 2 },
+    {name: 'Anders', id: 3 },
+    {name: 'Sebastian', id: 4 },
+    {name: 'Tallis', id: 5 },
+]
+
 function DA2({ gameState, onChange }: DA2Props) {
+        // todo: this code is duplicated across three components, consolidate and move to util file
+        const getSelectedRomances = (): MultiSelectOption[] => {
+            const romArray: string[] = get(gameState, 'protagonist.romances')
+            return romArray.map((romance: string) => {
+                return { name: romance, id: romancesMap[`${romance}`] }
+            })
+        }
+
         return (
             <div className='formSection'>
                 <div className='questSection'>
@@ -31,6 +60,17 @@ function DA2({ gameState, onChange }: DA2Props) {
                         value={get(gameState, 'protagonist.summary')}
                         handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'summary', value}})}
                     />
+                <MultiSelectDropdown 
+                    title='Romance'
+                    options={defaultRomances}
+                    selected={getSelectedRomances()}
+                    setSelected={(romanceSelection) => {
+                    const romances = romanceSelection.map((romance) => {
+                        return romance.name
+                    })
+                    onChange({type: 'SET_DA2_MULTI', payload: {key: 'romances', value: romances}})
+                }}
+            />
                 </div>
                 <div className='questSection'>
                     <h2>Act One</h2>

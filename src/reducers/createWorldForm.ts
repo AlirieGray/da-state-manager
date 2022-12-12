@@ -1,41 +1,8 @@
-import { CreateWorldForm, Game, World } from '../types'
+import { CreateWorldForm, Game, World, WorldFormAction } from '../types'
 
 // todo: use immer ?
 // use consts for world form action types
 // todo: persist state in local storage
-
-export type WorldFormAction = 
-    | { type: 'SET_WORLD_NAME', payload: string }
-    | { type: 'SET_WORLD_SUMMARY', payload: string }
-    | { type: 'SET_ORIGINS_PROTAG_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_ORIGINS_MULTI', payload: {key: string, value: string[]} }
-    | { type: 'SET_PROLOGUE_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_LOTHERING_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_REDCLIFFE_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_URN_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_CIRCLE_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_NATURE_OF_THE_BEAST_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_PARAGON_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_LANDSMEET_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_AWAKENING_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_DA2_PROTAG_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_ACT_ONE_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_ACT_TWO_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_ACT_THREE_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_MOTA_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_LEGACY_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_INQ_PROTAG_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_IYHSB_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_IHW_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_COTJ_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_HLTA_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_WEWH_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_WPHW_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_DUATW_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_TRESPASSER_ATTR', payload: {key: string, value: string} }
-    | { type: 'SET_WORLD', payload: World}
-    | { type: 'CLEAR_FORM' }
 
     // todo: set summary not working? 
 
@@ -45,6 +12,8 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             return {...state, name: action.payload}
         case 'SET_WORLD_SUMMARY':
             return {...state, summary: action.payload}
+        case 'SET_WORLD_IMG':
+            return {...state, imgLink: action.payload}
         case 'SET_ORIGINS_PROTAG_ATTR':
             const originsKey = action.payload.key
             let newOriginsProtag = {...state.games[0].protagonist}

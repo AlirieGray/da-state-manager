@@ -1,7 +1,6 @@
 import { Dispatch } from 'react'
-import { WorldFormAction } from '../../reducers/createWorldForm'
-import {Game} from '../../types'
-import {get} from 'lodash'
+import { Game, WorldFormAction} from '../../types'
+import { get } from 'lodash'
 import TextInput from '../TextInput/TextInput'
 
 type InquisitionProps = {
