@@ -18,10 +18,11 @@ h2 {
 
 .viewLink {
     padding: 10px;
-    background-color: rgb(116,104,162);
+    background-color: #0096fb;
     border-radius: 20px;
     text-decoration: none;
     color: white;
+    font-size: 14px;
 }
 
 .worldFormContainer {
@@ -56,28 +57,27 @@ h2 {
     justify-content: space-between;
 }
 
-.clearButton {
-    background-color: red;
+.formButton {
+    background-color: #0096fb;
+    color: white;
     margin-top: 25px;
     padding: 10px;
     margin-right: 7px;
     border: 0;
     border-radius: 30px;
     outline: 0;
+    font-size: 14px;
 }
 
-.clearButton:hover {
+.formButton:hover {
     cursor: pointer;
 }
 
-.submit {
-    background-color: green;
+/* .submit {
+    background-color: #0096fb;
     padding: 10px;
     border: 0;
+    color: white;
     border-radius: 30px;
     outline: 0;
-}
-
-.submit:hover {
-    cursor: pointer;
-}
+} */

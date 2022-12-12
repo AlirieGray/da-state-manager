@@ -55,8 +55,8 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                         <input type='checkbox' />
                     </div>
                     <div className='formButtons'>
-                        <button onClick={() => dispatch({type: 'CLEAR_FORM'})} className='clearButton'> CLEAR FORM </button>
-                        <button type="submit" className='submit'> SUBMIT </button>
+                        <button onClick={() => dispatch({type: 'CLEAR_FORM'})} className='formButton'> CLEAR FORM </button>
+                        <button type="submit" className='formButton'> SUBMIT </button>
                         {(view === PageViewType.EDITING && id !== undefined) && 
                             <Link to={`/world/${id}/view`} className='viewLink'> VIEW </Link>}
                     </div>
