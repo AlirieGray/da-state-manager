@@ -3,8 +3,7 @@ import { CreateWorldForm, Game, World, WorldFormAction } from '../types'
 // todo: use immer ?
 // use consts for world form action types
 // todo: persist state in local storage
-
-    // todo: set summary not working? 
+// todo: set summary not working? 
 
 export const createWorldFormReducer = (state: CreateWorldForm, action: WorldFormAction) => {
     switch (action.type) {
@@ -104,6 +103,7 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                 }
                 return game
             })}
+
         case 'SET_LOTHERING_ATTR':
             const lotheringKey = action.payload.key
             let newLotheringChoices = {...state.games[0].quests[1].decisions}

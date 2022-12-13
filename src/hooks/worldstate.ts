@@ -1,15 +1,12 @@
 import { useState, useReducer } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
+import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
 
-// todo: dev value and production value
-const GET_WORLDS_URL = 'http://localhost:5555/worldstates/get'
-const EDIT_WORLD_URL = 'http://localhost:5555/worldstates/edit'
-const CREATE_WORLD_URL = 'http://localhost:5555/worldstates/create'
-// todo: handle loading, API errors, etc
 
+// todo: handle loading, API errors, etc
 export function useGetAllWorldstates(accessToken: string, refreshToken: string) {
     const [worlds, setWorlds] = useState<Array<World>>([])
     // todo: use context for this
@@ -235,7 +232,6 @@ const convertGameJSON = (json: any): Game => {
             const decisionName = decision.name;
             const decisionChoice = decision.choice;
             convertedDecisions[decisionName] = decisionChoice
-            // return newDecision
         })
         return {
             name: quest.name,

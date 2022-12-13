@@ -33,7 +33,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                         'Apostate mage',
                         'Tal-Vashoth',
                         'Qunari',
-                        'Surface dwarf'
+                        'Carta dwarf'
                     ]}
                     handleChange={(value) => onChange({type: 'SET_INQ_PROTAG_ATTR', payload: {key: 'origin', value}})} />
                 <TextInput

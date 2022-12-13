@@ -1,4 +1,3 @@
-import React, {useState} from 'react'
 import './App.css'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Login from './pages/Login/Login'
@@ -8,6 +7,7 @@ import { Route, Routes } from 'react-router-dom'
 import AuthContextProvider from './context/auth'
 import Nav from './components/Nav/Nav'
 import PageViewContextProvider from './context/pageView'
+import ThemeContextProvider from './context/theme'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EditWorld from './pages/EditWorld/EditWorld'
 import ViewWorld from './pages/ViewWorld/ViewWorld'
@@ -18,6 +18,7 @@ function App() {
   
   return (
     <AuthContextProvider>
+      <ThemeContextProvider>
       <PageViewContextProvider>
         <div className="appWrapper">
           <Nav />
@@ -31,6 +32,7 @@ function App() {
           </Routes>
         </div>
       </PageViewContextProvider>
+      </ThemeContextProvider>
     </AuthContextProvider>
     
   )
