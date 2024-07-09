@@ -1,15 +1,12 @@
 import { useState, useReducer } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
+import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
 
-// todo: dev value and production value
-const GET_WORLDS_URL = 'http://localhost:5555/worldstates/get'
-const EDIT_WORLD_URL = 'http://localhost:5555/worldstates/edit'
-const CREATE_WORLD_URL = 'http://localhost:5555/worldstates/create'
-// todo: handle loading, API errors, etc
 
+// todo: handle loading, API errors, etc
 export function useGetAllWorldstates(accessToken: string, refreshToken: string) {
     const [worlds, setWorlds] = useState<Array<World>>([])
     // todo: use context for this
@@ -130,7 +127,6 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
 
 export function usePutWorldstate(worldstate: World, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
-    const [worlds, setWorlds] = useState('')
     const navigate = useNavigate()
 
     const options = {
@@ -167,7 +163,7 @@ export function usePutWorldstate(worldstate: World, accessToken: string, refresh
 
 // todo: move to util ?
 const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
-    const {name, wip, summary, active, fanWorks, games} = worldstate
+    const {name, wip, summary, active, fanWorks, games, imgLink} = worldstate
     const convertedGames = games.map((game: Game) => {
         const convertedQuests = game.quests.map((quest: Quest) => {
             const convertedDecisions = Object.entries(quest.decisions).map((decisionEntry) => {
@@ -184,6 +180,7 @@ const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
     let worldJSON = {
         name,
         wip,
+        imgLink,
         summary,
         active,
         fanWorks,
@@ -196,7 +193,7 @@ const convertWorldStateToCreateReqBody = (worldstate: CreateWorldForm): any => {
 // error messageing
 
 const convertWorldstateJSON = (json: any): World => {
-    const {name, _id, summary, wip, games, fanWorks} = json
+    const {name, _id, summary, wip, games, fanWorks, imgLink} = json
     const gamesArray = new Array<Game>()
 
     games.forEach((game: any) => {
@@ -206,6 +203,7 @@ const convertWorldstateJSON = (json: any): World => {
         ID: _id,
         name, 
         summary, 
+        imgLink,
         games: gamesArray,
         wip,
         active: true,
@@ -234,7 +232,6 @@ const convertGameJSON = (json: any): Game => {
             const decisionName = decision.name;
             const decisionChoice = decision.choice;
             convertedDecisions[decisionName] = decisionChoice
-            // return newDecision
         })
         return {
             name: quest.name,

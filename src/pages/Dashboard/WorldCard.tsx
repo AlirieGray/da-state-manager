@@ -1,7 +1,7 @@
 import React from 'react';
 import {World} from '../../types'
 import { Link } from 'react-router-dom'
-import imgSrc from '../../images/isabela.jpeg'
+import defaultImgSrc from '../../images/inqLogo.png'
 import './worldCard.css'
 
 interface CardProps {
@@ -9,14 +9,14 @@ interface CardProps {
 }
 
 function truncateSummary(summary: string): string {
-  return summary.length > 100 ? summary.substring(0, 99) + '...' : summary
+  return summary.length > 100 ? summary.substring(0, 99).trim() + '...' : summary
 }
 
 function WorldCard({ world }: CardProps)  {
   return (
     <div className='worldCard'>
       <div className='worldHeader'>
-        <img src={imgSrc} className='worldImg'></img>
+        <img src={world.imgLink && world.imgLink !== '' ? world.imgLink: defaultImgSrc} className='worldImg'></img>
         <div className='worldHeaderDetails'>
           <div className='worldName'>
             {world.name}
@@ -36,7 +36,7 @@ function WorldCard({ world }: CardProps)  {
         </span> 
         {world.games.map((game) => {
           if (game.protagonist.name !== '') {
-            return <span>{game.protagonist.name}</span>
+            return <span key={game.protagonist.name}>{game.protagonist.name}</span>
           }
         })}
       </div>

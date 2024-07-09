@@ -1,6 +1,5 @@
-import { World, Game } from '../types'
-// todo: move to types
-import { defaultCreateWorldForm, WorldFormAction } from './createWorldForm'
+import { World, Game, WorldFormAction } from '../types'
+import { defaultCreateWorldForm } from './createWorldForm'
 
 // todo: use immer ?
 // use consts for world form action types
@@ -12,6 +11,8 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
             return {...state, name: action.payload}
         case 'SET_WORLD_SUMMARY':
             return {...state, summary: action.payload}
+        case 'SET_WORLD_IMG':
+            return {...state, imgLink: action.payload}
         case 'SET_WORLD':
             return {...action.payload}
         case 'SET_ORIGINS_PROTAG_ATTR':
@@ -30,6 +31,24 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
             return {...state, games: state.games.map((game: Game, index) => {
                 if (index === 0) {
                     return {...game, protagonist: newOriginsProtag}
+                }
+                return game
+            })}
+
+        case 'SET_ORIGINS_MULTI':
+            const multiKey = action.payload.key
+            let newOriginsProtagMultiOption = {...state.games[0].protagonist}
+            if (multiKey === 'romances') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, romances: action.payload.value}
+            } else if (multiKey === 'companions') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, companions: action.payload.value}
+            } else if (multiKey === 'rivals') {
+                newOriginsProtagMultiOption = {...newOriginsProtagMultiOption, rivals: action.payload.value}
+            }
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    return {...game, protagonist: newOriginsProtagMultiOption}
                 }
                 return game
             })}

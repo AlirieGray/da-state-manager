@@ -28,5 +28,5 @@ const AuthContextProvider = ({ children }: React.PropsWithChildren<unknown>) => 
 
 export default AuthContextProvider
 
-// todo: hydrate token when access token expired
-// store auth info in global state using context api
+// todo: refresh token when access token expired
+// check if token is valid for auth

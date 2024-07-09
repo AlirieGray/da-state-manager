@@ -1,18 +1,105 @@
-import { Dispatch } from 'react'
-import { WorldFormAction } from '../../reducers/createWorldForm'
-import {Game} from '../../types'
+import { Dispatch, useState } from 'react'
+import { Game, WorldFormAction} from '../../types'
 import {get} from 'lodash'
 import TextInput from '../TextInput/TextInput'
+import MultiSelectDropdown from '../MultiSelectDropdown/MultiSelectDropdown'
+import { MultiSelectOption, CompanionMap } from '../../types'
 
 type OriginsProps = {
     gameState: Game
     onChange: Dispatch<WorldFormAction>
 } 
 
+const romancesMap: CompanionMap = {
+    'Morrigan':  0,
+    'Leliana':  1, 
+    'Zevran':  2,
+    'Alistair':  3,
+    'Sten':  4,
+    'Nathaniel':  5,
+    'Loghain':  6,
+    'Anora':  7,
+    'Jowan':  8
+}
+
+const defaultRomances: MultiSelectOption[] = [
+    {name: 'Morrigan', id: 0 },
+    {name: 'Leliana', id: 1 }, 
+    {name: 'Zevran', id: 2 },
+    {name: 'Alistair', id: 3 },
+    {name: 'Sten', id: 4 },
+    {name: 'Nathaniel', id: 5 },
+    {name: 'Loghain', id: 6 },
+    {name: 'Anora', id: 7 },
+    {name:  'Jowan', id: 8 }
+]
+
+
+const companionsMap: CompanionMap = {
+    'Morrigan': 0,
+    'Leliana': 1, 
+    'Zevran': 2,
+    'Alistair': 3,
+    'Sten': 4,
+    'Oghren': 5,
+    'Wynne': 6,
+    'Shale': 7,
+    'Loghain': 8,
+    'Dog': 9,
+    'Jowan': 10,
+    'Anders': 11,
+    'Nathaniel': 12,
+    'Sigrun': 13,
+    'Velanna': 14,
+    'Justice': 15
+}
+
+const defaultCompanions: MultiSelectOption[] = [
+    {name: 'Morrigan', id: 0 },
+    {name: 'Leliana', id: 1 }, 
+    {name: 'Zevran', id: 2 },
+    {name: 'Alistair', id: 3 },
+    {name: 'Sten', id: 4 },
+    {name: 'Oghren', id: 5},
+    {name: 'Wynne', id: 6},
+    {name: 'Shale', id: 7},
+    {name: 'Loghain', id: 8 },
+    {name: 'Dog', id: 9},
+    {name: 'Jowan', id: 10 },
+    {name: 'Anders', id: 11},
+    {name: 'Nathaniel', id: 12 },
+    {name: 'Sigrun', id: 13},
+    {name: 'Velanna', id: 14},
+    {name: 'Justice', id: 15}
+]
+
 // todo: checkboxes for yes/no choices (ex. helped redcliffe prepare, stop/redeem solas, etc)
-// todo: multi-select for romances, companions, etc
 
 function Origins({ gameState, onChange }: OriginsProps) {
+    // todo: reducer to connect to form state, use onChange prop
+    // todo: use reducer to get default selected rivals companions and romances in form
+
+    const getSelectedCompanions = (): MultiSelectOption[] => {
+        const compArray: string[] = get(gameState, 'protagonist.companions')
+        return compArray.map((companion: string) => {
+            return { name: companion, id: companionsMap[`${companion}`] }
+        })
+    }
+
+    const getSelectedRomances = (): MultiSelectOption[] => {
+        const romArray: string[] = get(gameState, 'protagonist.romances')
+        return romArray.map((romance: string) => {
+            return { name: romance, id: romancesMap[`${romance}`] }
+        })
+    }
+
+    const getSelectedRivals = (): MultiSelectOption[] => {
+        const compArray: string[] = get(gameState, 'protagonist.rivals')
+        return compArray.map((rival: string) => {
+            return { name: rival, id: companionsMap[`${rival}`] }
+        })
+    }
+
     return (
         <div className='formSection'>
             <div className='questSection'>
@@ -51,12 +138,47 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     multiLine={true}
                     value={get(gameState, 'protagonist.summary')}
                     handleChange={(value) => onChange({type: 'SET_ORIGINS_PROTAG_ATTR', payload: {key: 'summary', value}})} />
+            <MultiSelectDropdown 
+                title='Romance'
+                options={defaultRomances}
+                selected={getSelectedRomances()}
+                setSelected={(romanceSelection) => {
+                    const romances = romanceSelection.map((romance) => {
+                        return romance.name
+                    })
+                    onChange({type: 'SET_ORIGINS_MULTI', payload: {key: 'romances', value: romances}})
+                }}
+            />
+            <MultiSelectDropdown 
+                title='Companions'
+                options={defaultCompanions} // use reduce array function to compare with reducer state?
+                selected={getSelectedCompanions()}
+                // setOptions={(companionOptions) => setRomances(companionOptions)}
+                setSelected={(companionSelection) => {
+                    const companions = companionSelection.map((companion) => {
+                        return companion.name
+                    })
+                    onChange({type: 'SET_ORIGINS_MULTI', payload: {key: 'companions', value: companions}})
+                }}
+            />
+            <MultiSelectDropdown 
+                title='Rivals'
+                options={defaultCompanions}
+                selected={getSelectedRivals()}
+                // setOptions={(rivalOptions) => setRivals(rivalOptions)}
+                setSelected={(rivalSelection) => {
+                    const rivals = rivalSelection.map((rival) => {
+                        return rival.name
+                    })
+                    onChange({type: 'SET_ORIGINS_MULTI', payload: {key: 'rivals', value: rivals}})
+                }}
+            />
             </div>
             <div className='questSection'>
                 <h2>Prologue</h2>
                 <TextInput
                     title={`What were the events that led to the Warden's conscription into the Grey Wardens?`}
-                    value={get(gameState, 'quests.0.decisions.prisoner')}
+                    value={get(gameState, 'quests.0.decisions.summary')}
                     multiLine={true}
                     handleChange={(value) => onChange({type: 'SET_PROLOGUE_ATTR', payload: {key: 'summary', value}})} />    
                 <TextInput
@@ -157,9 +279,9 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     suggestedValues={['The Warden did not encounter Deygan', 'The Warden returned Deygan to the Dalish camp', 'The Warden killed Deygan']}
                     handleChange={(value) => onChange({type: 'SET_NATURE_OF_THE_BEAST_ATTR', payload: {key: 'deygan', value}})} />
                 <TextInput
-                    title='What was the fate of the jalla?'
+                    title='What was the fate of the halla?'
                     value={get(gameState, 'quests.5.decisions.halla')}
-                    suggestedValues={[`The Warden did not resolve the halla's illness`, 'The jalla recovered, thanks to the Warden', 'The halla had to be put down']}
+                    suggestedValues={[`The Warden did not resolve the halla's illness`, 'The halla recovered, thanks to the Warden', 'The halla was put down']}
                     handleChange={(value) => onChange({type: 'SET_NATURE_OF_THE_BEAST_ATTR', payload: {key: 'halla', value}})} />
                 <TextInput
                     title={`Did the Warden tell Athras about his wife's fate?`}

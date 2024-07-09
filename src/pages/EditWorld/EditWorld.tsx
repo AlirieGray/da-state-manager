@@ -2,11 +2,9 @@ import { useContext, useEffect, useReducer} from 'react'
 import WorldForm from "../../components/WorldForm/WorldForm"
 import { PageViewContext } from '../../context/pageView'
 import {  PageViewContextType, PageViewType, Game, Quest, World } from '../../types'
-import { editWorldForm, defaultWorld } from '../../reducers/editWorldForm'
 import { usePutWorldstate, useGetWorldstate } from '../../hooks/worldstate'
 import {AuthContext, UserContextType} from '../../context/auth'
 import { useParams } from 'react-router'
-// TODO: get world by id, then load edit form with values as default in state
 
 function EditWorld( ) {
     const { id } = useParams()
