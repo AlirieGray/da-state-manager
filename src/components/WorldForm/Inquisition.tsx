@@ -22,7 +22,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                 <TextInput
                     title='Class'
                     value={get(gameState, 'protagonist.class')}
-                    suggestedValues={['Mage','Rouge (archer)','Rouge (dual-wield)', 'Warrior']}
+                    suggestedValues={['Mage', 'Rogue', 'Rouge (archer)','Rouge (dual-wield)', 'Warrior', 'Warrior (sword and shield)', 'Warrior (two-handed weapons)']}
                     handleChange={(value) => onChange({type: 'SET_INQ_PROTAG_ATTR', payload: {key: 'class', value}})} />
                 <TextInput
                     title='Origin'
@@ -57,7 +57,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                     title='What became of Ser Barris?'
                     value={get(gameState, 'quests.1.decisions.barris')}
                     suggestedValues={[
-                        'Ser Barris did not survive the batlte agains the corrupted templars',
+                        'Ser Barris did not survive the battle agains the corrupted templars',
                         'Ser Barris joined forced with the Inquisitor, fought agains the corrupted templars, and survived the battle',
                         'Ser Barris joined forces with the Inquisitor, fought against the corrupted templars, and was promoted to knight-commander'
                     ]}
@@ -89,14 +89,30 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                 <TextInput
                     title='Who sacrified themselves to stop the Nightmare Demon?'
                     value={get(gameState, 'quests.3.decisions.sacrifice')}
-                    handleChange={(value) => onChange({type: 'SET_HLTA_ATTR', payload: {key: 'sacrifice', value}})} />
+                    handleChange={(value) => onChange({type: 'SET_HLTA_ATTR', payload: {key: 'sacrifice', value}})}
+                    suggestedValues={[
+                        'Hawke',
+                        'Alistair Theirin',
+                        'Loghain MacTir',
+                        'Jean-Marc Stroud'
+                    ]}
+                     />
             </div>
             <div className='questSection'>
                 <h2>Wicked Eyes and Wicked Hearts</h2>
                 <TextInput
                     title='Who is the ruling monarch of Orlais?'
                     value={get(gameState, 'quests.4.decisions.ruler')}
-                    handleChange={(value) => onChange({type: 'SET_WEWH_ATTR', payload: {key: 'ruler', value}})} />
+                    handleChange={(value) => onChange({type: 'SET_WEWH_ATTR', payload: {key: 'ruler', value}})} 
+                    suggestedValues={[
+                        'Empress Celene',
+                        'Empress Celene, truce with Gaspard and Briala',
+                        'Empress Celene, reconciled with Briala',
+                        'Emperor Gaspard',
+                        'Briala, with Gaspard acting as puppet leader',
+                    ]}
+                    
+                    />
                 <TextInput
                     title='What became of Grand Duchess Florianne?'
                     value={get(gameState, 'quests.4.decisions.florianne')}

@@ -18,11 +18,16 @@ h2 {
 
 .viewLink {
     padding: 10px;
-    background-color: #0096fb;
+    background-color: #7468A2;
     border-radius: 20px;
     text-decoration: none;
     color: white;
     font-size: 14px;
+    margin-left: 5px;
+}
+
+.viewLink:hover {
+    background-color: #8A81B1;
 }
 
 .worldFormContainer {
@@ -53,24 +58,25 @@ h2 {
 .formHeader {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 .formButton {
-    background-color: #0096fb;
+    background-color: rgb(116,104,162);
     color: white;
-    margin-top: 25px;
     padding: 10px;
     margin-right: 7px;
     border: 0;
     border-radius: 30px;
     outline: 0;
     font-size: 14px;
+    margin-left: 7px;
 }
 
 .formButton:hover {
     cursor: pointer;
+    background-color: #8A81B1;
 }
 
 /* .submit {

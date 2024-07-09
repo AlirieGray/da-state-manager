@@ -2,8 +2,8 @@ export type ThemeContextType = 'dark' | 'light'
 
 export enum Color {
     PURPLE = 'rgb(70,62,103)',
-    DARK_PURPLE = 'rgb(49,43,71)',
-    LIGHT_PURPLE = 'rgb(116,104,162)',
+    DARK_PURPLE = '#2D033A',
+    LIGHT_PURPLE = '#A70AD6',
     TEAL = 'rgb(62,87,103)',
     DARK_BLUE = 'rgb(16,33,48)',
     LIGHT_TEAL = 'rgb(62,87,103)'
@@ -13,6 +13,8 @@ export interface Theme {
     '--primary': Color
     '--highlight': Color
     '--background': Color
+    // '--button-idle': Color
+    // '--button-hover': Color
 }
 
 export const getThemeColors = (themeKey: ThemeContextType): Theme => {

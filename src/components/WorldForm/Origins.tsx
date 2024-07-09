@@ -65,7 +65,7 @@ const defaultCompanions: MultiSelectOption[] = [
     {name: 'Shale', id: 7},
     {name: 'Loghain', id: 8 },
     {name: 'Dog', id: 9},
-    {name:  'Jowan', id: 10 },
+    {name: 'Jowan', id: 10 },
     {name: 'Anders', id: 11},
     {name: 'Nathaniel', id: 12 },
     {name: 'Sigrun', id: 13},
@@ -279,9 +279,9 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     suggestedValues={['The Warden did not encounter Deygan', 'The Warden returned Deygan to the Dalish camp', 'The Warden killed Deygan']}
                     handleChange={(value) => onChange({type: 'SET_NATURE_OF_THE_BEAST_ATTR', payload: {key: 'deygan', value}})} />
                 <TextInput
-                    title='What was the fate of the jalla?'
+                    title='What was the fate of the halla?'
                     value={get(gameState, 'quests.5.decisions.halla')}
-                    suggestedValues={[`The Warden did not resolve the halla's illness`, 'The jalla recovered, thanks to the Warden', 'The halla had to be put down']}
+                    suggestedValues={[`The Warden did not resolve the halla's illness`, 'The halla recovered, thanks to the Warden', 'The halla was put down']}
                     handleChange={(value) => onChange({type: 'SET_NATURE_OF_THE_BEAST_ATTR', payload: {key: 'halla', value}})} />
                 <TextInput
                     title={`Did the Warden tell Athras about his wife's fate?`}

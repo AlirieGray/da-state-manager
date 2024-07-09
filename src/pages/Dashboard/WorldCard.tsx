@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 function truncateSummary(summary: string): string {
-  return summary.length > 100 ? summary.substring(0, 99) + '...' : summary
+  return summary.length > 100 ? summary.substring(0, 99).trim() + '...' : summary
 }
 
 function WorldCard({ world }: CardProps)  {

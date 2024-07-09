@@ -28,7 +28,37 @@ const defaultRomances: MultiSelectOption[] = [
     {name: 'Merrill', id: 2 },
     {name: 'Anders', id: 3 },
     {name: 'Sebastian', id: 4 },
-    {name: 'Tallis', id: 5 },
+    {name: 'Varric', id: 5} ,
+    {name: 'Tallis', id: 6 },
+    {name: 'Arishok', id: 7},
+    {name: 'Aveline', id: 8}
+]
+
+const companionsMap: CompanionMap = {
+    'Bethany': 0,
+    'Carver': 1,
+    'Varric': 2,
+    'Isabela': 3,
+    'Fenris': 4,
+    'Sebastian': 5,
+    'Merrill': 6,
+    'Anders': 7,
+    'Aveline': 8,
+    'Dog': 9,
+    'Tallis': 10
+}
+
+const defaultCompanions: MultiSelectOption[] = [
+    {name: 'Bethany', id: 0 },
+    {name: 'Carver', id: 1 }, 
+    {name: 'Varric', id: 2 },
+    {name: 'Isabela', id: 3 },
+    {name: 'Fenris', id: 4 },
+    {name: 'Sebastian', id: 5},
+    {name: 'Merrill', id: 6},
+    {name: 'Anders', id: 7},
+    {name: 'Aveline', id: 8 },
+    {name: 'Tallis', id: 9 },
 ]
 
 function DA2({ gameState, onChange }: DA2Props) {
@@ -37,6 +67,20 @@ function DA2({ gameState, onChange }: DA2Props) {
             const romArray: string[] = get(gameState, 'protagonist.romances')
             return romArray.map((romance: string) => {
                 return { name: romance, id: romancesMap[`${romance}`] }
+            })
+        }
+
+        const getSelectedCompanions = (): MultiSelectOption[] => {
+            const romArray: string[] = get(gameState, 'protagonist.romances')
+            return romArray.map((romance: string) => {
+                return { name: romance, id: romancesMap[`${romance}`] }
+            })
+        }
+    
+        const getSelectedRivals = (): MultiSelectOption[] => {
+            const compArray: string[] = get(gameState, 'protagonist.rivals')
+            return compArray.map((rival: string) => {
+                return { name: rival, id: companionsMap[`${rival}`] }
             })
         }
 
@@ -70,7 +114,31 @@ function DA2({ gameState, onChange }: DA2Props) {
                     })
                     onChange({type: 'SET_DA2_MULTI', payload: {key: 'romances', value: romances}})
                 }}
-            />
+                />
+                <MultiSelectDropdown 
+                    title='Companions'
+                    options={defaultCompanions} // use reduce array function to compare with reducer state?
+                    selected={getSelectedCompanions()}
+                    // setOptions={(companionOptions) => setRomances(companionOptions)}
+                    setSelected={(companionSelection) => {
+                        const companions = companionSelection.map((companion) => {
+                            return companion.name
+                        })
+                        onChange({type: 'SET_DA2_MULTI', payload: {key: 'companions', value: companions}})
+                    }}
+                />
+                <MultiSelectDropdown 
+                    title='Rivals'
+                    options={defaultCompanions}
+                    selected={getSelectedRivals()}
+                    // setOptions={(rivalOptions) => setRivals(rivalOptions)}
+                    setSelected={(rivalSelection) => {
+                        const rivals = rivalSelection.map((rival) => {
+                            return rival.name
+                        })
+                        onChange({type: 'SET_DA2_MULTI', payload: {key: 'rivals', value: rivals}})
+                    }}
+                />
                 </div>
                 <div className='questSection'>
                     <h2>Act One</h2>
@@ -84,7 +152,7 @@ function DA2({ gameState, onChange }: DA2Props) {
                         handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ketojan', value}})}
                     />
                     <TextInput 
-                        title='Did Hawke send Feynriel to the Circle or the Dalish?'
+                        title='What became of Feynriel?'
                         value={get(gameState, 'quests.0.decisions.feynriel')}
                         suggestedValues={[
                             'Hawke sent Feynriel to the Dalish',
@@ -147,7 +215,7 @@ function DA2({ gameState, onChange }: DA2Props) {
                         value={get(gameState, 'quests.1.decisions.isabelaArishok')}
                         suggestedValues={[
                             'Hawke did not turn Isabela over to the Arishok, resulting in a violent conflict',
-                            'Hawke turned Isabela over to the Arishok.'
+                            'Hawke turned Isabela over to the Arishok'
                         ]}
                         handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'isabelaArishok', value}})}
                     />
@@ -172,6 +240,24 @@ function DA2({ gameState, onChange }: DA2Props) {
                             `Hawke presented the conspirators to Meredith, confirming the knight-commander's fears`
                         ]}
                         handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'conspirators', value}})}
+                    />
+                    <TextInput 
+                        title={`Did Hawke approve of Anders's actions at the Chantry?`}
+                        value={get(gameState, 'quests.2.decisions.andersapprove')}
+                        suggestedValues={[
+                            'No amount of explanation could convince Hawke that Anders was in the right.',
+                            'Hawke backed Anders\'s actions, perhaps moved by his claims that such things were inevitable.'
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'andersapprove', value}})}
+                    />
+                    <TextInput 
+                        title={`What happened to Anders?`}
+                        value={get(gameState, 'quests.2.decisions.anders')}
+                        suggestedValues={[
+                            'Hawke executed Anders',
+                            'Anders is alive and well'
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'anders', value}})}
                     />
                     <TextInput 
                         title={`Who did Hawke side with in the final battle?`}
