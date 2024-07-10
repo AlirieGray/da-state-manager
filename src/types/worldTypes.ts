@@ -7,6 +7,7 @@ export interface World {
     active: boolean
     fanWorks: string[]
     games: Game[]
+    activeGame?: number
 }
 
 export interface CreateWorldForm extends Omit<World, 'ID'> {}

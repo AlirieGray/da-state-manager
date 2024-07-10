@@ -14,7 +14,9 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
         case 'SET_WORLD_IMG':
             return {...state, imgLink: action.payload}
         case 'SET_WORLD':
-            return {...action.payload}
+            return {...action.payload, activeGame: 0}
+        case 'SET_ACTIVE_GAME':
+            return {...state, activeGame: action.payload}
         case 'SET_ORIGINS_PROTAG_ATTR':
             const originsKey = action.payload.key
             let newOriginsProtag = {...state.games[0].protagonist}

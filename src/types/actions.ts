@@ -39,6 +39,7 @@ export type WorldFormAction =
     | { type: 'SET_WORLD_SUMMARY', payload: string }
     | { type: 'SET_WORLD_IMG', payload: string }
     | { type: 'SET_WORLD', payload: World }
+    | { type: 'SET_ACTIVE_GAME', payload: number}
     | { type: 'CLEAR_FORM' }
     | OriginsFormActions
     | DA2FormActions

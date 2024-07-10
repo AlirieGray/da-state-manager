@@ -30,6 +30,7 @@ function MultiSelectDropdown({ options, title, selected, setSelected }: MultiSel
                 displayValue={'name'}
                 onSelect={onSelect}
                 onRemove={onRemove}
+                avoidHighlightFirstOption={true}
                 style={{
                     option: {
                         color: '#0D1317',
@@ -41,9 +42,6 @@ function MultiSelectDropdown({ options, title, selected, setSelected }: MultiSel
                         maxWidth: '360px', 
                         backgroundColor: 'white'
                     },
-                    highlightOption: {
-                        backgroundColor: '#B60BEA'
-                    }
                 }}
             />
         </div>

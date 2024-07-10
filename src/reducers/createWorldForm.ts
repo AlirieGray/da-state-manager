@@ -13,6 +13,8 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             return {...state, summary: action.payload}
         case 'SET_WORLD_IMG':
             return {...state, imgLink: action.payload}
+        case 'SET_ACTIVE_GAME':
+            return {...state, activeGame: action.payload}
         case 'SET_ORIGINS_PROTAG_ATTR':
             const originsKey = action.payload.key
             let newOriginsProtag = {...state.games[0].protagonist}
@@ -206,7 +208,7 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             })}
         case 'SET_ACT_TWO_ATTR':
             const actTwoKey = action.payload.key
-            let newActTwoChoices = {...state.games[1].quests[0].decisions}
+            let newActTwoChoices = {...state.games[1].quests[1].decisions}
             newActTwoChoices[`${actTwoKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
@@ -219,7 +221,7 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             })}
         case 'SET_ACT_THREE_ATTR':
             const actThreeKey = action.payload.key
-            let newActThreeChoices = {...state.games[1].quests[0].decisions}
+            let newActThreeChoices = {...state.games[1].quests[2].decisions}
             newActThreeChoices[`${actThreeKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
@@ -232,13 +234,13 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             })}
         case 'SET_MOTA_ATTR':
             const motaKey = action.payload.key
-            let newMotaChoices = {...state.games[1].quests[0].decisions}
+            let newMotaChoices = {...state.games[1].quests[3].decisions}
             newMotaChoices[`${motaKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
                 if (index === 1) {
                     let newQuests = [...state.games[1].quests]
-                    newQuests[2].decisions = newMotaChoices
+                    newQuests[3].decisions = newMotaChoices
                     return {...game, quests: newQuests}
                 }
                 return game
@@ -355,6 +357,7 @@ export const defaultCreateWorldForm: CreateWorldForm = {
     summary: '',
     active: true,
     fanWorks: [],
+    activeGame: 0,
     games: [
         {
             name: 'Origins',

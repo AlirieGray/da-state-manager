@@ -1,5 +1,6 @@
 
 import React, { Dispatch } from 'react'
+import { Tooltip as ReactTooltip } from "react-tooltip"
 import { CreateWorldForm, PageViewType, WorldFormAction} from '../../types'
 import {Link} from 'react-router-dom'
 import Origins from './Origins'
@@ -8,6 +9,7 @@ import { get } from 'lodash'
 import Inquisition from './Inquisition'
 import TextInput from '../TextInput/TextInput'
 import './worldForm.css'
+import qMark from '../../images/question.png'
 
 type Props = {
     view: PageViewType
@@ -51,29 +53,46 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                             title='Public Image Link' 
                             value={imgLink} 
                             handleChange={(value) => {dispatch({type: 'SET_WORLD_IMG', payload: value})}}/>
-                        <label> Save as work in progress? </label>
-                        <input type='checkbox' />
+                        {/* <label> Save as work in progress? </label>
+                        <input type='checkbox' /> */}
                     </div>
                     <div className='formButtons'>
-                        <button onClick={() => dispatch({type: 'CLEAR_FORM'})} className='formButton'> CLEAR FORM </button>
+                        <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault()
+                            dispatch({type: 'CLEAR_FORM'})
+                            
+                            }} className='formButton'> CLEAR FORM </button>
                         <button type="submit" className='formButton'> SUBMIT </button>
                         {(view === PageViewType.EDITING && id !== undefined) && 
                             <Link to={`/world/${id}/view`} className='viewLink'> VIEW </Link>}
                     </div>
                 </div>
+                <div>
+                    Select game: <img src={qMark} data-tooltip-id="select-game" />
+                    <button className={((state.activeGame == 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.preventDefault()
+                        dispatch({type: 'SET_ACTIVE_GAME', payload: 0})
+                        
+                        }}>Origins</button>
+                    <button className={((state.activeGame == 1) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.preventDefault()
+                        dispatch({type: 'SET_ACTIVE_GAME', payload: 1})
+                        
+                        }}>DA2</button>
+                    <button className={((state.activeGame == 2) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        e.preventDefault()
+                        dispatch({type: 'SET_ACTIVE_GAME', payload: 2})
+                    }}>Inquisition</button>
+                    <ReactTooltip
+                        id="select-game"
+                        place="bottom"
+                        content="Select which game you'd like to set decisions for. You may switch between games at any time while working on this world state without losing progress."
+                    />
+                </div>
                 <div className='gamesWrapper'>
-                    <div >
-                        <h1>Origins</h1>
-                        <Origins gameState={get(state, 'games.0')} onChange={dispatch}/>
-                    </div>
-                    <div >
-                        <h1>Dragon Age 2</h1>
-                        <DA2 gameState={get(state, 'games.1')} onChange={dispatch}/>
-                    </div>
-                    <div >
-                        <h1>Dragon Age Inquisition</h1>
-                        <Inquisition gameState={get(state, 'games.2')} onChange={dispatch} />
-                    </div>
+                    {state.activeGame == 0 && <Origins gameState={get(state, 'games.0')} onChange={dispatch}/>}
+                   {state.activeGame == 1 && <DA2 gameState={get(state, 'games.1')} onChange={dispatch}/>}
+                    {state.activeGame == 2 && <Inquisition gameState={get(state, 'games.2')} onChange={dispatch} />}
                 </div>
 
             </form>

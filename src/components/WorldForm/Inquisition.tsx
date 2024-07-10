@@ -85,6 +85,10 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                 <TextInput
                     title='What became of the Grey Wardens?'
                     value={get(gameState, 'quests.3.decisions.gw')}
+                    suggestedValues={[
+                        'The Grey Wardens were banished from Orlais',
+                        'The Grey Wardens were recruited by the Inquisition'
+                    ]}
                     handleChange={(value) => onChange({type: 'SET_HLTA_ATTR', payload: {key: 'gw', value}})} />
                 <TextInput
                     title='Who sacrified themselves to stop the Nightmare Demon?'
@@ -169,7 +173,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                         'The Inquisition was preserved as a peacekeeping force reporting directly to Divine Victoria',
                         'The Inquisition was formally disbanded'
                     ]}
-                    handleChange={(value) => onChange({type: 'SET_DUATW_ATTR', payload: {key: 'disband', value}})} />
+                    handleChange={(value) => onChange({type: 'SET_TRESPASSER_ATTR', payload: {key: 'disband', value}})} />
                 <TextInput
                     title={`What was the Inquisitor's final goal regarding Solas?`}
                     value={get(gameState, 'quests.7.decisions.solas')}
@@ -177,7 +181,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                         'The Inquisitor considers Solas beyond redemption and commits to stopping him at all costs',
                         'The Inquisitor believes that Solas is making a tragic mistake and intends to redeem Solas, if possible'
                     ]}
-                    handleChange={(value) => onChange({type: 'SET_DUATW_ATTR', payload: {key: 'solas', value}})} />
+                    handleChange={(value) => onChange({type: 'SET_TRESPASSER_ATTR', payload: {key: 'solas', value}})} />
             </div>
         </div>
     )

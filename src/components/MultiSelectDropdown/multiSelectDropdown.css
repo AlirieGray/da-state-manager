@@ -1,5 +1,8 @@
 
 
-.highlightOption {
-    background-color: var(--secondary);
+
+.optionContainer li:hover,
+.optionContainer .highlight {
+background: var(--highlight);
+color: #fff;
 }

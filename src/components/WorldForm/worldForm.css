@@ -7,6 +7,41 @@ h2 {
     margin-bottom: 5px;
 }
 
+.selectGameButton {
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    background-color: var(--secondary);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    border: 0;
+    border-radius: 30px;
+    outline: 0;
+    margin: 0px 10px;
+}
+
+.selectedGameButton {
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    background-color: var(--selected);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    border: 0;
+    border-radius: 30px;
+    outline: 0;
+    margin: 0px 10px;
+}
+
+.selectGameButton:hover {
+    cursor: pointer;
+    background-color: var(--highlight);
+}
+
 .questSection {
     margin-bottom: 20px;
 }
