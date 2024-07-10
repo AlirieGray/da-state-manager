@@ -482,7 +482,9 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                     name: 'Act Three',
                     decisions: {
                         'conspirators': '',
-                        'side': ''
+                        'side': '',
+                        'anders': '',
+                        'andersapprove': ''
                     }
                 },
                 {

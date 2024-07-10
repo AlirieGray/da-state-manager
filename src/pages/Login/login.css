@@ -1,5 +1,5 @@
 .loginWrapper {
-    background-color: rgb(49,43,71);
+    background-color: var(--background);
     color: white;
     width: 100%;
     min-height: 100vh;

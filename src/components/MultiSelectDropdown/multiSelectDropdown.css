@@ -1,7 +1,5 @@
-option {
-    color: black;
-}
+
 
 .highlightOption {
-    background-color: rgb(116,104,162);
+    background-color: var(--secondary);
 }

@@ -26,17 +26,17 @@
 .homeButton{
     font-size: 36px;
     text-decoration: none;
-    color: white;
+    color: var(--text);
 }
 
 .navButton {
     padding-right: 15px;
     text-decoration: none;
-    color: white;
+    color: var(--text);
 }
 
 .navButton:hover {
-    color: rgb(133, 133, 133);
+    color: var(--highlight);
     cursor: pointer;
 }
 

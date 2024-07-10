@@ -20,5 +20,3 @@ export type MultiSelectOption = {
 export * from './worldTypes'
 
 export * from './actions'
-
-export * from './theme'

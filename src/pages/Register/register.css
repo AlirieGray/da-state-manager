@@ -1,5 +1,5 @@
 .registerWrapper {
-    background-color: rgb(49,43,71);
+    background-color: var(--background);
     color: white;
     width: 100%;
     min-height: 100vh;
@@ -45,7 +45,7 @@ textarea:focus, input:focus{
 }
 
 .login {
-    color: rgb(160,160,160);
+    color: var(--text);
     font-size: 12px;
     text-align: center;
 }

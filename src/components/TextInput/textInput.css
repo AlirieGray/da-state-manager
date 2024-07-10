@@ -19,8 +19,8 @@ label {
 
 .dropdown {
     display: flex !important;
-    background-color: white;
-    color: black;
+    background-color: var(--text);
+    color: var(--primary);
     flex-direction: column;
 }
 

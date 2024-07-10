@@ -31,12 +31,20 @@ function MultiSelectDropdown({ options, title, selected, setSelected }: MultiSel
                 onSelect={onSelect}
                 onRemove={onRemove}
                 style={{
-                    option: {color: 'black'},
-                    chips: {
-                        background: 'rgb(116,104,162)'
+                    option: {
+                        color: '#0D1317',
                     },
-                    multiselectContainer: {maxWidth: '360px', backgroundColor: 'white'},
-                    }}
+                    chips: {
+                        background: '#9809C3',
+                    },
+                    multiselectContainer: {
+                        maxWidth: '360px', 
+                        backgroundColor: 'white'
+                    },
+                    highlightOption: {
+                        backgroundColor: '#B60BEA'
+                    }
+                }}
             />
         </div>
     )

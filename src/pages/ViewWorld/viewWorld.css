@@ -1,9 +1,10 @@
 .viewWorldWrapper {
-    background-color: rgb(70,62,103);
+    background-color: var(--primary);
     margin-top: 20px;
     border-radius: 30px;
     outline-style: solid;
-    outline-color: rgb(116,104,162);
+    outline-color: var(--highlight);
+    outline-width: 2px;
     width: 80vw;
     margin-bottom: 30px;
     padding-bottom: 10px;
@@ -14,11 +15,12 @@
 .viewWorldHeader {
     padding-bottom: 15px;
     border-bottom: solid;
-    border-color: rgb(116,104,162);
+    border-color: var(--highlight);
+    border-width: 2px;
     /* margin: 30px; */
 }
 .protagButton{
-    background-color: rgb(116,104,162);
+    background-color: var(--secondary);
     border-radius: 30px;
     border: none;
     color: white;
@@ -44,9 +46,13 @@
 .editLink {
     color: white;
     text-decoration: none;
-    background-color: rgb(116,104,162);
+    background-color: var(--secondary);
     padding: 10px 15px 10px 15px;
     border-radius: 30px;
+}
+
+.editLink:hover {
+    background-color: var(--highlight);
 }
 
 .worldName {
@@ -58,7 +64,7 @@
 }
 
 .protagButton:hover {
-    background-color: rgb(63, 57, 85);;
+    background-color: var(--highlight);
 }
 
 .protagButton:active {

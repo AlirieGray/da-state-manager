@@ -18,7 +18,7 @@ h2 {
 
 .viewLink {
     padding: 10px;
-    background-color: #7468A2;
+    background-color: var(--secondary);
     border-radius: 20px;
     text-decoration: none;
     color: white;
@@ -27,7 +27,7 @@ h2 {
 }
 
 .viewLink:hover {
-    background-color: #8A81B1;
+    background-color: var(--highlight);
 }
 
 .worldFormContainer {
@@ -39,12 +39,13 @@ h2 {
     flex-direction: column;
     width: 80vw;
     justify-content: space-between; 
-    background-color: rgb(70,62,103);
+    background-color: var(--primary);
     padding: 30px;
     margin-top: 20px;
-    border-radius: 30px;
+    border-radius: 15px;
     outline-style: solid;
-    outline-color: rgb(116,104,162);
+    outline-width: 2px;
+    outline-color: var(--highlight);
 }
 
 .gamesWrapper {
@@ -63,8 +64,8 @@ h2 {
 }
 
 .formButton {
-    background-color: rgb(116,104,162);
-    color: white;
+    background-color: var(--secondary);
+    color: var(--text);
     padding: 10px;
     margin-right: 7px;
     border: 0;
@@ -76,14 +77,5 @@ h2 {
 
 .formButton:hover {
     cursor: pointer;
-    background-color: #8A81B1;
+    background-color: var(--highlight);
 }
-
-/* .submit {
-    background-color: #0096fb;
-    padding: 10px;
-    border: 0;
-    color: white;
-    border-radius: 30px;
-    outline: 0;
-} */
