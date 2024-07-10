@@ -1,0 +1,7 @@
+.aboutWrapper {
+    width: 80vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

@@ -31,7 +31,9 @@ function Nav() {
                         {pageView == PageViewType.CREATING && <span className='navButtonSelected'>New World State</span>}
                         {pageView != PageViewType.CREATING && <Link className='navButton' to="/create">New World State </Link>}
                         
-                        <span className='navButton'>About</span>
+                        {pageView == PageViewType.ABOUT && <span className='navButtonSelected'>About</span>}
+                        {pageView != PageViewType.ABOUT && <Link className='navButton' to="/about">About </Link>}
+
                         <span className='navButton'>Profile</span>
                         <span className='navButton' onClick={logout}>Logout</span>
                     </div> 

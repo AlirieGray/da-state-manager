@@ -1,5 +1,5 @@
 export enum PageViewType {
-    VIEWING, EDITING, CREATING, OVERVIEW, LOGIN, REGISTER
+    VIEWING, EDITING, CREATING, OVERVIEW, LOGIN, REGISTER, ABOUT
 }
 
 export type PageViewContextType = {
