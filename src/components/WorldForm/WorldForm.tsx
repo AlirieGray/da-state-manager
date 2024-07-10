@@ -67,27 +67,31 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                             <Link to={`/world/${id}/view`} className='viewLink'> VIEW </Link>}
                     </div>
                 </div>
-                <div>
-                    Select game: <img src={qMark} data-tooltip-id="select-game" />
-                    <button className={((state.activeGame == 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                        e.preventDefault()
-                        dispatch({type: 'SET_ACTIVE_GAME', payload: 0})
-                        
-                        }}>Origins</button>
-                    <button className={((state.activeGame == 1) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                        e.preventDefault()
-                        dispatch({type: 'SET_ACTIVE_GAME', payload: 1})
-                        
-                        }}>DA2</button>
-                    <button className={((state.activeGame == 2) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                        e.preventDefault()
-                        dispatch({type: 'SET_ACTIVE_GAME', payload: 2})
-                    }}>Inquisition</button>
-                    <ReactTooltip
-                        id="select-game"
-                        place="bottom"
-                        content="Select which game you'd like to set decisions for. You may switch between games at any time while working on this world state without losing progress."
-                    />
+                <div className='selectGameButtons'>
+                    <div className='selectLabel'>
+                        Select game: <img src={qMark} data-tooltip-id="select-game" />
+                    </div>
+                    <div>
+                        <button className={((state.activeGame == 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault()
+                            dispatch({type: 'SET_ACTIVE_GAME', payload: 0})
+                            
+                            }}>Origins</button>
+                        <button className={((state.activeGame == 1) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault()
+                            dispatch({type: 'SET_ACTIVE_GAME', payload: 1})
+                            
+                            }}>DA2</button>
+                        <button className={((state.activeGame == 2) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault()
+                            dispatch({type: 'SET_ACTIVE_GAME', payload: 2})
+                        }}>Inquisition</button>
+                        <ReactTooltip
+                            id="select-game"
+                            place="right"
+                            content="Select which game you'd like to set decisions for. You may switch between games at any time while working on this world state without losing progress."
+                        />
+                    </div>
                 </div>
                 <div className='gamesWrapper'>
                     {state.activeGame == 0 && <Origins gameState={get(state, 'games.0')} onChange={dispatch}/>}

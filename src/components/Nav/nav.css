@@ -35,11 +35,20 @@
     color: var(--text);
 }
 
+.navButtonSelected {
+    padding-right: 15px;
+    text-decoration: none;
+    color: var(--secondary);
+}
+
 .navButton:hover {
     color: var(--highlight);
     cursor: pointer;
 }
 
+.navButtonSelected:hover {
+    color: var(--highlight);
+}
 hr.navDivider {
     border-top: 1px solid #fff;
 }

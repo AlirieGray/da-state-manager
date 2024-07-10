@@ -24,7 +24,13 @@ function Nav() {
                 </div>   
                 {pageView != PageViewType.LOGIN && pageView != PageViewType.REGISTER && (
                     <div className='navButtons'>
-                        <Link className='navButton' to="/create">New World State </Link>
+                        {pageView == PageViewType.OVERVIEW && <span className='navButtonSelected'>Dashboard</span> }
+                        {pageView != PageViewType.OVERVIEW && <Link className='navButton' to="/"> Dashboard </Link>}
+                        
+                        
+                        {pageView == PageViewType.CREATING && <span className='navButtonSelected'>New World State</span>}
+                        {pageView != PageViewType.CREATING && <Link className='navButton' to="/create">New World State </Link>}
+                        
                         <span className='navButton'>About</span>
                         <span className='navButton'>Profile</span>
                         <span className='navButton' onClick={logout}>Logout</span>

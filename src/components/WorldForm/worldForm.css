@@ -7,6 +7,20 @@ h2 {
     margin-bottom: 5px;
 }
 
+.selectLabel {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.selectGameButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .selectGameButton {
     width: 200px;
     height: 50px;
