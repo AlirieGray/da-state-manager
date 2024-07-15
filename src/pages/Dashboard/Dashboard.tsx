@@ -11,9 +11,9 @@ function Dashboard() {
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     setPageView(PageViewType.OVERVIEW)
     return (
-        <div>
+        <>
             <Worlds />
-        </div>
+        </>
     )  
 
 }

@@ -1,5 +1,6 @@
 import './App.css'
 import Dashboard from './pages/Dashboard/Dashboard'
+import { useEffect } from 'react'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import CreateWorld from './pages/CreateWorld/CreateWorld'
@@ -15,6 +16,25 @@ import About from './pages/About/About'
 // todo: nice 404 not route found page with redirect to home
 
 function App() {
+
+  useEffect(() => {
+    window.addEventListener('error', e => {
+        if (e.message === 'ResizeObserver loop limit exceeded') {
+            const resizeObserverErrDiv = document.getElementById(
+                'webpack-dev-server-client-overlay-div'
+            );
+            const resizeObserverErr = document.getElementById(
+                'webpack-dev-server-client-overlay'
+            );
+            if (resizeObserverErr) {
+                resizeObserverErr.setAttribute('style', 'display: none');
+            }
+            if (resizeObserverErrDiv) {
+                resizeObserverErrDiv.setAttribute('style', 'display: none');
+            }
+        }
+    });
+}, []);
   
   return (
     <AuthContextProvider>

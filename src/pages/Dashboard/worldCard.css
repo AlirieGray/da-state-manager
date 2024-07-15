@@ -1,7 +1,7 @@
 .worldCard {
     background-color: var(--primary);
     margin: 10px;
-    min-width: 400px;
+    width: 400px;
     max-width: 400px;
     border-radius: 15px;
     padding-bottom: 25px;
@@ -75,17 +75,9 @@
     margin-bottom: 15px;
 }
 
-@media only screen and (max-width: 1600px) {
-    .worldCardButtons {
-        display: flex;
-        flex-direction: column !important;
-    }
-}
-
-@media only screen and (max-width: 1700px) {
+@media only screen and (max-width: 1200px) {
     .worldCard {
-        min-width: 900px;
-        max-width: 900px;
+        max-width: 70% !important;
     }
 
     .worldHeader {
@@ -95,12 +87,8 @@
     .worldImg {
         margin-right: 20px;
     }
-}
 
-@media only screen and (max-width: 1200px) {
-    .worldCard {
-        min-width: 400px;
-        max-width: 400px;
+    .worldHeader {
+        flex-direction: column;
     }
-
 }

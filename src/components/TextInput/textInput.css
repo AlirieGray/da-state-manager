@@ -5,6 +5,14 @@
     flex-direction: column;
 }
 
+@media only screen and (max-width: 900px) {
+    .textInputWrapper {
+        /* width: 250px !important; */
+        max-width: 70%;
+    }
+
+}
+
 textarea {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

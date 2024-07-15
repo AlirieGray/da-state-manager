@@ -112,6 +112,16 @@ h2 {
     justify-content: space-between;
 }
 
+@media only screen and (max-width: 900px) {
+    .formHeader {
+        flex-direction: column;
+    }
+
+    .formWrapper {
+        max-width: 70%;
+    }
+}
+
 .formButton {
     background-color: var(--secondary);
     color: var(--text);

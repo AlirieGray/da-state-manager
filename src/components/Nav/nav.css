@@ -4,14 +4,35 @@
     padding-top: 40px;
 }
 
-
 @media only screen and (max-width: 1200px) {
     .navButtons {
-        display: flex;
-        flex-direction: column;
+        display: none;
+        /* flex-direction: column; */
     }
     .homeButton {
         font-size: 24px !important;
+    }
+
+    .navWrapper { 
+      background-color: var(--background);
+      position: sticky !important;
+      top: 0;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .homeButton {
+        display: none;
+    }
+
+    .bm-burger-button {
+        top: 10px !important;
+      }
+}
+
+@media only screen and (min-width: 1201px) {
+    .hamburger {
+        display: none;
     }
 }
 
@@ -53,4 +74,91 @@ hr.navDivider {
     border-top: 1px solid #fff;
 }
 
-/* todo: hamburger menu for mobile view */
+@media only screen and (max-width: 1200px) {
+  hr.navDivider {
+    border: none !important;
+  }
+}
+
+/* burger menu styles */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 7%;
+    top: 35px;
+  }
+  
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: var(--secondary);
+  }
+  
+  /* Color/shape of burger icon bars on hover*/
+  .bm-burger-bars-hover {
+    background: var(--highlight);
+  }
+  
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: var(--text);
+  }
+  
+  /*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+    top: 0px;
+  }
+  
+  /* General sidebar styles */
+  .bm-menu {
+    background: var(--primary);
+    padding: 2.5em 1.2em 0;
+    font-size: 1.15em;
+  }
+  
+  /* Wrapper for item list */
+  .bm-item-list {
+    
+    margin-top: .2em;
+    padding: 0.8em;
+    max-height: 80%;
+  }
+  
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+    color: var(--text);
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  .bm-item:hover {
+    /* background-color: var(--highlight); */
+    color: var(--highlight) !important;
+  }
+
+  .menu-item {
+      text-decoration: underline;
+  }
+  
+  .menu-item:hover {
+    color: var(--text);
+  }
+  
+  /* Styling of overlay */
+  .bm-overlay {
+    background: var(--accent-color);
+  }

@@ -24,6 +24,7 @@ type Props = {
 // todo: store form state in local storage ? and use context
 // todo: restructure to use same types for create and edit (?)
 // TODO: add link to view IFF view type is editing, not creating
+// TODO: multi-column view for wide screen, long column for mobile
 
 function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
     let imgLink: string = ''
