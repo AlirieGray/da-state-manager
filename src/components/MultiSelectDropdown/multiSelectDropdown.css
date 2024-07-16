@@ -1,13 +1,26 @@
 
 
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 1400px) {
     .multiselect-container {
         max-width: 90% !important;
     }
+} */
+
+.multiSelectWrapper {
+    margin-top: 5px;
+    width: 360px;
+    /* max-width: 90%; */
 }
 
 .optionContainer li:hover,
 .optionContainer .highlight {
 background: var(--highlight);
 color: #fff;
+}
+
+@media only screen and (max-width: 900px) {
+    .multiSelectWrapper {
+        max-width: 90%;
+    }
+
 }

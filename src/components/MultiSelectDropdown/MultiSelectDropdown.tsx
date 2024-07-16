@@ -22,7 +22,7 @@ function MultiSelectDropdown({ options, title, selected, setSelected }: MultiSel
         }
     }
     return (
-        <div style={{marginTop: '5px'}}>
+        <div className="multiSelectWrapper">
             <label>{title}</label>
             <Multiselect 
                 options={options}

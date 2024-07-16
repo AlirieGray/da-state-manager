@@ -86,99 +86,101 @@ function DA2({ gameState, onChange }: DA2Props) {
 
         return (
             <div className='formSection'>
-                <div className='questSection'>
-                    <h2> Protagonist </h2>
-                    <TextInput 
-                        title='Name' 
-                        value={get(gameState, 'protagonist.name')} 
-                        handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'name', value}})} />
-                    <TextInput 
-                        title='Class'
-                        value={get(gameState, 'protagonist.class')}
-                        suggestedValues={['Mage', 'Rogue', 'Warrior']}
-                        handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'class', value}})}
-                    />
-                    <TextInput 
-                        title='Summary'
-                        multiLine={true}
-                        value={get(gameState, 'protagonist.summary')}
-                        handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'summary', value}})}
-                    />
-                <MultiSelectDropdown 
-                    title='Romance'
-                    options={defaultRomances}
-                    selected={getSelectedRomances()}
-                    setSelected={(romanceSelection) => {
-                    const romances = romanceSelection.map((romance) => {
-                        return romance.name
-                    })
-                    onChange({type: 'SET_DA2_MULTI', payload: {key: 'romances', value: romances}})
-                }}
-                />
-                <MultiSelectDropdown 
-                    title='Companions'
-                    options={defaultCompanions} // use reduce array function to compare with reducer state?
-                    selected={getSelectedCompanions()}
-                    // setOptions={(companionOptions) => setRomances(companionOptions)}
-                    setSelected={(companionSelection) => {
-                        const companions = companionSelection.map((companion) => {
-                            return companion.name
+                <div>
+                    <div className='questSection'>
+                        <h2> Protagonist </h2>
+                        <TextInput 
+                            title='Name' 
+                            value={get(gameState, 'protagonist.name')} 
+                            handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'name', value}})} />
+                        <TextInput 
+                            title='Class'
+                            value={get(gameState, 'protagonist.class')}
+                            suggestedValues={['Mage', 'Rogue', 'Warrior']}
+                            handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'class', value}})}
+                        />
+                        <TextInput 
+                            title='Summary'
+                            multiLine={true}
+                            value={get(gameState, 'protagonist.summary')}
+                            handleChange={(value) => onChange({type: 'SET_DA2_PROTAG_ATTR', payload: {key: 'summary', value}})}
+                        />
+                    <MultiSelectDropdown 
+                        title='Romance'
+                        options={defaultRomances}
+                        selected={getSelectedRomances()}
+                        setSelected={(romanceSelection) => {
+                        const romances = romanceSelection.map((romance) => {
+                            return romance.name
                         })
-                        onChange({type: 'SET_DA2_MULTI', payload: {key: 'companions', value: companions}})
+                        onChange({type: 'SET_DA2_MULTI', payload: {key: 'romances', value: romances}})
                     }}
-                />
-                <MultiSelectDropdown 
-                    title='Rivals'
-                    options={defaultCompanions}
-                    selected={getSelectedRivals()}
-                    // setOptions={(rivalOptions) => setRivals(rivalOptions)}
-                    setSelected={(rivalSelection) => {
-                        const rivals = rivalSelection.map((rival) => {
-                            return rival.name
-                        })
-                        onChange({type: 'SET_DA2_MULTI', payload: {key: 'rivals', value: rivals}})
-                    }}
-                />
-                </div>
-                <div className='questSection'>
-                    <h2>Act One</h2>
-                    <TextInput 
-                        title='How did Hawke deal with Ketojan?'
-                        value={get(gameState, 'quests.0.decisions.ketojan')}
-                        suggestedValues={[
-                            'Hawke defended Ketojan from the Qunari, and then Ketojan took his own life',
-                            'Hawke handed Ketojan over to the Qunari'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ketojan', value}})}
                     />
-                    <TextInput 
-                        title='What became of Feynriel?'
-                        value={get(gameState, 'quests.0.decisions.feynriel')}
-                        suggestedValues={[
-                            'Hawke sent Feynriel to the Dalish',
-                            'Hawke sent Feynriel to the Circle'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'feynriel', value}})}
+                    <MultiSelectDropdown 
+                        title='Companions'
+                        options={defaultCompanions} // use reduce array function to compare with reducer state?
+                        selected={getSelectedCompanions()}
+                        // setOptions={(companionOptions) => setRomances(companionOptions)}
+                        setSelected={(companionSelection) => {
+                            const companions = companionSelection.map((companion) => {
+                                return companion.name
+                            })
+                            onChange({type: 'SET_DA2_MULTI', payload: {key: 'companions', value: companions}})
+                        }}
                     />
-                    <TextInput 
-                        title='Did Hawke return Saemus to the Viscount?'
-                        value={get(gameState, 'quests.0.decisions.saemus')}
-                        suggestedValues={[
-                            'Saemus was rescued from the mercenary group determined to hold him hostage',
-                            'Saemus was not returned to his father'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'saemus', value}})}
+                    <MultiSelectDropdown 
+                        title='Rivals'
+                        options={defaultCompanions}
+                        selected={getSelectedRivals()}
+                        // setOptions={(rivalOptions) => setRivals(rivalOptions)}
+                        setSelected={(rivalSelection) => {
+                            const rivals = rivalSelection.map((rival) => {
+                                return rival.name
+                            })
+                            onChange({type: 'SET_DA2_MULTI', payload: {key: 'rivals', value: rivals}})
+                        }}
                     />
-                    <TextInput 
-                        title={`What did Hawke tell Ghyslain about his wife's death?`}
-                        value={get(gameState, 'quests.0.decisions.ghyslain')}
-                        suggestedValues={[
-                            'Hawke did not find Ninette',
-                            `Hawke told Ghyslain that his wife had died, but spared him the grisly details`,
-                            `Hawke told Ghyslain the full truth of his wife's death`
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ghyslain', value}})}
-                    />
+                    </div>
+                    <div className='questSection'>
+                        <h2>Act One</h2>
+                        <TextInput 
+                            title='How did Hawke deal with Ketojan?'
+                            value={get(gameState, 'quests.0.decisions.ketojan')}
+                            suggestedValues={[
+                                'Hawke defended Ketojan from the Qunari, and then Ketojan took his own life',
+                                'Hawke handed Ketojan over to the Qunari'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ketojan', value}})}
+                        />
+                        <TextInput 
+                            title='What became of Feynriel?'
+                            value={get(gameState, 'quests.0.decisions.feynriel')}
+                            suggestedValues={[
+                                'Hawke sent Feynriel to the Dalish',
+                                'Hawke sent Feynriel to the Circle'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'feynriel', value}})}
+                        />
+                        <TextInput 
+                            title='Did Hawke return Saemus to the Viscount?'
+                            value={get(gameState, 'quests.0.decisions.saemus')}
+                            suggestedValues={[
+                                'Saemus was rescued from the mercenary group determined to hold him hostage',
+                                'Saemus was not returned to his father'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'saemus', value}})}
+                        />
+                        <TextInput 
+                            title={`What did Hawke tell Ghyslain about his wife's death?`}
+                            value={get(gameState, 'quests.0.decisions.ghyslain')}
+                            suggestedValues={[
+                                'Hawke did not find Ninette',
+                                `Hawke told Ghyslain that his wife had died, but spared him the grisly details`,
+                                `Hawke told Ghyslain the full truth of his wife's death`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ghyslain', value}})}
+                        />
+                    </div>
                 </div>
                 <div className='questSection'>
                     <h2>Act Two</h2>
@@ -230,58 +232,60 @@ function DA2({ gameState, onChange }: DA2Props) {
                         handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'arishok', value}})}
                     />
                 </div>
-                <div className='questSection'>
-                    <h2>Act Three</h2>
-                    <TextInput 
-                        title={`What became of the conspirators?`}
-                        value={get(gameState, 'quests.2.decisions.conspirators')}
-                        suggestedValues={[
-                            'Hawke handed the conspirators to Orsino, allowing the First Enchanter to deal with them away from Templar eyes',
-                            `Hawke presented the conspirators to Meredith, confirming the knight-commander's fears`
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'conspirators', value}})}
-                    />
-                    <TextInput 
-                        title={`Did Hawke approve of Anders's actions at the Chantry?`}
-                        value={get(gameState, 'quests.2.decisions.andersapprove')}
-                        suggestedValues={[
-                            'No amount of explanation could convince Hawke that Anders was in the right.',
-                            'Hawke backed Anders\'s actions, perhaps moved by his claims that such things were inevitable.'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'andersapprove', value}})}
-                    />
-                    <TextInput 
-                        title={`What happened to Anders?`}
-                        value={get(gameState, 'quests.2.decisions.anders')}
-                        suggestedValues={[
-                            'Hawke executed Anders',
-                            'Anders is alive and well'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'anders', value}})}
-                    />
-                    <TextInput 
-                        title={`Who did Hawke side with in the final battle?`}
-                        value={get(gameState, 'quests.2.decisions.side')}
-                        suggestedValues={[
-                            'Hawke went to the defense of the mages as the Gallows burned',
-                            'The templars counted on the Champion of Kirkwall as an ally while they put down the rebellious mages'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'side', value}})}
-                    />
-                </div>
-                <div className='questSection'>
-                    <h2>Mark of the Assassin DLC</h2>
-                    <TextInput 
-                        title={`What was Tallis and Hawke's relationship?`}
-                        value={get(gameState, 'quests.3.decisions.tallis')}
-                        suggestedValues={[
-                            'Hawke did not encounter Tallis',
-                            'Hawke and Tallis parted on amicable terms',
-                            'Hawke and Tallis shared a kiss before they parted',
-                            'Hawke and Tallis fundamentally disagreed about her ultimate objective and how it related to the Qunari'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_MOTA_ATTR', payload: {key: 'tallis', value}})}
-                    />
+                <div>
+                    <div className='questSection'>
+                        <h2>Act Three</h2>
+                        <TextInput 
+                            title={`What became of the conspirators?`}
+                            value={get(gameState, 'quests.2.decisions.conspirators')}
+                            suggestedValues={[
+                                'Hawke handed the conspirators to Orsino, allowing the First Enchanter to deal with them away from Templar eyes',
+                                `Hawke presented the conspirators to Meredith, confirming the knight-commander's fears`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'conspirators', value}})}
+                        />
+                        <TextInput 
+                            title={`Did Hawke approve of Anders's actions at the Chantry?`}
+                            value={get(gameState, 'quests.2.decisions.andersapprove')}
+                            suggestedValues={[
+                                'No amount of explanation could convince Hawke that Anders was in the right.',
+                                'Hawke backed Anders\'s actions, perhaps moved by his claims that such things were inevitable.'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'andersapprove', value}})}
+                        />
+                        <TextInput 
+                            title={`What happened to Anders?`}
+                            value={get(gameState, 'quests.2.decisions.anders')}
+                            suggestedValues={[
+                                'Hawke executed Anders',
+                                'Anders is alive and well'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'anders', value}})}
+                        />
+                        <TextInput 
+                            title={`Who did Hawke side with in the final battle?`}
+                            value={get(gameState, 'quests.2.decisions.side')}
+                            suggestedValues={[
+                                'Hawke went to the defense of the mages as the Gallows burned',
+                                'The templars counted on the Champion of Kirkwall as an ally while they put down the rebellious mages'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'side', value}})}
+                        />
+                    </div>
+                    <div className='questSection'>
+                        <h2>Mark of the Assassin DLC</h2>
+                        <TextInput 
+                            title={`What was Tallis and Hawke's relationship?`}
+                            value={get(gameState, 'quests.3.decisions.tallis')}
+                            suggestedValues={[
+                                'Hawke did not encounter Tallis',
+                                'Hawke and Tallis parted on amicable terms',
+                                'Hawke and Tallis shared a kiss before they parted',
+                                'Hawke and Tallis fundamentally disagreed about her ultimate objective and how it related to the Qunari'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_MOTA_ATTR', payload: {key: 'tallis', value}})}
+                        />
+                    </div>
                 </div>
                 {/* <h2>Legacy DLC</h2> */}
             </div>
