@@ -220,7 +220,32 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
             })}
 
         case 'SET_AWAKENING_ATTR':
-            return {...state}
+            const awakeKey = action.payload.key
+            let newAwakeChoices = {...state.games[0].quests[9].decisions}
+            newAwakeChoices[`${awakeKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[9].decisions = newAwakeChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_DAO_COMPANION_ATTR':
+            const compKey = action.payload.key
+            let newCompanionChoices = {...state.games[0].quests[10].decisions}
+            newCompanionChoices[`${compKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[10].decisions = newCompanionChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
     
         // set da2 decisions
         case 'SET_ACT_ONE_ATTR':

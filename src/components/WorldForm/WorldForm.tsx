@@ -58,11 +58,12 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                         <input type='checkbox' /> */}
                     </div>
                     <div className='formButtons'>
+                    {(view === PageViewType.CREATING) && 
                         <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault()
                             dispatch({type: 'CLEAR_FORM'})
                             
-                            }} className='formButton'> CLEAR FORM </button>
+                            }} className='formButton'> CLEAR FORM </button>}
                         <button type="submit" className='formButton'> SUBMIT </button>
                         {(view === PageViewType.EDITING && id !== undefined) && 
                             <Link to={`/world/${id}/view`} className='viewLink'> VIEW </Link>}

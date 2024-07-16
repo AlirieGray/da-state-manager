@@ -189,8 +189,60 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                 return game
             })}
 
+        case 'SET_LANDSMEET_ATTR':
+            const landsmeetKey = action.payload.key
+            let newlandsmeetChoices = {...state.games[0].quests[7].decisions}
+            newlandsmeetChoices[`${landsmeetKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[7].decisions = newlandsmeetChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+        case 'SET_BATTLE_DENERIM_ATTR':
+            const battleKey = action.payload.key
+            let newBattleChoices = {...state.games[0].quests[8].decisions}
+            newBattleChoices[`${battleKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[8].decisions = newBattleChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
         case 'SET_AWAKENING_ATTR':
-            return {...state}
+            const awakeKey = action.payload.key
+            let newAwakeChoices = {...state.games[0].quests[9].decisions}
+            newAwakeChoices[`${awakeKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[9].decisions = newAwakeChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
+        case 'SET_DAO_COMPANION_ATTR':
+            const compKey = action.payload.key
+            let newCompanionChoices = {...state.games[0].quests[10].decisions}
+            newCompanionChoices[`${compKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[10].decisions = newCompanionChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
     
         // set da2 decisions
         case 'SET_ACT_ONE_ATTR':
@@ -393,7 +445,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                         'connor': '',
                         'prepare': '',
                         'isolde': '',
-                        'bella': ''
+                        'bella': '',
+                        'valena': ''
                     }
                 },
                 {
@@ -451,9 +504,21 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                 {
                     name: 'Awakening DLC',
                     decisions: {
-                        'architect': ''
+                        'architect': '',
+                        'keep': '',
+                        'nathaniel': ''
                     }
                 },  
+                {
+                    name: 'Companions',
+                    decisions: {
+                        'sten_fate': '',
+                        'wynne': '',
+                        'leliana': '',
+                        'ali_fate': '',
+                        'sten_haven': ''
+                    }
+                },
             ]
         },
         {

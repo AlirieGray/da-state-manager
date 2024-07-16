@@ -3,6 +3,7 @@ import { World } from './worldTypes'
 type OriginsFormActions = 
     | { type: 'SET_ORIGINS_PROTAG_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_ORIGINS_MULTI', payload: {key: string, value: string[]} }
+    | { type: 'SET_DAO_COMPANION_ATTR', payload: {key: string, value: string}}
     | { type: 'SET_PROLOGUE_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_LOTHERING_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_REDCLIFFE_ATTR', payload: {key: string, value: string} }
