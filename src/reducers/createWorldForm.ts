@@ -400,7 +400,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                     name: 'The Urn of Sacred Ashes',
                     decisions: {
                         'defiled': '',
-                        'dragon': ''
+                        'dragon': '',
+                        'genitivi': ''
                     }
                 },
                 {
@@ -427,7 +428,9 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                         'king': '',
                         'anvil': '',
                         'ruck': '',
-                        'zerlinda': ''
+                        'zerlinda': '',
+                        'dagna': '',
+                        'burkel': ''
                     }
                 },
                 {
@@ -441,7 +444,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                     name: 'Battle of Denerim',
                     decisions: {
                         'archdemon': '',
-                        'ritual': ''
+                        'ritual': '',
+                        'leader': ''
                     }
                 },
                 {

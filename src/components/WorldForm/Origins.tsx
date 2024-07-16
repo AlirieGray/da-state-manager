@@ -244,6 +244,15 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     value={get(gameState, 'quests.3.decisions.dragon')}
                     suggestedValues={['The Warden slew the High Dragon at the Temple of Sacred Ashes', 'The Warden did not slay the High Dragon at the Temple of Sacred Ashes']}
                     handleChange={(value) => onChange({type: 'SET_URN_ATTR', payload: {key: 'dragon', value}})} />
+
+                <TextInput
+                    title='What became of Genitivi?'
+                    value={get(gameState, 'quests.3.decisions.genitivi')}
+                    suggestedValues={['Brother Genitivi spread the word of the existence of the Temple of Sacred Ashes',
+                    'The Warden killed Brother Genitivi at the Temple of Sacred Ashes']}
+                    handleChange={(value) => onChange({type: 'SET_URN_ATTR', payload: {key: 'genitivi', value}})} />
+            </div>
+                <div className='questSection'>
                 <h2>Broken Circle</h2>
                 <TextInput
                     title='Who did the Warden support at the Circle?'
@@ -324,6 +333,18 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     `Zerlinda was taken in by Burkel's chantry`,
                     'Zerlinda left her son in the Deep Roads']}
                     handleChange={(value) => onChange({type: 'SET_PARAGON_ATTR', payload: {key: 'zerlinda', value}})} />
+                <TextInput
+                    title='Did Dagna leave Orzammar?'
+                    value={get(gameState, 'quests.6.decisions.dagna')}
+                    suggestedValues={[`Dagna remained in Orzammar`, 
+                    'Dagna left to study magic at the Circle',]}
+                    handleChange={(value) => onChange({type: 'SET_PARAGON_ATTR', payload: {key: 'dagna', value}})} />
+                <TextInput
+                    title="What became of Brother Burkel's plan to establish a chantry in Orzammar?"
+                    value={get(gameState, 'quests.6.decisions.burkel')}
+                    suggestedValues={['The Warden did not help Burkel establish a chantry in Orzammar', 
+                    `The Warden convinved Shaper Czibor to allow Brother Burkel to form a chantry in Orzammar, but he is later killed protesting the Assembly's restrictions on the Andrastian converts.`]}
+                    handleChange={(value) => onChange({type: 'SET_PARAGON_ATTR', payload: {key: 'burkel', value}})} />
             </div>
             <div className='questSection'>
                 <h2>The Landsmeet</h2>
@@ -351,11 +372,7 @@ function Origins({ gameState, onChange }: OriginsProps) {
             </div>
             <div className='questSection'>
                 <h2>Battle of Denerim</h2>
-                <TextInput
-                    title='Who slew the Archdemon?'
-                    value={get(gameState, 'quests.8.decisions.archdemon')}
-                    suggestedValues={['The Warden killed the Archdemon', 'Alistair killed the Archdemon', 'Loghain killed the Archdemon']}
-                    handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'archdemon', value}})} />
+
                 <TextInput
                     title={`Did the Warden agree to complete Morrigan's dark ritual?`}
                     value={get(gameState, 'quests.8.decisions.ritual')}
@@ -365,6 +382,42 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     'Morrigan had an old god baby with Loghain',
                     'Morrigan had a human baby with the Warden']}
                     handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'ritual', value}})} />
+            
+            <TextInput
+                    title='Who did the Warden select to lead the team that stayed behind at the gate during the battle?'
+                    value={get(gameState, 'quests.8.decisions.leader')}
+                    suggestedValues={['Oghren',
+                    'Sten',
+                    'Leliana',
+                    'Shale',
+                    'Zevran',
+                    'Loghain',
+                    'Alistair',
+                    'Morrigan',
+                    'Wynne',
+                ]}
+                    handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'leader', value}})} />
+
+            <TextInput
+                title='Who slew the Archdemon?'
+                value={get(gameState, 'quests.8.decisions.archdemon')}
+                suggestedValues={['The Warden killed the Archdemon', 'Alistair killed the Archdemon', 'Loghain killed the Archdemon']}
+                handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'archdemon', value}})} 
+                />
+            </div>
+
+            <div className='questSection'>
+                <h2>Awakening DLC</h2>
+
+                <TextInput
+                    title='What happened to the Architext?'
+                    value={get(gameState, 'quests.8.decisions.architect')}
+                    suggestedValues={[
+                        'The Warden killed the Architect',
+                        'The Warden allowed the Architect to live'
+                    ]}
+                    handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'architect', value}})} 
+                    />
             </div>
         </div>
     )

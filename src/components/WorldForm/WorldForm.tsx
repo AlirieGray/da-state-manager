@@ -40,7 +40,7 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                 handleSubmit()}} 
                 className='formWrapper'>
                 <div className='formHeader'>
-                    <div>
+                    <div className='formInputs'>
                         <TextInput 
                             title='World State Name' 
                             value={get(state, 'name')} 
@@ -68,11 +68,11 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                             <Link to={`/world/${id}/view`} className='viewLink'> VIEW </Link>}
                     </div>
                 </div>
-                <div className='selectGameButtons'>
+                <div className='selectGameButtonWrapper'>
                     <div className='selectLabel'>
                         Select game: <img src={qMark} data-tooltip-id="select-game" />
                     </div>
-                    <div>
+                    <div className="selectGameButtons">
                         <button className={((state.activeGame == 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault()
                             dispatch({type: 'SET_ACTIVE_GAME', payload: 0})

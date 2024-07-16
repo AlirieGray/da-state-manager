@@ -7,6 +7,10 @@ h2 {
     margin-bottom: 5px;
 }
 
+#select-game {
+    background-color: #0f0e0f;
+}
+
 .selectLabel {
     width: 600px;
     display: flex;
@@ -14,7 +18,7 @@ h2 {
     margin-bottom: 8px;
 }
 
-.selectGameButtons {
+.selectGameButtonWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,6 +85,7 @@ h2 {
 
 .worldFormContainer {
     margin-bottom: 25px;
+    /* width: 100%; */
 }
 
 .formWrapper {
@@ -114,11 +119,46 @@ h2 {
 
 @media only screen and (max-width: 900px) {
     .formHeader {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        align-items: center;
     }
 
     .formWrapper {
-        max-width: 70%;
+        max-width: 80%;
+    }
+
+    .formInputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .selectLabel {
+        max-width: 200px;
+    }
+
+    #select-game {
+        max-width: 200px !important; 
+    }
+
+    .worldFormContainer {
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formWrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .selectGameButtons {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+        justify-content: space-between;
     }
 }
 
