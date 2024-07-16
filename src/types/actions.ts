@@ -23,6 +23,7 @@ type DA2FormActions =
     | { type: 'SET_ACT_THREE_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_MOTA_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_LEGACY_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_DA2_COMPANION_ATTR', payload: {key: string, value: string} }
 
 type InqusitionFormActions = 
     | { type: 'SET_INQ_PROTAG_ATTR', payload: {key: string, value: string} }
@@ -34,6 +35,8 @@ type InqusitionFormActions =
     | { type: 'SET_WPHW_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_DUATW_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_TRESPASSER_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_INQ_COMPANION_ATTR', payload: {key: string, value: string} }
+    
 
 export type WorldFormAction = 
     | { type: 'SET_WORLD_NAME', payload: string }

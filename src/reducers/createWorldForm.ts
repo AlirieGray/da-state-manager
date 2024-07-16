@@ -3,7 +3,7 @@ import { CreateWorldForm, Game, World, WorldFormAction } from '../types'
 // todo: use immer ?
 // use consts for world form action types
 // todo: persist state in local storage
-// todo: set summary not working? 
+// todo: clear form not working....
 
 export const createWorldFormReducer = (state: CreateWorldForm, action: WorldFormAction) => {
     switch (action.type) {
@@ -176,9 +176,13 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             })}
 
         case 'SET_PARAGON_ATTR':
+            console.log("1111111")
+            console.log(defaultCreateWorldForm.games[0].quests[6])
             const paragonKey = action.payload.key
             let newParagonChoices = {...state.games[0].quests[6].decisions}
             newParagonChoices[`${paragonKey}`] = action.payload.value
+            console.log("?????????")
+            console.log(defaultCreateWorldForm.games[0].quests[6])
 
             return {...state, games: state.games.map((game: Game, index) => {
                 if (index === 0) {
@@ -396,7 +400,260 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             })}
 
         case 'CLEAR_FORM':
-            return {...defaultCreateWorldForm}
+            return {
+                ...state,
+                name: '',
+                wip: true,
+                summary: '',
+                active: true,
+                fanWorks: [],
+                games: [
+                    {
+                        name: 'Origins',
+                        protagonist: {
+                            name: '',
+                            class: '',
+                            origin: '',
+                            romances: [],
+                            companions: [],
+                            rivals: [],
+                            summary: '',
+                        },
+                        // TODO:  iterate over decisions key/value pairs to create array for the backend
+                        quests: [
+                            {
+                                name: 'Prologue',
+                                decisions: {
+                                    'summary': '',
+                                    'prisoner': '',
+                                },
+                            },
+                            {
+                                name: 'Lothering',
+                                decisions: {
+                                    'leliana': '',
+                                    'merchant': '',
+                                    'sten': ''
+                                }
+                            },
+                            {
+                                name: 'The Arl of Redcliffe',
+                                decisions: {
+                                    'connor': '',
+                                    'prepare': '',
+                                    'isolde': '',
+                                    'bella': '',
+                                    'valena': '',
+                                    'demon': ''
+                                }
+                            },
+                            {
+                                name: 'The Urn of Sacred Ashes',
+                                decisions: {
+                                    'defiled': '',
+                                    'dragon': '',
+                                    'genitivi': ''
+                                }
+                            },
+                            {
+                                name: 'Broken Circle',
+                                decisions: {
+                                    'side': '',
+                                    'cullen': '',
+                                    'irving': ''
+                                }
+                            },
+                            {
+                                name: 'Nature of the Beast',
+                                decisions: {
+                                    'side': '',
+                                    'cammen': '',
+                                    'deygan': '',
+                                    'halla': '',
+                                    'athras': ''
+                                }
+                            },
+                            {
+                                name: 'Paragon of her Kind',
+                                decisions: {
+                                    'king': '',
+                                    'anvil': '',
+                                    'ruck': '',
+                                    'zerlinda': '',
+                                    'dagna': '',
+                                    'burkel': ''
+                                }
+                            },
+                            {
+                                name: 'The Landsmeet',
+                                decisions: {
+                                    'ruler': '',
+                                    'loghain': ''
+                                }
+                            },
+                            {
+                                name: 'Battle of Denerim',
+                                decisions: {
+                                    'archdemon': '',
+                                    'ritual': '',
+                                    'leader': ''
+                                }
+                            },
+                            {
+                                name: 'Awakening DLC',
+                                decisions: {
+                                    'architect': '',
+                                    'keep': '',
+                                    'nathaniel': ''
+                                }
+                            },  
+                            {
+                                name: 'Companions',
+                                decisions: {
+                                    'sten_fate': '',
+                                    'wynne': '',
+                                    'leliana': '',
+                                    'ali_fate': '',
+                                    'sten_haven': ''
+                                }
+                            },
+                        ]
+                    },
+                    {
+                        name: 'Dragon Age 2',
+                        protagonist: {
+                            name: '',
+                            class: '',
+                            romances: [],
+                            companions: [],
+                            rivals: [],
+                            summary: ''
+                        },
+                        quests: [
+                            {
+                                name: 'Act One',
+                                decisions: {
+                                    'ketojan': '',
+                                    'feynriel': '',
+                                    'saemus': ''
+                                }
+                            },
+                            {
+                                name: 'Act Two',
+                                decisions: {
+                                    'feynriel': '',
+                                    'petrice': '',
+                                    'isabelaReturn': '',
+                                    'isabelaArishok': '',
+                                    'arishok': ''
+                                }
+                            },
+                            {
+                                name: 'Act Three',
+                                decisions: {
+                                    'conspirators': '',
+                                    'side': '',
+                                    'anders': '',
+                                    'andersapprove': '',
+                                    'allies': ''
+                                }
+                            },
+                            {
+                                name: 'Mark of the Assassin DLC',
+                                decisions: {
+                                    'tallis': ''
+                                }
+                            },
+                            {
+                                name: 'Legacy DLC',
+                                decisions: {
+                                    'side': '',
+                                    'will': ''
+                                }
+                            },
+                            {
+                                name: 'Companions',
+                                decisions: {
+                                    'bethany': '',
+                                    'carver': '',
+                                    'bartrand': '',
+                                    'haunting': '',
+                                    'lyrium': '',
+                                    'eluvian': '',
+                                    'clan': ''
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        name: 'Inquisition',
+                        protagonist: {
+                            name: '',
+                            class: '',
+                            origin: '',
+                            romances: [],
+                            companions: [],
+                            rivals: [],
+                            summary: ''
+                        },
+                        quests: [
+                            {
+                                name: 'In Your Heart Shall Burn',
+                                decisions: {}
+                            },
+                            {
+                                name: 'Champions of the Just',
+                                decisions: {
+                                    'templars': '',
+                                    'barris': ''
+                                }
+                            },
+                            {
+                                name: 'In Hushed Whispers',
+                                decisions: {
+                                    'mages': '',
+                                    'dorian': ''
+                                }
+                            },
+                            {
+                                name: 'Here Lies the Abyss',
+                                decisions: {
+                                    'gw': '',
+                                    'sacrifice': ''
+                                }
+                            },
+                            {
+                                name: 'Wicked Eyes and Wicked Hearts',
+                                decisions: {
+                                    'ruler': '',
+                                    'florianne': ''
+                                }
+                            },
+                            {
+                                name: 'What Pride Had Wrought',
+                                decisions: {
+                                    'well': '',
+                                    'ritual': '',
+                                    'abelas': ''
+                                }
+                            },
+                            {
+                                name: 'Doom Upon All the World',
+                                decisions: {
+                                    'divine': ''
+                                }
+                            },
+                            {
+                                name: 'Trespasser DLC',
+                                decisions: {
+                                    'disband': '',
+                                    'solas': ''
+                                }
+                            },
+                        ]
+                    }
+                ]
+            }
 
         default: 
             return {...state}
@@ -446,7 +703,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                         'prepare': '',
                         'isolde': '',
                         'bella': '',
-                        'valena': ''
+                        'valena': '',
+                        'demon': ''
                     }
                 },
                 {
@@ -516,7 +774,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                         'wynne': '',
                         'leliana': '',
                         'ali_fate': '',
-                        'sten_haven': ''
+                        'sten_haven': '',
+                        'marj': ''
                     }
                 },
             ]
@@ -556,7 +815,8 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                         'conspirators': '',
                         'side': '',
                         'anders': '',
-                        'andersapprove': ''
+                        'andersapprove': '',
+                        'allies': ''
                     }
                 },
                 {
@@ -567,7 +827,22 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                 },
                 {
                     name: 'Legacy DLC',
-                    decisions: {}
+                    decisions: {
+                        'side': '',
+                        'will': ''
+                    }
+                },
+                {
+                    name: 'Companions',
+                    decisions: {
+                        'bethany': '',
+                        'carver': '',
+                        'bartrand': '',
+                        'haunting': '',
+                        'lyrium': '',
+                        'eluvian': '',
+                        'clan': ''
+                    }
                 }
             ]
         },
@@ -640,4 +915,3 @@ export const defaultCreateWorldForm: CreateWorldForm = {
         }
     ]
 }
-

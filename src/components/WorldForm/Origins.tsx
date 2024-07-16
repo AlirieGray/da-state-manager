@@ -198,7 +198,8 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         handleChange={(value) => onChange({type: 'SET_DAO_COMPANION_ATTR', payload: {key: 'sten_haven', value}})} 
                         suggestedValues={[
                             `Sten was skeptical of the decision to track down the Urn of Sacred Ashes, but ultimately trusted the Warden's leadership`,
-                            'Sten challenged the Warden to a duel'
+                            `The Warden earned Sten's respect by defeating him in a duel at the village of Haven`,
+                            'Sten did not accompany the Warden to Haven'
                         ]}
                     />
                     <TextInput
@@ -206,11 +207,42 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         value={get(gameState, 'quests.10.decisions.sten_fate')}
                         handleChange={(value) => onChange({type: 'SET_DAO_COMPANION_ATTR', payload: {key: 'sten_fate', value}})} 
                         suggestedValues={[
-                            'Sten found his sword and return to Par Vollen after the Blight',
-                            'Sten never found his sword'
+                            'Sten found Asala and return to Par Vollen after the Blight',
+                            'Sten never found his sword and was unable to return to Par Vollen'
                         ]}
                     />
 
+                    <TextInput
+                        title={`What happened to Leliana?`}
+                        value={get(gameState, 'quests.10.decisions.leliana')}
+                        handleChange={(value) => onChange({type: 'SET_DAO_COMPANION_ATTR', payload: {key: 'leliana', value}})} 
+                        suggestedValues={[
+                            'Leliana was alive and well at the end of the Fifth Blight',
+                            'The Warden killed Leliana after poisoning the Urn of Sacred Ashes',
+                            'Upset at the way the Warden dealt with the Urn of Sacred Ashes, Leliana abandoned the cause'
+                        ]}
+                    />
+
+                    <TextInput
+                        title={`How did the Warden handle Marjolaine?`}
+                        value={get(gameState, 'quests.10.decisions.marj')}
+                        handleChange={(value) => onChange({type: 'SET_DAO_COMPANION_ATTR', payload: {key: 'marj', value}})} 
+                        suggestedValues={[
+                            'The Warden left Marjolaine alive after their confrontation, and Leliana returned to Orlais to find her after the Blight ended',
+                            'Marjolaine was killed in her confrontation with the Warden and Leliana in Denerim',
+                        ]}
+                    />
+
+                    <TextInput
+                        title={`What happened when Taliesen tracked down Zevran?`}
+                        value={get(gameState, 'quests.10.decisions.taliesen')}
+                        handleChange={(value) => onChange({type: 'SET_DAO_COMPANION_ATTR', payload: {key: 'taliesen', value}})} 
+                        suggestedValues={[
+                            'Zevran refused to turn on the Warden, killing Taliesen instead',
+                            'Zevran joined Taliesen and attacked the Warden, forcing the Warden to kill him',
+                            'Zevran stayed out of the fight between his former companion Taliesen and the Warden'
+                        ]}
+                    />
                         
                 </div>
                 <div className='questSection'>
@@ -236,17 +268,17 @@ function Origins({ gameState, onChange }: OriginsProps) {
                 <div className='questSection'>
                     <h2>Lothering</h2>
                     <TextInput
-                        title={`Did the Warden recruit Leliana at Lothering?`}
+                        title={`Did the Warden recruit Leliana in Lothering?`}
                         value={get(gameState, 'quests.1.decisions.leliana')}
                         suggestedValues={['The Warden recruited Leliana in the tavern at Lothering', 'After initially declining, the Warden recruited Leliana after she made a second attempt when the party was leaving Lothering', `Leliana did not join the Warden's campaign agains the Blight`]}
                         handleChange={(value) => onChange({type: 'SET_LOTHERING_ATTR', payload: {key: 'leliana', value}})} />   
                 <TextInput
-                        title={`Did the Warden recruit Sten at Lothering?`}
+                        title={`Did the Warden recruit Sten in Lothering?`}
                         value={get(gameState, 'quests.1.decisions.sten')}
                         suggestedValues={['The Warden left Sten to his fate', 'Sten joined the Warden in the campaign against the Fifth Blight']}
                         handleChange={(value) => onChange({type: 'SET_LOTHERING_ATTR', payload: {key: 'sten', value}})} />     
                     <TextInput
-                        title={'How did the Warden deal with the unscrupulous merchant at Lothering?'}
+                        title={'How did the Warden deal with the unscrupulous merchant?'}
                         value={get(gameState, 'quests.1.decisions.merchant')}
                         suggestedValues={['The Warden convinced the Lothering merchant to sell his goods at a fair price', 'The Warden struck a profitable deal with the Lothering merchant', 'The Warden did not deal with the Lothering merchant']}
                         handleChange={(value) => onChange({type: 'SET_LOTHERING_ATTR', payload: {key: 'merchant', value}})} />     
@@ -255,8 +287,23 @@ function Origins({ gameState, onChange }: OriginsProps) {
             <div>
                 <div className='questSection'>
                     <h2>Redcliffe</h2>
-                    {/* <label>Did the Warden help Redcliffe prepare?</label>
-                    <input type="checkbox" /> */}
+                    <TextInput
+                        title={`Did the Warden help Redcliffe prepare for the battle against the undead?`}
+                        value={get(gameState, 'quests.2.decisions.prepare')}
+                        suggestedValues={['The Warden did not help Redcliffe prepare to fight off the undead attacks',
+                        'The Warden helped the people of Redcliffe prepare to fight off the undead attacks',
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'prepare', value}})}
+                    />  
+                    <TextInput
+                        title={`Did the Warden help the village of Redcliffe fight the undead hordes at nightfall?`}
+                        value={get(gameState, 'quests.2.decisions.fight')}
+                        suggestedValues={[
+                        'The Warden departed Redcliffe without lending aid to its people. The ensuing casualties were nearly complete.',
+                        'With the help of the Warden, the people of Redcliffe stood fast against the undead horde',
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'prepare', value}})}
+                    /> 
                     <TextInput
                         title={`What was Connor's fate?`}
                         value={get(gameState, 'quests.2.decisions.connor')}
@@ -269,6 +316,17 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         suggestedValues={['Isolde survived the events at Redcliffe castle', 'Isolde sacrified herself in a ritual to save her son']}
                         handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'isolde', value}})} 
                     />   
+                    <TextInput
+                        title={`Did the Warden make a deal with the desire demon?`}
+                        value={get(gameState, 'quests.2.decisions.demon')}
+                        suggestedValues={['The Warden did not make a deal with the desire demon', 
+                        'The Warden made a deal with the desire demon to acquire arcane secrets of blood magic',
+                        'The Warden made a deal with the desire demon for pleasure',
+                        'The Warden made a deal with the desire demon for love and approval',
+                        'The Warden made a deal with the desire demon for increased talents'
+                    ]}
+                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'demon', value}})} 
+                    />  
                     <TextInput
                         title={`Did the Warden look for Owen's daughter, Valena?`}
                         value={get(gameState, 'quests.2.decisions.valena')}
@@ -286,7 +344,22 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         value={get(gameState, 'quests.2.decisions.bella')}
                         suggestedValues={['Bella left Redcliffe', 'Bella took over ownership of the tavern', 'Bella left to start a brewery', 'Bella died in Redcliffe']}
                         handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'bella', value}})}
-                    />     
+                    />
+
+                    <TextInput
+                        title='What did the Warden do to help Kaitlyn find her brother Bevin?'
+                        value={get(gameState, 'quests.2.decisions.bella')}
+                        suggestedValues={[
+                            'The Warden did not help Kaitlyn find her brother', 
+                            'The Warden found Bevin, and claimed a powerful heirloom sword from his family to help stand against the Blight, despite vowing to return it afterwards',
+                            'The Warden found the missing young man and paid the family for their family sword',
+                            'The Warden recovered Bevin safe and sound',
+                            'The Warden scared Bevin straight, sending him running to the relative safety of the Redcliffe chantry',
+                            'The Warden freed Bevin and took the sword, later returning it'
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'bella', value}})}
+                    />
+                 
                 </div>
                 <div className='questSection'>
                     <h2>The Urn of Sacred Ashes</h2>
@@ -398,7 +471,7 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         'Dagna left to study magic at the Circle',]}
                         handleChange={(value) => onChange({type: 'SET_PARAGON_ATTR', payload: {key: 'dagna', value}})} />
                     <TextInput
-                        title="What became of Brother Burkel's plan to establish a chantry in Orzammar?"
+                        title="Did Brother Burkel establish a chantry in Orzammar?"
                         value={get(gameState, 'quests.6.decisions.burkel')}
                         suggestedValues={['The Warden did not help Burkel establish a chantry in Orzammar', 
                         `The Warden convinced Shaper Czibor to allow Brother Burkel to form a chantry in Orzammar, but he was later killed protesting the Assembly's restrictions on the Andrastian converts.`]}
@@ -462,6 +535,24 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     suggestedValues={['The Warden killed the Archdemon', 'Alistair killed the Archdemon', 'Loghain killed the Archdemon']}
                     handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'archdemon', value}})} 
                     />
+
+                <TextInput
+                    title='What did the Hero of Ferelden do after ending the Fifth Blight?'
+                    multiLine={true}
+                    value={get(gameState, 'quests.8.decisions.epilogue')}
+                    suggestedValues={[
+                        'The Warden was killed in the process of slaying the Archdemon in the Battle of Denerim',
+                        'After ending the Fifth Blight, the Hero of Ferelden helped to rebuild the Grey Wardens',
+                        'After the end of the Fifth Blight, the Warden decided to travel for a time with Leliana',
+                        'After the end of the Fifth Blight, the Warden decided to travel for a time with Zevran',
+                        'The Warden remained in Denerim as the new King Consort of Ferelden, alongside his wife, Queen Anora',
+                        'The Warden remained in Denerim as the new Queen Consort of Ferelden, alongside her husband, Alistair',
+                        'The Warden remained with King Alistair as his mistress',
+                        'The Warden joined Sten on his return voyage to Par Vollen',
+                        'The Warden joined Shale and Wynne on their quest to Tevinter to find a way for Shale to regain her mortality'
+                    ]}
+                    handleChange={(value) => onChange({type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: 'epilogue', value}})} 
+                    />
                 </div>
 
                 <div className='questSection'>
@@ -478,6 +569,28 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     />
 
                     <TextInput
+                        title='What became of Sigrun?'
+                        value={get(gameState, 'quests.9.decisions.sigrun')}
+                        suggestedValues={[
+                            `Sigrun disapproved of the Warden's decision to spare the Architect, and the Warden was forced to kill Sigrun in the ensuing confrontation`,
+                            'Sigrun left for her Calling in the Deep Roads after her time with the Warden',
+                            'The Warden helped Sigrun make amends for her past and gave a ring to Mischa',
+                            `Sigrun remained at the Warden's side for many years`
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_AWAKENING_ATTR', payload: {key: 'sigrun', value}})} 
+                    />
+                    <TextInput
+                        title="What happened to Nathaniel?"
+                        value={get(gameState, 'quests.9.decisions.nathaniel')}
+                        suggestedValues={[
+                            "The Warden invoked the Right of Conscription on Nathaiel Howe, making him a Grey Warden",
+                            "The Warden helped Nathaniel reunite with his sister, Delilah",
+                            "The Warden Commander executed Nathaniel Howe"
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_AWAKENING_ATTR', payload: {key: 'nathaniel', value}})} 
+                    />
+
+                    <TextInput
                         title="Did the Warden protect Vigil's keep or the city of Amaranthine?"
                         value={get(gameState, 'quests.9.decisions.keep')}
                         suggestedValues={[
@@ -488,15 +601,6 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         handleChange={(value) => onChange({type: 'SET_AWAKENING_ATTR', payload: {key: 'keep', value}})} 
                     />
 
-                    <TextInput
-                        title="What happened to Nathaniel?"
-                        value={get(gameState, 'quests.9.decisions.nathaniel')}
-                        suggestedValues={[
-                            "Nathaniel Howe is alive and well",
-                            "The Warden Commander executed Nathaniel Howe"
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_AWAKENING_ATTR', payload: {key: 'nathaniel', value}})} 
-                    />
                 </div>
             </div>
         </div>

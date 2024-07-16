@@ -142,6 +142,82 @@ function DA2({ gameState, onChange }: DA2Props) {
                     />
                     </div>
                     <div className='questSection'>
+                        <h2>Companions</h2>
+                        <TextInput 
+                            title="What was Bethany's career?"
+                            value={get(gameState, 'quests.5.decisions.bethany')}
+                            suggestedValues={[
+                                'Bethany died while escaping Lothering',
+                                'Bethany became a Circle mage',
+                                'Bethany became a Grey Warden',
+                                'Bethany died in the Deep Roads'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'bethany', value}})}
+                        />
+                        <TextInput 
+                            title="What was Carver's career?"
+                            value={get(gameState, 'quests.5.decisions.bethany')}
+                            suggestedValues={[
+                                'Carver died while escaping Lothering',
+                                'Carver became a templar',
+                                'Carver became a Grey Warden',
+                                'Carver died in the Deep Roads'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'carver', value}})}
+                        />
+
+                        <TextInput 
+                            title="Was Varric's brother Bartrand killed?"
+                            value={get(gameState, 'quests.5.decisions.bartrand')}
+                            suggestedValues={[
+                                'Bartrand survived his descent into madness',
+                                `Hawke spared Varric's brother Bartrand`,
+                                'After receiving healing from Anders, Hawke allowed Bartrand to live',
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'bartrand', value}})}
+                        />
+
+                        <TextInput 
+                            title="Did Hawke help Varric discover what was haunting his brother Bartrand's mansion?"
+                            value={get(gameState, 'quests.5.decisions.haunting')}
+                            suggestedValues={[
+                                `Varric's family home was abandoned for years after Bartrand's descent into madness`,
+                                `Varric's family home was restored to some semblance of normalcy after Hawke dealt with the manifestations there`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'haunting', value}})}
+                        />
+
+                        <TextInput 
+                            title="Did Varric keep a piece of the red lyrium idol?"
+                            value={get(gameState, 'quests.5.decisions.lyrium')}
+                            suggestedValues={[
+                                `Varric had a master enchanter "process" the red lyrium idol fragment, ultimately destroying it`,
+                                `Varric kept the red lyrium idol fragment, hoping it would be too small to affect him`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'lyrium', value}})}
+                        />
+                        <TextInput 
+                            title="Did Merrill destroy the eluvian?"
+                            value={get(gameState, 'quests.5.decisions.eluvian')}
+                            suggestedValues={[
+                                `Merill refused to abandon the mirror after spending so much time restoring it`,
+                                `The eluvian lay in shards when Merrill finished, the cursed thing destroyed`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'eluvian', value}})}
+                        />
+                        <TextInput 
+                            title="What happened to Merrill's clan?"
+                            value={get(gameState, 'quests.5.decisions.clan')}
+                            suggestedValues={[
+                                `Merrill's clan remained alive and well`,
+                                `Merrill's clan was killed`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_DA2_COMPANION_ATTR', payload: {key: 'clan', value}})}
+                        />
+                    </div>
+                </div>
+                <div>
+                    <div className='questSection'>
                         <h2>Act One</h2>
                         <TextInput 
                             title='How did Hawke deal with Ketojan?'
@@ -181,56 +257,56 @@ function DA2({ gameState, onChange }: DA2Props) {
                             handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ghyslain', value}})}
                         />
                     </div>
-                </div>
-                <div className='questSection'>
-                    <h2>Act Two</h2>
-                    <TextInput 
-                        title={`What happened to Feynriel after his ordeal in the Fade?`}
-                        value={get(gameState, 'quests.1.decisions.feynriel')}
-                        suggestedValues={[
-                            'Feynriel left for Tevinter',
-                            'Feynriel was made Tranquil',
-                            'Feynriel became possessed'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'feynriel', value}})}
+                    <div className='questSection'>
+                        <h2>Act Two</h2>
+                        <TextInput 
+                            title={`What happened to Feynriel after his ordeal in the Fade?`}
+                            value={get(gameState, 'quests.1.decisions.feynriel')}
+                            suggestedValues={[
+                                'Feynriel left for Tevinter',
+                                'Feynriel was made Tranquil',
+                                'Feynriel became possessed'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'feynriel', value}})}
+                            />
+                        <TextInput 
+                            title={'Did Hawke side with Petrice?'}
+                            value={get(gameState, 'quests.1.decisions.petrice')}
+                            suggestedValues={[
+                                'Petrice received no aid from Hawke in her plans to villify the Qunari of Kirkwall', 
+                                `With Hawke's help, Petrice was able to blame the death of the Viscount's son on the Qunari.`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'petrice', value}})}
                         />
-                    <TextInput 
-                        title={'Did Hawke side with Petrice?'}
-                        value={get(gameState, 'quests.1.decisions.petrice')}
-                        suggestedValues={[
-                            'Petrice received no aid from Hawke in her plans to villify the Qunari of Kirkwall', 
-                            `With Hawke's help, Petrice was able to blame the death of the Viscount's son on the Qunari.`
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'petrice', value}})}
-                    />
-                    <TextInput 
-                        title={`Did Isabela return after stealing the Tome?`}
-                        value={get(gameState, 'quests.1.decisions.isabelaReturn')}
-                        suggestedValues={[
-                            'Isabela left for good with the stolen Tome',
-                            'Isabela returned the Tome to Hawke and the Qunari'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'isabelaReturn', value}})}
-                    />
-                    <TextInput 
-                        title={`Was Isabela turned over to the Arishok?`}
-                        value={get(gameState, 'quests.1.decisions.isabelaArishok')}
-                        suggestedValues={[
-                            'Hawke did not turn Isabela over to the Arishok, resulting in a violent conflict',
-                            'Hawke turned Isabela over to the Arishok'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'isabelaArishok', value}})}
-                    />
-                    <TextInput 
-                        title={`What was the Arishok's fate?`}
-                        value={get(gameState, 'quests.1.decisions.arishok')}
-                        suggestedValues={[
-                            'Hawke defeated the Arishok in single combat',
-                            'Hawke killed the Arishok in an all-out battle',
-                            'The Arishok returned to Par Vollen with his Antaam'
-                        ]}
-                        handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'arishok', value}})}
-                    />
+                        <TextInput 
+                            title={`Did Isabela return after stealing the Tome?`}
+                            value={get(gameState, 'quests.1.decisions.isabelaReturn')}
+                            suggestedValues={[
+                                'Isabela left for good with the stolen Tome',
+                                'Isabela returned the Tome to Hawke and the Qunari'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'isabelaReturn', value}})}
+                        />
+                        <TextInput 
+                            title={`Was Isabela turned over to the Arishok?`}
+                            value={get(gameState, 'quests.1.decisions.isabelaArishok')}
+                            suggestedValues={[
+                                'Hawke did not turn Isabela over to the Arishok, resulting in a violent conflict',
+                                'Hawke turned Isabela over to the Arishok'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'isabelaArishok', value}})}
+                        />
+                        <TextInput 
+                            title={`What was the Arishok's fate?`}
+                            value={get(gameState, 'quests.1.decisions.arishok')}
+                            suggestedValues={[
+                                'Hawke defeated the Arishok in single combat',
+                                'Hawke killed the Arishok in an all-out battle',
+                                'The Arishok returned to Par Vollen with his Antaam'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_TWO_ATTR', payload: {key: 'arishok', value}})}
+                        />
+                    </div>
                 </div>
                 <div>
                     <div className='questSection'>
@@ -271,6 +347,22 @@ function DA2({ gameState, onChange }: DA2Props) {
                             ]}
                             handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'side', value}})}
                         />
+                        <TextInput 
+                            title={`Who joined Hawke in the final battle?`}
+                            multiLine={true}
+                            value={get(gameState, 'quests.2.decisions.allies')}
+                            suggestedValues={[
+                                `All of Hawke's companions fought at Hawke's side in the final battle`,
+                                `Sebastian left Hawke after Hawke spared Anders`,
+                                `Merrill left Hawke after Hawke decided to side with the Templars, and Hawke killed her in the final battle`,
+                                `Fenris left Hawke after Hawke decided to side with the mages, and Hawke killed him in the final battle`,
+                                `Fenris left Hawke after Hawke decided to side with the mages, but was later moved to rejoin Hawke`,
+                                'Aveline left Hawke after Hawke decided to side with the mages',
+                                'After Hawke spared his life and then sided with the Templars, Anders confronted Hawke in the Gallows and Hawke was forced to kill him',
+                                `After Hawke spared his life and then sided with the mages, Anders resumed his place at Hawke's side`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_THREE_ATTR', payload: {key: 'allies', value}})}
+                        />
                     </div>
                     <div className='questSection'>
                         <h2>Mark of the Assassin DLC</h2>
@@ -286,8 +378,29 @@ function DA2({ gameState, onChange }: DA2Props) {
                             handleChange={(value) => onChange({type: 'SET_MOTA_ATTR', payload: {key: 'tallis', value}})}
                         />
                     </div>
+                    <div className='questSection'>
+                        <h2>Legacy DLC</h2>
+                        <TextInput 
+                            title={`Who did Hawke side with in Corypheus's prison?`}
+                            value={get(gameState, 'quests.4.decisions.side')}
+                            suggestedValues={[
+                                `Despite Larius's obvious corruption, Hawke heeded the former Warden and worked to prevent Janeka from freeing the imprisoned darkspawn`,
+                                `Unable to fully trust Larius, Hawke supported Janeka's theory and worked with her to free the imprisoned darkspawn`,
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_LEGACY_ATTR', payload: {key: 'side', value}})}
+                        />
+
+                        <TextInput 
+                            title={`Did Hawke find Malcolm's will in the Grey Warden prison tower?`}
+                            value={get(gameState, 'quests.4.decisions.will')}
+                            suggestedValues={[
+                                `Malcolm had left traces of his legacy behind in the ancient prison, unaware that his child would one day follow in his footsteps. Hawke found Malcolm's will`,
+                                `Hawke did not uncover Malcolm's will in the Grey Warden prison tower`,
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_LEGACY_ATTR', payload: {key: 'will', value}})}
+                        />
+                    </div>
                 </div>
-                {/* <h2>Legacy DLC</h2> */}
             </div>
         )
 }
