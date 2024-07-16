@@ -441,10 +441,12 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                                 decisions: {
                                     'connor': '',
                                     'prepare': '',
+                                    'fight': '',
                                     'isolde': '',
                                     'bella': '',
                                     'valena': '',
-                                    'demon': ''
+                                    'demon': '',
+                                    'bevin': '',
                                 }
                             },
                             {
@@ -699,12 +701,14 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                 {
                     name: 'The Arl of Redcliffe',
                     decisions: {
-                        'connor': '',
                         'prepare': '',
+                        'fight': '',
                         'isolde': '',
+                        'connor': '',
+                        'demon': '',
                         'bella': '',
                         'valena': '',
-                        'demon': ''
+                        'bevin': '',
                     }
                 },
                 {

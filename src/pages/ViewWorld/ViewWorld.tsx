@@ -7,7 +7,8 @@ import {AuthContext, UserContextType} from '../../context/auth'
 import { useParams } from 'react-router'
 import GameView from './GameView'
 import './viewWorld.css'
-// TODO: get world by id, then load edit form with values as default in state
+
+// TODO: order of decisions in each sections should make chronological sense
 
 
 function ViewWorld() {

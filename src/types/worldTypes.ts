@@ -10,6 +10,11 @@ export interface World {
     activeGame?: number
 }
 
+export type WorldContextType = {
+    worlds: Array<World>
+    setWorlds: (worlds: Array<World>) => void
+}
+
 export interface CreateWorldForm extends Omit<World, 'ID'> {}
 
 export interface Decisions {

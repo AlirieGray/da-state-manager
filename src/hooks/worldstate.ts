@@ -1,14 +1,17 @@
-import { useState, useReducer } from 'react'
+import { useState, useReducer, useContext } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
 import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL, DELETE_WORLD_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
+import { WorldsContext } from '../context/worlds'
+import { WorldContextType } from '../types'
 
 
 // todo: handle loading, API errors, etc
 export function useGetAllWorldstates(accessToken: string, refreshToken: string) {
-    const [worlds, setWorlds] = useState<Array<World>>([])
+    // const [worlds, setWorlds] = useState<Array<World>>([])
+    const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
     // todo: use context for this
     // const authToken = getLocalValue('accessToken', '')
 
@@ -32,7 +35,7 @@ export function useGetAllWorldstates(accessToken: string, refreshToken: string) 
                 return res.json()
             }).then((worldsRes) => {
                 const worldObjects = new Array<World>()
-                worldsRes.forEach((world: any) => {
+                worldsRes.forEach((world: World) => {
                     worldObjects.push(convertWorldstateJSON(world)) 
                 })
                 setWorlds(worldObjects)
@@ -87,10 +90,10 @@ export function useGetWorldstate(worldID: string, accessToken: string, refreshTo
 }
 
 export function useDeleteWorldstate(worldID: string, accessToken: string, refreshToken: string) {
-    // const [world, setWorld] = useState<World>()
-    const [world, dispatch] = useReducer(editWorldForm, defaultWorld)
     // todo: use context for this
     // const authToken = getLocalValue('accessToken', '')
+
+    const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
 
     const options = {
         method: 'DELETE',
@@ -100,18 +103,24 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
             'x-refresh': `${refreshToken}`
         }
     }
-
+    
     let err = ''
     // TODO: have to update state here with removed world state
     const deleteWorld = async () => {
+        
         try {
             // set fetch state to loading
             fetch(DELETE_WORLD_URL + `/${worldID}`, options).then(res => {
                 if (res.status !== 200) {
+                    console.log(res.status)
                     console.error("error: ", res.statusText)
                     return -1
                 }
                 return res.json()
+            }).then((json) => {
+                console.log(json)
+                const filteredWorlds = worlds.filter(w => w.ID != worldID)
+                setWorlds(filteredWorlds)
             }).catch((err) => {
                 return err
             })
@@ -120,13 +129,12 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
             // todo set fetch state to error
         }
     }
-    return [err, deleteWorld, dispatch] as const
+    return [err, deleteWorld] as const
 }
 
 // TODO
 export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
-    const [worldErr, setWorlds] = useState('')
     const navigate = useNavigate()
 
     const options = {

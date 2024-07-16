@@ -75,8 +75,6 @@ const defaultCompanions: MultiSelectOption[] = [
     {name: 'Justice', id: 15}
 ]
 
-// todo: checkboxes for yes/no choices (ex. helped redcliffe prepare, stop/redeem solas, etc)
-
 function Origins({ gameState, onChange }: OriginsProps) {
     // todo: reducer to connect to form state, use onChange prop
     // todo: use reducer to get default selected rivals companions and romances in form
@@ -302,7 +300,7 @@ function Origins({ gameState, onChange }: OriginsProps) {
                         'The Warden departed Redcliffe without lending aid to its people. The ensuing casualties were nearly complete.',
                         'With the help of the Warden, the people of Redcliffe stood fast against the undead horde',
                         ]}
-                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'prepare', value}})}
+                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'fight', value}})}
                     /> 
                     <TextInput
                         title={`What was Connor's fate?`}
@@ -348,7 +346,7 @@ function Origins({ gameState, onChange }: OriginsProps) {
 
                     <TextInput
                         title='What did the Warden do to help Kaitlyn find her brother Bevin?'
-                        value={get(gameState, 'quests.2.decisions.bella')}
+                        value={get(gameState, 'quests.2.decisions.bevin')}
                         suggestedValues={[
                             'The Warden did not help Kaitlyn find her brother', 
                             'The Warden found Bevin, and claimed a powerful heirloom sword from his family to help stand against the Blight, despite vowing to return it afterwards',
@@ -357,7 +355,7 @@ function Origins({ gameState, onChange }: OriginsProps) {
                             'The Warden scared Bevin straight, sending him running to the relative safety of the Redcliffe chantry',
                             'The Warden freed Bevin and took the sword, later returning it'
                         ]}
-                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'bella', value}})}
+                        handleChange={(value) => onChange({type: 'SET_REDCLIFFE_ATTR', payload: {key: 'bevin', value}})}
                     />
                  
                 </div>

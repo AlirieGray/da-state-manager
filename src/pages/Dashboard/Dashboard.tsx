@@ -1,11 +1,12 @@
 import Worlds from './Worlds'
-import  {useContext, useState} from 'react'
+import  {useContext, useState, useEffect} from 'react'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType } from '../../types'
 import Modal  from '../../components/Modal/Modal'
 import { useDeleteWorldstate } from '../../hooks/worldstate'
 import {AuthContext, UserContextType} from '../../context/auth'
 import './dashboard.css'
+import { useGetAllWorldstates } from '../../hooks/worldstate'
 
 // todo: use auth context
 // and protected routes
@@ -19,6 +20,11 @@ function Dashboard() {
     const [worldIDToDelete, setWorldIDToDelete] = useState('')
     const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
     const [deleteWorldErr, deleteWorld] = useDeleteWorldstate(worldIDToDelete, accessToken, refreshToken)
+    const [worlds, getWorlds] = useGetAllWorldstates(accessToken, refreshToken)
+
+    useEffect(() => {
+        getWorlds()
+    }, [])
 
     return (
         <>
@@ -31,6 +37,7 @@ function Dashboard() {
                 <p>This action cannot be undone.</p>
             </Modal>}
             <Worlds 
+                worlds={worlds}
                 setModalOpen={setModalOpen} 
                 setWorldToDelete={setWorldToDelete} 
                 setWorldIDToDelete={setWorldIDToDelete}
