@@ -6,15 +6,16 @@ import './worldCard.css'
 
 interface CardProps {
   world: World
-  setModalOpen: any
-  setWorldToDelete: any
+  setModalOpen: (open: boolean) => void
+  setWorldToDelete: (name: string) => void
+  setWorldIDToDelete: (id: string) => void
 }
 
 function truncateSummary(summary: string): string {
   return summary.length > 100 ? summary.substring(0, 99).trim() + '...' : summary
 }
 
-function WorldCard({ world, setModalOpen, setWorldToDelete }: CardProps)  {
+function WorldCard({ world, setModalOpen, setWorldToDelete, setWorldIDToDelete }: CardProps)  {
   
 
   return (
@@ -32,6 +33,7 @@ function WorldCard({ world, setModalOpen, setWorldToDelete }: CardProps)  {
             <span className='worldButton' onClick={() => {
               console.log('world')
               setWorldToDelete(world['name'])
+              setWorldIDToDelete(world['ID'])
               setModalOpen(true)
             }}>Delete</span>
           </div>

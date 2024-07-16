@@ -1,6 +1,8 @@
 import './modal.css'
 
-function Modal({ children, setModalOpen }: any) {
+// TODO: type safety props
+// TODO error pop-ups/notifs (not modal...)
+function Modal({ children, setModalOpen, deleteWorld }: any) {
     return (
         <div className="modalContainer">
             <div className="modal">
@@ -13,7 +15,12 @@ function Modal({ children, setModalOpen }: any) {
                     {children}
                 </div>
                 <div className="modalFooter">
-                    <button className="modalButton deleteButton">Delete</button>
+                    <button className="modalButton deleteButton" onClick={(e) => {
+                        e.preventDefault()
+                        console.log('deleting!')
+                        setModalOpen(false)
+                        deleteWorld()
+                    }}>Delete</button>
                     <button className="modalButton" onClick={() => {
                         setModalOpen(false)
                     }}>Cancel</button>

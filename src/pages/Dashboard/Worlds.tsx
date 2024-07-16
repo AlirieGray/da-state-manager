@@ -5,7 +5,7 @@ import { useGetAllWorldstates } from '../../hooks/worldstate'
 import {AuthContext, UserContextType} from '../../context/auth'
 
 // TODO: type safety props
-function Worlds({setModalOpen, setWorldToDelete}: any) {
+function Worlds({setModalOpen, setWorldToDelete, setWorldIDToDelete}: any) {
     const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
     const [worlds, getWorlds] = useGetAllWorldstates(accessToken, refreshToken)
 
@@ -21,6 +21,7 @@ function Worlds({setModalOpen, setWorldToDelete}: any) {
                     world={world}
                     setModalOpen={setModalOpen}
                     setWorldToDelete={setWorldToDelete} 
+                    setWorldIDToDelete={setWorldIDToDelete}
                 />
             })}
         </div>

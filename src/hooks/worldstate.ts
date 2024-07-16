@@ -1,7 +1,7 @@
 import { useState, useReducer } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
 import {getLocalValue} from './useLocalStorage'
-import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL } from '../config'
+import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL, DELETE_WORLD_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
 
@@ -84,6 +84,43 @@ export function useGetWorldstate(worldID: string, accessToken: string, refreshTo
         }
     }
     return [world, getWorld, dispatch] as const
+}
+
+export function useDeleteWorldstate(worldID: string, accessToken: string, refreshToken: string) {
+    // const [world, setWorld] = useState<World>()
+    const [world, dispatch] = useReducer(editWorldForm, defaultWorld)
+    // todo: use context for this
+    // const authToken = getLocalValue('accessToken', '')
+
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-type': 'application/json',
+            'x-refresh': `${refreshToken}`
+        }
+    }
+
+    let err = ''
+    // TODO: have to update state here with removed world state
+    const deleteWorld = async () => {
+        try {
+            // set fetch state to loading
+            fetch(DELETE_WORLD_URL + `/${worldID}`, options).then(res => {
+                if (res.status !== 200) {
+                    console.error("error: ", res.statusText)
+                    return -1
+                }
+                return res.json()
+            }).catch((err) => {
+                return err
+            })
+        } catch(err) {
+            console.log(err)
+            // todo set fetch state to error
+        }
+    }
+    return [err, deleteWorld, dispatch] as const
 }
 
 // TODO
