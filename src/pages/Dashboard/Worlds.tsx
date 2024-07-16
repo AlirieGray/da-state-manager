@@ -4,8 +4,8 @@ import './worlds.css'
 import { useGetAllWorldstates } from '../../hooks/worldstate'
 import {AuthContext, UserContextType} from '../../context/auth'
 
-
-function Worlds() {
+// TODO: type safety props
+function Worlds({setModalOpen, setWorldToDelete}: any) {
     const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
     const [worlds, getWorlds] = useGetAllWorldstates(accessToken, refreshToken)
 
@@ -18,7 +18,9 @@ function Worlds() {
         <div className='worldsContainer'>
             {worlds && worlds.map(world => {
                 return <WorldCard key={world.ID} 
-                    world={world} 
+                    world={world}
+                    setModalOpen={setModalOpen}
+                    setWorldToDelete={setWorldToDelete} 
                 />
             })}
         </div>

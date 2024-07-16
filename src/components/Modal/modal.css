@@ -1,0 +1,39 @@
+.modalContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.5);
+}
+
+.modal {
+    background-color: var(--primary);
+    border-radius: 5px;
+    padding: 5px 2rem 2rem 2rem;
+}
+
+.modalButton {
+    border: none;
+    padding: 0.5rem 1.5rem;
+    width: 20em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deleteButton {
+    background-color: red;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: flex-end;
+}

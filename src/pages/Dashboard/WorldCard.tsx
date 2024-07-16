@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import {World} from '../../types'
 import { Link } from 'react-router-dom'
 import defaultImgSrc from '../../images/inqLogo.png'
@@ -6,13 +6,17 @@ import './worldCard.css'
 
 interface CardProps {
   world: World
+  setModalOpen: any
+  setWorldToDelete: any
 }
 
 function truncateSummary(summary: string): string {
   return summary.length > 100 ? summary.substring(0, 99).trim() + '...' : summary
 }
 
-function WorldCard({ world }: CardProps)  {
+function WorldCard({ world, setModalOpen, setWorldToDelete }: CardProps)  {
+  
+
   return (
     <div className='worldCard'>
       <div className='worldHeader'>
@@ -24,8 +28,12 @@ function WorldCard({ world }: CardProps)  {
           <div className='worldCardButtons'>
             <Link className='worldButton'to={`/world/${world.ID}/view`}>View |</Link> 
             <Link className='worldButton' to={`/world/${world.ID}/edit`}>Edit |</Link> 
-            <div className='worldButton'>Export |</div>
-            <div className='worldButton'>Delete</div>
+            <span className='worldButton'>Export |</span>
+            <span className='worldButton' onClick={() => {
+              console.log('world')
+              setWorldToDelete(world['name'])
+              setModalOpen(true)
+            }}>Delete</span>
           </div>
         </div>
       </div>
@@ -43,6 +51,8 @@ function WorldCard({ world }: CardProps)  {
       </div>
     </div>
   )
+
 }
+
 
 export default WorldCard
