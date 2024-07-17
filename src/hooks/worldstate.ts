@@ -1,6 +1,5 @@
-import { useState, useReducer, useContext } from 'react'
+import { useReducer, useContext } from 'react'
 import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
-import {getLocalValue} from './useLocalStorage'
 import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL, DELETE_WORLD_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
@@ -119,7 +118,7 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
                 return res.json()
             }).then((json) => {
                 console.log(json)
-                const filteredWorlds = worlds.filter(w => w.ID != worldID)
+                const filteredWorlds = worlds.filter(w => w.ID !== worldID)
                 setWorlds(filteredWorlds)
             }).catch((err) => {
                 return err
@@ -273,7 +272,7 @@ const convertGameJSON = (json: any): Game => {
     const convertedQuests = quests.map((quest: any) => {
         const convertedDecisions: Decisions = {}
         
-        quest.decisions.map((decision: any) => {
+        quest.decisions.foreach((decision: any) => {
             const decisionName = decision.name;
             const decisionChoice = decision.choice;
             convertedDecisions[decisionName] = decisionChoice

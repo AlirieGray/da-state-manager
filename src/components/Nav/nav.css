@@ -56,12 +56,19 @@
     padding-right: 15px;
     text-decoration: none;
     color: var(--text);
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    text-align: center;
 }
 
 .navButtonSelected {
     padding-right: 15px;
     text-decoration: none;
     color: var(--secondary);
+    cursor: pointer;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    text-align: center;
 }
 
 .navButton:hover {

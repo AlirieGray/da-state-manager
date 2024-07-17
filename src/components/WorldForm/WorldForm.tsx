@@ -70,20 +70,20 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                 </div>
                 <div className='selectGameButtonWrapper'>
                     <div className='selectLabel'>
-                        Select game: <img src={qMark} data-tooltip-id="select-game" />
+                        Select game: <img src={qMark} alt="Tooltip question mark" data-tooltip-id="select-game" />
                     </div>
                     <div className="selectGameButtons">
-                        <button className={((state.activeGame == 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        <button className={((state.activeGame === 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault()
                             dispatch({type: 'SET_ACTIVE_GAME', payload: 0})
                             
                             }}>Origins</button>
-                        <button className={((state.activeGame == 1) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        <button className={((state.activeGame === 1) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault()
                             dispatch({type: 'SET_ACTIVE_GAME', payload: 1})
                             
                             }}>DA2</button>
-                        <button className={((state.activeGame == 2) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                        <button className={((state.activeGame === 2) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault()
                             dispatch({type: 'SET_ACTIVE_GAME', payload: 2})
                         }}>Inquisition</button>
@@ -95,9 +95,9 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                     </div>
                 </div>
                 <div className='gamesWrapper'>
-                    {state.activeGame == 0 && <Origins gameState={get(state, 'games.0')} onChange={dispatch}/>}
-                   {state.activeGame == 1 && <DA2 gameState={get(state, 'games.1')} onChange={dispatch}/>}
-                    {state.activeGame == 2 && <Inquisition gameState={get(state, 'games.2')} onChange={dispatch} />}
+                    {state.activeGame === 0 && <Origins gameState={get(state, 'games.0')} onChange={dispatch}/>}
+                   {state.activeGame === 1 && <DA2 gameState={get(state, 'games.1')} onChange={dispatch}/>}
+                    {state.activeGame === 2 && <Inquisition gameState={get(state, 'games.2')} onChange={dispatch} />}
                 </div>
 
             </form>
