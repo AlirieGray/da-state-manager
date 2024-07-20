@@ -19,13 +19,11 @@ function TextInput({handleChange, title, value, suggestedValues, multiLine}: Tex
             return (
                 <div className='dropdown'>
                     {suggestedValues.map((suggestion: string) => {
-                        console.log(suggestion)
                         return (
                         <span 
                             key={suggestion}
                             className='suggestion'
                             onClick={() => {
-                                console.log('click!')
                                 setShowDropdown(false)
                                 handleChange(suggestion)}}>
                             {suggestion}

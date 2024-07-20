@@ -16,7 +16,6 @@ function MultiSelectDropdown({ options, title, selected, setSelected }: MultiSel
         setSelected(selectedList)
     }
     const onRemove = (selectedList: MultiSelectOption[], removedItem: MultiSelectOption) => {
-        console.log(removedItem)
         if (typeof removedItem === 'string') {
             setSelected(selectedList)
         }

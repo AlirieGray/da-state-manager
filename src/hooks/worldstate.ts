@@ -111,7 +111,6 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
             // set fetch state to loading
             fetch(DELETE_WORLD_URL + `/${worldID}`, options).then(res => {
                 if (res.status !== 200) {
-                    console.log(res.status)
                     console.error("error: ", res.statusText)
                     return -1
                 }

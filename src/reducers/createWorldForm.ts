@@ -176,13 +176,9 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
             })}
 
         case 'SET_PARAGON_ATTR':
-            console.log("1111111")
-            console.log(defaultCreateWorldForm.games[0].quests[6])
             const paragonKey = action.payload.key
             let newParagonChoices = {...state.games[0].quests[6].decisions}
             newParagonChoices[`${paragonKey}`] = action.payload.value
-            console.log("?????????")
-            console.log(defaultCreateWorldForm.games[0].quests[6])
 
             return {...state, games: state.games.map((game: Game, index) => {
                 if (index === 0) {

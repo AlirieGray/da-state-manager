@@ -17,7 +17,6 @@ function Modal({ children, setModalOpen, deleteWorld }: any) {
                 <div className="modalFooter">
                     <button className="modalButton deleteButton" onClick={(e) => {
                         e.preventDefault()
-                        console.log('deleting!')
                         setModalOpen(false)
                         deleteWorld()
                     }}>Delete</button>
