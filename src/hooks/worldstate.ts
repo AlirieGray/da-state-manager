@@ -272,7 +272,7 @@ const convertGameJSON = (json: any): Game => {
     const convertedQuests = quests.map((quest: any) => {
         const convertedDecisions: Decisions = {}
         
-        quest.decisions.foreach((decision: any) => {
+        quest.decisions.forEach((decision: any) => {
             const decisionName = decision.name;
             const decisionChoice = decision.choice;
             convertedDecisions[decisionName] = decisionChoice

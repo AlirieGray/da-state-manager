@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { PageViewContext } from '../../context/pageView'
 import { Link } from 'react-router-dom'
-import {  PageViewContextType, PageViewType, Game, Quest, World } from '../../types'
+import {  PageViewContextType, PageViewType, Game } from '../../types'
 import { useGetWorldstate } from '../../hooks/worldstate'
 import {AuthContext, UserContextType} from '../../context/auth'
 import { useParams } from 'react-router'

@@ -29,7 +29,7 @@ function Login() {
             fetch(LOGIN_URL, requestOptions).then((res) => {
                 console.log(res)
                 // todo: set auth 
-                if (res.status != 200) {
+                if (res.status !== 200) {
                     console.log("Error! could not login")
                     return
                 }
