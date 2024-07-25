@@ -5,8 +5,7 @@ import useInput from '../../hooks/useInput'
 import {AuthContext, UserContextType} from '../../context/auth'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType } from '../../types'
-
-const REGISTER_URL = 'http://localhost:5555/users/create' // todo move to config
+import { REGISTER_URL } from '../../config'
 
 // todo: use text input component
 
@@ -30,7 +29,7 @@ function Register() {
             }
             fetch(REGISTER_URL, requestOptions).then((res) => {
                 console.log(res)
-                if (res.status != 201) {
+                if (res.status !== 201) {
                     // handle error message
                     console.log("error, could not register!")
                     return

@@ -5,8 +5,8 @@ import {AuthContext, UserContextType} from '../../context/auth'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType } from '../../types'
 import './login.css'
-// todo: move to config file, use variable for dev/production
-const LOGIN_URL = 'http://localhost:5555/session/new'
+import { LOGIN_URL } from '../../config'
+
 
 
 function Login() {

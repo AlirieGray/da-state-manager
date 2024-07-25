@@ -5,11 +5,17 @@
 // export const EDIT_WORLD_URL = 'http://localhost:5555/worldstates/edit'
 // export const CREATE_WORLD_URL = 'http://localhost:5555/worldstates/create'
 // export const DELETE_WORLD_URL = 'http://localhost:5555/worldstates/delete'
+// export const LOGIN_URL = 'http://localhost:5555/session/new'
+// export const REGISTER_URL = 'http://localhost:5555/users/create'
+
 
 // staging https://thedas-dev-c2afb6fa1fea.herokuapp.com
+// production https://thedas-server-325e46c00e56.herokuapp.com
 
 // production
-export const GET_WORLDS_URL = 'https://thedas-dev-c2afb6fa1fea.herokuapp.com/worldstates/get'
-export const EDIT_WORLD_URL = 'https://thedas-dev-c2afb6fa1fea.herokuapp.com/worldstates/edit'
-export const CREATE_WORLD_URL = 'https://thedas-dev-c2afb6fa1fea.herokuapp.com/worldstates/create'
-export const DELETE_WORLD_URL = 'https://thedas-dev-c2afb6fa1fea.herokuapp.com/worldstates/delete'
+export const GET_WORLDS_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/get'
+export const EDIT_WORLD_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/edit'
+export const CREATE_WORLD_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/create'
+export const DELETE_WORLD_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/delete'
+export const LOGIN_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/new'
+export const REGISTER_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/users/create'
