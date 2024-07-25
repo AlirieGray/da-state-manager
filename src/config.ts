@@ -17,5 +17,5 @@ export const GET_WORLDS_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/
 export const EDIT_WORLD_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/edit'
 export const CREATE_WORLD_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/create'
 export const DELETE_WORLD_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/worldstates/delete'
-export const LOGIN_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/new'
+export const LOGIN_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/session/new'
 export const REGISTER_URL = 'https://thedas-server-325e46c00e56.herokuapp.com/users/create'
