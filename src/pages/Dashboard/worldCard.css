@@ -39,6 +39,7 @@
     padding-right: 5px;
     text-decoration: none;
     color: rgb(160,160,160);
+    cursor: pointer;
 }
 
 .worldButton:hover {
