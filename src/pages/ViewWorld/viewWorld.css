@@ -68,15 +68,23 @@
 }
 
 .protagButton:active {
-    outline: 0 !important;
-    border: 0 !important;
     box-shadow: none !important;
 }
 
 .protagButton:focus {
-    outline-style: solid;
-    outline-color: white;
-    outline-width: 3px;
+    background-color: var(--selected);
+}
+
+.protagButtonSelected {
+    background-color: var(--selected) !important;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    width: 200px;
+    padding: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .gameViewsWrapper {

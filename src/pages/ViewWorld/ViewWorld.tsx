@@ -53,7 +53,7 @@ function ViewWorld() {
                 </div>
                 <div className='protagButtons'>
                     {world.games.map((game: Game) => {
-                        return <button className='protagButton' onClick={() => setGameView(game.name)}>{game.protagonist.name !== '' ? game.protagonist.name : game.name}</button>
+                        return <button className={gameView === game.name ? 'protagButtonSelected' : 'protagButton'} onClick={() => setGameView(game.name)}>{game.protagonist.name !== '' ? game.protagonist.name : game.name}</button>
                     })}
                     <button className='protagButton' onClick={() => setGameView('all')}>View All</button>
                 </div>
