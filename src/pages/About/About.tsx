@@ -36,6 +36,8 @@ function About() {
             <p>Resources and assets used by this website:</p>
 
             <a className="aboutLink" href="https://www.flaticon.com/free-icons/question" target="_blank" rel="noopener noreferrer" title="question icons">Question icons created by Freepik - Flaticon</a>
+
+            <a className="aboutLink"  href="https://www.flaticon.com/free-icons/open-book" target="_blank" rel="noopener noreferrer" title="open-book icons">Open-book icons created by Freepik - Flaticon</a>
         </div>
     )
 }

@@ -13,3 +13,7 @@
 .aboutLink:visited {
     color: var(--highlight);
 }
+
+.aboutLink {
+    margin-bottom: 10px;
+}
