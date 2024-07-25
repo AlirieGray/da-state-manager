@@ -28,7 +28,6 @@ function Login() {
 
         try {
             fetch(LOGIN_URL, requestOptions).then((res) => {
-                console.log(res)
                 // todo: set auth 
                 if (res.status !== 200) {
                     throw new Error("Could not login")
@@ -36,7 +35,6 @@ function Login() {
                     return res.json()
                 }
             }).then((resJSON) => {
-                console.log(resJSON)
                 const accessToken = resJSON['accessToken']
                 const refreshToken = resJSON['refreshToken']
                 setAccessToken(accessToken)
@@ -46,7 +44,6 @@ function Login() {
                 resetEmail()
                 navigate("/")
             }).catch((err) => {
-                console.log(err)
                 setLoginError(err.toString())
             })
             

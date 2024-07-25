@@ -116,7 +116,6 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
                 }
                 return res.json()
             }).then((json) => {
-                console.log(json)
                 const filteredWorlds = worlds.filter(w => w.ID !== worldID)
                 setWorlds(filteredWorlds)
             }).catch((err) => {

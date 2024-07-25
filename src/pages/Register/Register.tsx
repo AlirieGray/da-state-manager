@@ -28,7 +28,6 @@ function Register() {
                 body: JSON.stringify({username: user, password, email})
             }
             fetch(REGISTER_URL, requestOptions).then((res) => {
-                console.log(res)
                 if (res.status !== 201) {
                     // handle error message
                     console.log("error, could not register!")

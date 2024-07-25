@@ -9,8 +9,6 @@ type QuestViewProps = {
 function QuestView({quest}: QuestViewProps) {
     
     const getDecisions = () => {
-        console.log(quest.decisions)
-        
         return Object.values(quest.decisions).map((decision) => {
             if (decision !== '') {
                 return <li>{decision}</li>
