@@ -12,37 +12,42 @@ import { LOGIN_URL } from '../../config'
 function Login() {
     const [email, resetEmail, emailAttributes] = useInput('email', '')
     const [password, setPassword] = useState('')
-    const { setAccessToken, setRefreshToken } = useContext(AuthContext) as UserContextType
+    const [loginError, setLoginError] = useState('')
+    const { setAccessToken, setRefreshToken, setEmail } = useContext(AuthContext) as UserContextType
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const navigate = useNavigate()
     setPageView(PageViewType.LOGIN)
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json'},
+            body: JSON.stringify({email, password})
+        }
 
         try {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-type': 'application/json'},
-                body: JSON.stringify({email, password})
-            }
             fetch(LOGIN_URL, requestOptions).then((res) => {
                 console.log(res)
                 // todo: set auth 
                 if (res.status !== 200) {
-                    console.log("Error! could not login")
-                    return
+                    throw new Error("Could not login")
+                } else {
+                    return res.json()
                 }
-                return res.json()
             }).then((resJSON) => {
                 console.log(resJSON)
                 const accessToken = resJSON['accessToken']
                 const refreshToken = resJSON['refreshToken']
                 setAccessToken(accessToken)
                 setRefreshToken(refreshToken)
-                // todo: set user email and username in context
+                setEmail(email)
+                // todo: set username in context
                 resetEmail()
                 navigate("/")
+            }).catch((err) => {
+                console.log(err)
+                setLoginError(err.toString())
             })
             
         } catch (err) {
@@ -86,6 +91,14 @@ function Login() {
                         <div>
                             <span>Don't have an account?</span> <Link className='linkText' to='/register'>Register here </Link> 
                         </div>
+                        {loginError !== '' &&
+                        <div className="authErrorContainer">
+                            <div className="authErrorBox">
+                                <p>{loginError} </p>
+                                <p>{"Please check your credentials and try again."} </p>
+                            </div>
+                        </div>
+                        }
                     </div>
                 </div>   
             </form>

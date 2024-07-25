@@ -20,7 +20,7 @@ function Nav() {
         <div className='navWrapper'>
             <div className='navContainer'> 
                 <div>
-                    <Link className='homeButton' to="/"> Dragon Age World State Manager </Link>
+                    <Link className='homeButton' to="/"> World State Journal </Link>
                 </div>   
                 {pageView !== PageViewType.LOGIN && pageView !== PageViewType.REGISTER && (
                     <div>

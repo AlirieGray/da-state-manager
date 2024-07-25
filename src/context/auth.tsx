@@ -6,8 +6,10 @@ export type UserContextType = {
     accessToken: string
     setAccessToken: (token: string) => void
     setRefreshToken: (token: string) => void
-    // username: string
-    // email: string
+    username: string
+    email: string
+    setEmail: (token: string) => void
+    setUsername: (token: string) => void
 }
 
 export const AuthContext = createContext<UserContextType | null>(null)
@@ -15,12 +17,18 @@ export const AuthContext = createContext<UserContextType | null>(null)
 const AuthContextProvider = ({ children }: React.PropsWithChildren<unknown>) => {
     const [accessToken, setAccessToken] = useLocalStorage("accessToken", "")
     const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken", "")
+    const [email, setEmail] = useLocalStorage("email", "")
+    const [username, setUsername] = useLocalStorage("username", "")
 
     return <AuthContext.Provider value={{
         accessToken,
         refreshToken,
         setAccessToken,
-        setRefreshToken
+        setRefreshToken,
+        email,
+        setEmail,
+        username,
+        setUsername
     }}>
         {children}
     </AuthContext.Provider>

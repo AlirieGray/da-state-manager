@@ -13,7 +13,7 @@ function Register() {
     const [user, resetUser, userAttributes] = useInput('user', '')
     const [email, resetEmail, emailAttr] = useInput('email', '')
     const [password, setPassword] = useState('')
-    const { setAccessToken, setRefreshToken } = useContext(AuthContext) as UserContextType
+    const { setAccessToken, setRefreshToken, setEmail, setUsername } = useContext(AuthContext) as UserContextType
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const navigate = useNavigate()
     setPageView(PageViewType.REGISTER)
@@ -40,7 +40,8 @@ function Register() {
                 const refreshToken = resJSON['refreshToken']
                 setAccessToken(accessToken)
                 setRefreshToken(refreshToken)
-                // todo: set user email and username in auth context
+                setEmail(email)
+                setUsername(user)
                 resetEmail()
                 resetUser()
                 navigate("/")

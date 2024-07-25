@@ -12,14 +12,14 @@ function About() {
     return (
         <div className='aboutWrapper'>
             <h2>What's this website all about?</h2>
-            <p>Dragon Age World State Manager was created as an alternative to the Dragon Age Keep, providing Dragon Age players with a way to manage custom world states
+            <p>The Dragon Age State Journal was created as an alternative to the Dragon Age Keep, providing Dragon Age players with a way to manage custom world states
             that exist outside the canon of the games themselves and are therefore not possible to store in the Keep. For example, say... </p>
 
             <p>your Warden romanced both Leliana and Morrigan? </p>
 
             <p>your Hawke defected to the Qun and left for Par Vollen with the Arishok?</p>
 
-            <p>your Inquisitor </p>
+            <p>your Inquisitor teamed up with Briala to get the key to the Eluvian network back from Solas?</p>
 
             <p>...with this website, you can keep track of all of that! The main quests and most of the side quests for each of the three games have default values according to the canon of the games, but you can type in your own answers for these plot points as well.</p>
 

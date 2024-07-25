@@ -83,3 +83,28 @@ textarea:focus, input:focus{
     text-decoration: none;
     color: white;
 }
+
+.authErrorContainer {
+    width: 332px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.authErrorBox {
+    width: 330px;
+    height: 35px;
+    margin-top: 30px;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 10px;
+    text-align: center;
+    border-color: var(--text);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    width: 250px;
+}
