@@ -29,7 +29,6 @@ function WorldCard({ world, setModalOpen, setWorldToDelete, setWorldIDToDelete }
           <div className='worldCardButtons'>
             <Link className='worldButton'to={`/world/${world.ID}/view`}>View |</Link> 
             <Link className='worldButton' to={`/world/${world.ID}/edit`}>Edit |</Link> 
-            <span className='worldButton'>Export |</span>
             <span className='worldButton' onClick={() => {
               setWorldToDelete(world['name'])
               setWorldIDToDelete(world['ID'])
