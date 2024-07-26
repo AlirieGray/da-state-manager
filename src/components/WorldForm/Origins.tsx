@@ -606,6 +606,29 @@ function Origins({ gameState, onChange }: OriginsProps) {
                     />
 
                     <TextInput
+                        title="What became of Velanna?"
+                        value={get(gameState, 'quests.10.decisions.velanna')}
+                        suggestedValues={[
+                            "Velanna remained with the Wardens after facing the Architect, but later took off on her own, saying she had seen Seranni in the shadows.",
+                            "Velanna disappeared after the assault on Vigil's Keep.",
+                            "After the Warden killed the Architect, Velanna never saw her sister again, and this remained a point of friction between the two.",
+                            "Velanna formed a deep friendship with the Warden, eventually changing her views on humankind."
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_AWAKENING_ATTR', payload: {key: 'velanna', value}})} 
+                    />
+
+                    <TextInput
+                        title="Did Oghren re-unite with Felsi?"
+                        value={get(gameState, 'quests.10.decisions.felsi')}
+                        suggestedValues={[
+                            "Oghren did not re-unite with Felsi.",
+                            "Oghren and Felsi re-united with the help of the Warden.",
+                            "Oghren and Felsi parted on bad terms."
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_AWAKENING_ATTR', payload: {key: 'felsi', value}})} 
+                    />
+
+                    <TextInput
                         title="Did the Warden protect Vigil's keep or the city of Amaranthine?"
                         value={get(gameState, 'quests.10.decisions.keep')}
                         suggestedValues={[

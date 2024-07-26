@@ -408,6 +408,20 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                 return game
             })}
 
+        case 'SET_INQ_COMPANION_ATTR':
+            const daiCompKey = action.payload.key
+            let newDAICompChoices = {...state.games[2].quests[8].decisions}
+            newDAICompChoices[`${daiCompKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 2) {
+                    let newQuests = [...state.games[2].quests]
+                    newQuests[8].decisions = newDAICompChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
         case 'CLEAR_FORM':
             return {
                 ...state,
@@ -515,7 +529,10 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                                 decisions: {
                                     'architect': '',
                                     'keep': '',
-                                    'nathaniel': ''
+                                    'nathaniel': '',
+                                    'felsi': '',
+                                    'velanna': '',
+                                    'sigrun': '',
                                 }
                             },  
                             {
@@ -623,7 +640,6 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                                 name: 'In Hushed Whispers',
                                 decisions: {
                                     'mages': '',
-                                    'dorian': ''
                                 }
                             },
                             {
@@ -661,6 +677,21 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                                     'solas': ''
                                 }
                             },
+                            {
+                                name: "Companions",
+                                decisions: {
+                                    'dorian': '',
+                                    'cassandra': '',
+                                    'seekers': '',
+                                    'solas': '',
+                                    'sera': '',
+                                    'varric': '',
+                                    'blackwall': '',
+                                    'vivienne': '',
+                                    'chargers': '',
+                                    'ironbull': '',
+                                },
+                            }
                         ]
                     }
                 ]
@@ -900,7 +931,6 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                     name: 'In Hushed Whispers',
                     decisions: {
                         'mages': '',
-                        'dorian': ''
                     }
                 },
                 {
@@ -938,6 +968,21 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                         'solas': ''
                     }
                 },
+                {
+                    name: "Companions",
+                    decisions: {
+                        'dorian': '',
+                        'cassandra': '',
+                        'seekers': '',
+                        'solas': '',
+                        'sera': '',
+                        'varric': '',
+                        'blackwall': '',
+                        'vivienne': '',
+                        'chargers': '',
+                        'ironbull': '',
+                    },
+                }
             ]
         }
     ]

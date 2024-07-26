@@ -8,8 +8,6 @@ type InquisitionProps = {
     onChange: Dispatch<WorldFormAction>
 } 
 
-// todo: checkboxes for yes/no choices (ex. helped redcliffe prepare, stop/redeem solas, etc)
-
 function Inquisition({ gameState, onChange }: InquisitionProps) {
     return (
         <div className='formSection'>
@@ -44,6 +42,50 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                         handleChange={(value) => onChange({type: 'SET_INQ_PROTAG_ATTR', payload: {key: 'summary', value}})} />
                 </div>
                 <div className='questSection'>
+                    <h2>Companions</h2>
+                    <TextInput
+                        title={`What became of Vivienne?`}
+                        value={get(gameState, 'quests.8.decisions.vivienne')}
+                        suggestedValues={[
+                            `Vivienne became Divine Victoria after Corypheus was defeated.`,
+                            'Vivienne became Grand Enchanter',       
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_INQ_COMPANION_ATTR', payload: {key: 'vivienne', value}})} 
+                    />
+
+                    <TextInput
+                        title={`Did Cassandra rebuild the Seekers?`}
+                        value={get(gameState, 'quests.8.decisions.seekers')}
+                        suggestedValues={[
+                            `Cassandra did not rebuild the Seekers of Truth`,
+                            'Cassandra worked to rebuild the Seekers of Truth.',       
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_INQ_COMPANION_ATTR', payload: {key: 'seekers', value}})} 
+                    />
+
+                    <TextInput
+                        title={`What happened to Bull's Chargers?`}
+                        value={get(gameState, 'quests.8.decisions.chargers')}
+                        suggestedValues={[
+                            `The Chargers were sacrificed, and the Inquisition forged and alliance with the Qunari`,
+                            'The Chargers were saved',
+                            'The Inquisitor did not attempt to forge an alliance with the Qunari.'
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_INQ_COMPANION_ATTR', payload: {key: 'chargers', value}})} 
+                    />
+                    <TextInput
+                        title={`What became of Iron Bull?`}
+                        value={get(gameState, 'quests.8.decisions.ironbull')}
+                        suggestedValues={[
+                            `Hissrad attacked the Inquisitor at the behest of his Qunari superiors, and the Inquisitor slew him.`,
+                            `Iron Bull continued to lead his Chargers into battle throughout Ferelden and Orlais.`,
+                            `Iron Bull remained at the Inquisitor's side for many years.`,
+                            `Iron Bull enters a relationship with Dorian that continues even after his return to Tevinter`
+                        ]}
+                        handleChange={(value) => onChange({type: 'SET_INQ_COMPANION_ATTR', payload: {key: 'ironbull', value}})} 
+                    />
+                </div>
+                <div className='questSection'>
                     <h2>Champions of the Just</h2>
                     <TextInput
                         title='Did the Templars assist the Inquisition?'
@@ -75,11 +117,6 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                             'After defeating a plot to elimiate the Inquisitor, the Inquisition pressed the mages back into the Circles, now under the watch and protection of Inquisition forces'
                         ]}
                         handleChange={(value) => onChange({type: 'SET_IHW_ATTR', payload: {key: 'mages', value}})} />
-                    <TextInput
-                        title='Did Dorian join the Inquisition?'
-                        value={get(gameState, 'quests.2.decisions.dorian')}
-                        suggestedValues={['Dorian joined the Inquisition', 'Dorian did not join the Inquisition']}
-                        handleChange={(value) => onChange({type: 'SET_IHW_ATTR', payload: {key: 'dorian', value}})} />
                 </div>
             </div>
             <div>
@@ -92,31 +129,32 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                             'The Grey Wardens were banished from Orlais',
                             'The Grey Wardens were recruited by the Inquisition'
                         ]}
-                        handleChange={(value) => onChange({type: 'SET_HLTA_ATTR', payload: {key: 'gw', value}})} />
+                        handleChange={(value) => onChange({type: 'SET_HLTA_ATTR', payload: {key: 'gw', value}})} 
+                    />
                     <TextInput
                         title='Who sacrified themselves to stop the Nightmare Demon?'
                         value={get(gameState, 'quests.3.decisions.sacrifice')}
                         handleChange={(value) => onChange({type: 'SET_HLTA_ATTR', payload: {key: 'sacrifice', value}})}
                         suggestedValues={[
-                            'Hawke',
-                            'Alistair Theirin',
-                            'Loghain MacTir',
-                            'Jean-Marc Stroud'
+                            'Hawke remained in the Fade to stop the Nightmare Demon',
+                            'Alistair Theirin remained in the Fade to stop the Nightmare Demon',
+                            'Loghain MacTir remained in the Fade to stop the Nightmare Demon',
+                            'Jean-Marc Stroud remained in the Fade to stop the Nightmare Demon'
                         ]}
                         />
                 </div>
                 <div className='questSection'>
                     <h2>Wicked Eyes and Wicked Hearts</h2>
                     <TextInput
-                        title='Who is the ruling monarch of Orlais?'
+                        title='Who ended up as the ruling monarch of Orlais?'
                         value={get(gameState, 'quests.4.decisions.ruler')}
                         handleChange={(value) => onChange({type: 'SET_WEWH_ATTR', payload: {key: 'ruler', value}})} 
                         suggestedValues={[
-                            'Empress Celene',
-                            'Empress Celene, truce with Gaspard and Briala',
-                            'Empress Celene, reconciled with Briala',
-                            'Emperor Gaspard',
-                            'Briala, with Gaspard acting as puppet leader',
+                            'Celene remained the Empress of Orlais',
+                            'Empress Celene, Gaspard, and Briala reached a truce.',
+                            'Empress Celene reconciled with Briala.',
+                            'Gaspard became Emperor of Orlais',
+                            'Briala assumed power, with Gaspard acting as puppet leader in Orlais',
                         ]}
                         
                         />
@@ -154,7 +192,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                     <TextInput
                         title='What became of Abelas?'
                         value={get(gameState, 'quests.5.decisions.abelas')}
-                        suggestedValues={['Abelas left the Temple alive and well','Abelas was killed by Morrigan']}
+                        suggestedValues={['Abelas left the Temple alive and well.','Abelas was killed by Morrigan.']}
                         handleChange={(value) => onChange({type: 'SET_WPHW_ATTR', payload: {key: 'abelas', value}})} />
                 </div>
                 <div className='questSection'>
