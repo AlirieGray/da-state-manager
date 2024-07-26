@@ -1,7 +1,7 @@
 import { StatusContextType, StatusType } from '../types' 
 import { StatusContext } from '../context/status'
 import { useContext } from 'react'
-import { LOGIN_URL } from '../config' 
+import { GET_SESSIONS_URL, LOGIN_URL } from '../config' 
 import {AuthContext, UserContextType} from '../context/auth'
 import {useNavigate} from 'react-router-dom'
 
@@ -47,4 +47,41 @@ export function useLogin(email: string, password: string) {
     }
 
     return [login] as const
+}
+
+export function useValidateSession() {
+    const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
+    const { setStatus } = useContext(StatusContext) as StatusContextType
+    const navigate = useNavigate()
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-type': 'application/json',
+            'x-refresh': `${refreshToken}`
+        }
+    }
+
+    const getSession = async () => {
+        try {
+            setStatus(StatusType.LOADING)
+            fetch(GET_SESSIONS_URL, options).then((res) => {
+                console.log("get res")
+                console.log(res)
+                setStatus(StatusType.COMPLETE)
+                if (res.status === 200) {
+                    console.log("already logged in!")
+                    navigate("/")
+                }
+                return res
+            }).catch((err) => {
+                console.log(err)
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    return [getSession] as const
 }

@@ -1,11 +1,12 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import './register.css'
 import { Link, useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
-import {AuthContext, UserContextType} from '../../context/auth'
+import { AuthContext, UserContextType } from '../../context/auth'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType } from '../../types'
 import { REGISTER_URL } from '../../config'
+import { useValidateSession } from '../../hooks/auth'
 
 // todo: use text input component
 
@@ -13,10 +14,15 @@ function Register() {
     const [user, resetUser, userAttributes] = useInput('user', '')
     const [email, resetEmail, emailAttr] = useInput('email', '')
     const [password, setPassword] = useState('')
-    const { setAccessToken, setRefreshToken, setEmail, setUsername } = useContext(AuthContext) as UserContextType
+    const { accessToken, setAccessToken, setRefreshToken, setEmail, setUsername } = useContext(AuthContext) as UserContextType
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const navigate = useNavigate()
+    const [getSession] = useValidateSession()
     setPageView(PageViewType.REGISTER)
+
+    useEffect(() => {
+        getSession()
+    }, [accessToken])
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()

@@ -1,12 +1,12 @@
-import React, {useState, useContext} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType, StatusContextType, StatusType } from '../../types'
 import './login.css'
 import { StatusContext } from '../../context/status'
 import { Oval } from 'react-loader-spinner'
-import { useLogin } from '../../hooks/auth'
+import { useLogin, useValidateSession } from '../../hooks/auth'
 import { AuthContext, UserContextType } from '../../context/auth'
 
 function Login() {
@@ -14,6 +14,8 @@ function Login() {
     const [password, setPassword] = useState('')
     const { status, errorMessage } = useContext(StatusContext) as StatusContextType
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
+    const { accessToken } = useContext(AuthContext) as UserContextType
+    const [getSession] = useValidateSession()
     const [login] = useLogin(email, password)
     setPageView(PageViewType.LOGIN)
 
@@ -22,9 +24,11 @@ function Login() {
         login()
     }
 
+    useEffect(() => {
+        getSession()
+    }, [accessToken])
+
     // todo: use html label tags instead of div for input labels
-    // check if auth token is valid, 
-    // if so redirect to dashboard
 
     return (
         <div className='loginWrapper'>
