@@ -1,18 +1,18 @@
 import { useReducer, useContext } from 'react'
-import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions} from '../types'
+import {World, Game, Protagonist, CreateWorldForm, Quest, Decisions, StatusType} from '../types'
 import { GET_WORLDS_URL, EDIT_WORLD_URL, CREATE_WORLD_URL, DELETE_WORLD_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { editWorldForm, defaultWorld } from '../reducers/editWorldForm'
 import { WorldsContext } from '../context/worlds'
-import { WorldContextType } from '../types'
+import { WorldContextType, StatusContextType } from '../types'
+import { StatusContext } from '../context/status'
 
 
 // todo: handle loading, API errors, etc
 export function useGetAllWorldstates(accessToken: string, refreshToken: string) {
-    // const [worlds, setWorlds] = useState<Array<World>>([])
     const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
-    // todo: use context for this
-    // const authToken = getLocalValue('accessToken', '')
+    const { setStatus } = useContext(StatusContext) as StatusContextType
+    const { setErrorMessage } = useContext(StatusContext) as StatusContextType
 
     const options = {
         method: 'GET',
@@ -25,9 +25,12 @@ export function useGetAllWorldstates(accessToken: string, refreshToken: string) 
 
     const getWorlds = async () => {
         try {
-            // set fetch state to loading
+            setStatus(StatusType.LOADING)
+            setErrorMessage('')
             fetch(GET_WORLDS_URL, options).then(res => {
                 if (res.status !== 200) {
+                    setStatus(StatusType.ERROR)
+                    setErrorMessage(res.statusText)
                     console.error("error: ", res.statusText)
                     return -1
                 }
@@ -38,22 +41,22 @@ export function useGetAllWorldstates(accessToken: string, refreshToken: string) 
                     worldObjects.push(convertWorldstateJSON(world)) 
                 })
                 setWorlds(worldObjects)
+                setStatus(StatusType.COMPLETE)
             }).catch((err) => {
+                setStatus(StatusType.ERROR)
+                setErrorMessage(`${err}`)
                 return err
             })
         } catch(err) {
-            console.log(err)
-            // todo set fetch state to error
+            setStatus(StatusType.ERROR)
+            setErrorMessage(`${err}`)
         }
     }
     return [worlds, getWorlds] as const
 }
 
 export function useGetWorldstate(worldID: string, accessToken: string, refreshToken: string) {
-    // const [world, setWorld] = useState<World>()
     const [world, dispatch] = useReducer(editWorldForm, defaultWorld)
-    // todo: use context for this
-    // const authToken = getLocalValue('accessToken', '')
 
     const options = {
         method: 'GET',
@@ -89,9 +92,6 @@ export function useGetWorldstate(worldID: string, accessToken: string, refreshTo
 }
 
 export function useDeleteWorldstate(worldID: string, accessToken: string, refreshToken: string) {
-    // todo: use context for this
-    // const authToken = getLocalValue('accessToken', '')
-
     const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
 
     const options = {
@@ -104,7 +104,6 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
     }
     
     let err = ''
-    // TODO: have to update state here with removed world state
     const deleteWorld = async () => {
         
         try {
@@ -129,7 +128,6 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
     return [err, deleteWorld] as const
 }
 
-// TODO
 export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
     const navigate = useNavigate()

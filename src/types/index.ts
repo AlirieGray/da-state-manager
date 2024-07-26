@@ -17,6 +17,20 @@ export type MultiSelectOption = {
     id: number
 }
 
+export enum StatusType {
+    LOADING, 
+    COMPLETE,
+    ERROR
+}
+
+export type StatusContextType = {
+    status: StatusType
+    errorMessage: string
+    setStatus: (status: StatusType) => void
+    setErrorMessage: (erroMessage: string) => void
+}
+
+
 export * from './worldTypes'
 
 export * from './actions'

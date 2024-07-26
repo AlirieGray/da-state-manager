@@ -13,6 +13,7 @@ import EditWorld from './pages/EditWorld/EditWorld'
 import ViewWorld from './pages/ViewWorld/ViewWorld'
 import About from './pages/About/About'
 import WorldsContextProvider from './context/worlds'
+import LoadingContextProvider from './context/status'
 
 // todo: nice 404 not route found page with redirect to home
 
@@ -40,20 +41,22 @@ function App() {
   return (
     <AuthContextProvider>
       <PageViewContextProvider>
-        <WorldsContextProvider>
-          <div className="appWrapper">
-            <Nav />
-            <Routes> 
-              <Route path='/' element={<PrivateRoute outlet={<Dashboard />} />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/world/:id/edit' element={<PrivateRoute outlet={<EditWorld />} />} />
-              <Route path='/world/:id/view' element={<PrivateRoute outlet={<ViewWorld />} />} />
-              <Route path='/create' element={<PrivateRoute outlet={<CreateWorld />} />} />
-            </Routes>
-          </div>
-        </WorldsContextProvider>
+        <LoadingContextProvider>
+          <WorldsContextProvider>
+            <div className="appWrapper">
+              <Nav />
+              <Routes> 
+                <Route path='/' element={<PrivateRoute outlet={<Dashboard />} />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/world/:id/edit' element={<PrivateRoute outlet={<EditWorld />} />} />
+                <Route path='/world/:id/view' element={<PrivateRoute outlet={<ViewWorld />} />} />
+                <Route path='/create' element={<PrivateRoute outlet={<CreateWorld />} />} />
+              </Routes>
+            </div>
+          </WorldsContextProvider>
+        </LoadingContextProvider>
       </PageViewContextProvider>
     </AuthContextProvider>
     

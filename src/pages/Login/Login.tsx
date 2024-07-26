@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import {AuthContext, UserContextType} from '../../context/auth'
 import { PageViewContext } from '../../context/pageView'
-import { PageViewContextType, PageViewType } from '../../types'
+import { PageViewContextType, PageViewType, StatusContextType, StatusType } from '../../types'
 import './login.css'
 import { LOGIN_URL } from '../../config'
+import { StatusContext } from '../../context/status'
+import { Oval } from 'react-loader-spinner'
 
 
 
@@ -14,9 +16,11 @@ function Login() {
     const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState('')
     const { setAccessToken, setRefreshToken, setEmail } = useContext(AuthContext) as UserContextType
+    const { status, setStatus } = useContext(StatusContext) as StatusContextType
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     const navigate = useNavigate()
     setPageView(PageViewType.LOGIN)
+    setStatus(StatusType.COMPLETE)
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -27,6 +31,7 @@ function Login() {
         }
 
         try {
+            setStatus(StatusType.LOADING)
             fetch(LOGIN_URL, requestOptions).then((res) => {
                 // todo: set auth 
                 if (res.status !== 200) {
@@ -35,6 +40,7 @@ function Login() {
                     return res.json()
                 }
             }).then((resJSON) => {
+                setStatus(StatusType.COMPLETE)
                 const accessToken = resJSON['accessToken']
                 const refreshToken = resJSON['refreshToken']
                 setAccessToken(accessToken)
@@ -58,6 +64,18 @@ function Login() {
 
     return (
         <div className='loginWrapper'>
+            <div className='loadingSpinnerContainer'>
+                    {status === StatusType.LOADING && <Oval
+                        visible={true}
+                        height="40"
+                        width="40"
+                        color="#B60BEA"
+                        secondaryColor="#6c04a3"
+                        ariaLabel="oval-loading"
+                        wrapperStyle={{marginTop: "20px"}}
+                        wrapperClass=""
+                    />}
+            </div>
             <form onSubmit = {handleSubmit}>
                 <div className='login'>
                     <div className='loginHeader'>

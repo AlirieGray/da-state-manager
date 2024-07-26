@@ -12,6 +12,10 @@
     margin-top: 100px;
 }
 
+.loadingSpinnerContainer {
+    min-height: 50px;
+}
+
 .inputHeader {
     color: rgb(160,160,160);
     font-size: 12px;
