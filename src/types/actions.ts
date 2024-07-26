@@ -13,6 +13,7 @@ type OriginsFormActions =
     | { type: 'SET_PARAGON_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_LANDSMEET_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_BATTLE_DENERIM_ATTR', payload: {key: string, value: string} }
+    | { type: 'SET_EPILOGUE_ATTR', payload: {key: string, value: string} }
     | { type: 'SET_AWAKENING_ATTR', payload: {key: string, value: string} }
 
 type DA2FormActions =

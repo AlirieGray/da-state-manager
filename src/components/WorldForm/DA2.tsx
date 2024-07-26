@@ -220,20 +220,57 @@ function DA2({ gameState, onChange }: DA2Props) {
                     <div className='questSection'>
                         <h2>Act One</h2>
                         <TextInput 
+                            title='Did Hawke join the smugglers or mercenaries?'
+                            value={get(gameState, 'quests.0.decisions.smuggler_mercenary')}
+                            suggestedValues={[
+                                'In order to gain entry into Kirkwall, Hawke entered the service of Athenril, a smuggler.',
+                                'In order to gain entry into Kirkwall, Hawke entered the service of Meeran, a mercenary.'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'smuggler_mercenary', value}})}
+                        />
+                        <TextInput 
+                            title={`How did Hawke handle Ser Thrask's secret?`}
+                            value={get(gameState, 'quests.0.decisions.errant')}
+                            suggestedValues={[
+                                'Hawke assured Ser Thrask that his secret was safe.',
+                                `Hawke used her knowledge of Ser Thrask's mage daughter to blackmail him.`
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'errant', value}})}
+                        />
+                        <TextInput 
+                            title='How did Hawke handle the cave of fugitive apostates?'
+                            value={get(gameState, 'quests.0.decisions.mercy')}
+                            suggestedValues={[
+                                'Hawke defended the fugitive mages from Templar capture, killing Ser Karras and his men.',
+                                'Hawke convinced the Templars to search elsewhere for the fugitive mages.',
+                                'Hawke turned the mages over to the Templars.'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'mercy', value}})}
+                        />
+                        <TextInput 
+                            title={`Did Hawke return Martin's cargo?`}
+                            value={get(gameState, 'quests.0.decisions.martin')}
+                            suggestedValues={[
+                                `Hawke did not return Martin's cargo.`,
+                                'After receiving his goods, Martin set up a small, illicit shop in the Hanged Man.'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'martin', value}})}
+                        />
+                        <TextInput 
                             title='How did Hawke deal with Ketojan?'
                             value={get(gameState, 'quests.0.decisions.ketojan')}
                             suggestedValues={[
-                                'Hawke defended Ketojan from the Qunari, and then Ketojan took his own life',
-                                'Hawke handed Ketojan over to the Qunari'
+                                'Hawke defended Ketojan from the Qunari, and then Ketojan took his own life.',
+                                'Hawke handed Ketojan over to the Qunari, who executed him.'
                             ]}
                             handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ketojan', value}})}
                         />
                         <TextInput 
-                            title='What became of Feynriel?'
+                            title='Did Hawke send Feynriel to the Circle or the Dalish?'
                             value={get(gameState, 'quests.0.decisions.feynriel')}
                             suggestedValues={[
-                                'Hawke sent Feynriel to the Dalish',
-                                'Hawke sent Feynriel to the Circle'
+                                'Hawke sent Feynriel to the Dalish.',
+                                'Hawke sent Feynriel to the Circle.'
                             ]}
                             handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'feynriel', value}})}
                         />
@@ -241,18 +278,37 @@ function DA2({ gameState, onChange }: DA2Props) {
                             title='Did Hawke return Saemus to the Viscount?'
                             value={get(gameState, 'quests.0.decisions.saemus')}
                             suggestedValues={[
-                                'Saemus was rescued from the mercenary group determined to hold him hostage',
-                                'Saemus was not returned to his father'
+                                'Saemus was rescued from the mercenary group determined to hold him hostage.',
+                                'Saemus was not returned to his father.'
                             ]}
                             handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'saemus', value}})}
+                        />
+                        <TextInput 
+                            title='Was Kelder killed?'
+                            value={get(gameState, 'quests.0.decisions.magistrate')}
+                            suggestedValues={[
+                                'Hawke killed Kelder.',
+                                'Hawke returned Kelder to his father, Magistrate Vanard.'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'magistrate', value}})}
+                        />
+                        <TextInput 
+                            title='Was Danzig killed?'
+                            value={get(gameState, 'quests.0.decisions.danzig')}
+                            suggestedValues={[
+                                'Hawke killed the slaver Danzig.',
+                                'Fenris killed the slaver Danzig',
+                                'Hawke did not kill Danzig'
+                            ]}
+                            handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'danzig', value}})}
                         />
                         <TextInput 
                             title={`What did Hawke tell Ghyslain about his wife's death?`}
                             value={get(gameState, 'quests.0.decisions.ghyslain')}
                             suggestedValues={[
                                 'Hawke did not find Ninette',
-                                `Hawke told Ghyslain that his wife had died, but spared him the grisly details`,
-                                `Hawke told Ghyslain the full truth of his wife's death`
+                                `Hawke told Ghyslain that his wife had died, but spared him the grisly details.`,
+                                `Hawke told Ghyslain the full truth of his wife's death.`
                             ]}
                             handleChange={(value) => onChange({type: 'SET_ACT_ONE_ATTR', payload: {key: 'ghyslain', value}})}
                         />

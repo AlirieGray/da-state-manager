@@ -13,7 +13,7 @@ function Worlds({worlds, setModalOpen, setWorldToDelete, setWorldIDToDelete}: an
 
     return (
         <div className='worldsContainer'>
-            { status === StatusType.LOADING && (
+            { worlds.length === 0 && status === StatusType.LOADING && (
                 <div>
                     <Oval
                         visible={true}

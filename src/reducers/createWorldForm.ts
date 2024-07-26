@@ -1,9 +1,8 @@
-import { CreateWorldForm, Game, World, WorldFormAction } from '../types'
+import { CreateWorldForm, Game, WorldFormAction } from '../types'
 
 // todo: use immer ?
 // use consts for world form action types
 // todo: persist state in local storage
-// todo: clear form not working....
 
 export const createWorldFormReducer = (state: CreateWorldForm, action: WorldFormAction) => {
     switch (action.type) {
@@ -216,15 +215,29 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
                 return game
             })}
 
+        case 'SET_EPILOGUE_ATTR':
+            const epilogueKey = action.payload.key
+            let newEpilogueChoices = {...state.games[0].quests[9].decisions}
+            newEpilogueChoices[`${epilogueKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[9].decisions = newEpilogueChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
+
         case 'SET_AWAKENING_ATTR':
             const awakeKey = action.payload.key
-            let newAwakeChoices = {...state.games[0].quests[9].decisions}
+            let newAwakeChoices = {...state.games[0].quests[10].decisions}
             newAwakeChoices[`${awakeKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
                 if (index === 0) {
                     let newQuests = [...state.games[0].quests]
-                    newQuests[9].decisions = newAwakeChoices
+                    newQuests[10].decisions = newAwakeChoices
                     return {...game, quests: newQuests}
                 }
                 return game
@@ -232,13 +245,13 @@ export const createWorldFormReducer = (state: CreateWorldForm, action: WorldForm
 
         case 'SET_DAO_COMPANION_ATTR':
             const compKey = action.payload.key
-            let newCompanionChoices = {...state.games[0].quests[10].decisions}
+            let newCompanionChoices = {...state.games[0].quests[11].decisions}
             newCompanionChoices[`${compKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
                 if (index === 0) {
                     let newQuests = [...state.games[0].quests]
-                    newQuests[10].decisions = newCompanionChoices
+                    newQuests[11].decisions = newCompanionChoices
                     return {...game, quests: newQuests}
                 }
                 return game
@@ -760,6 +773,13 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                     }
                 },
                 {
+                    name: 'Epilogue',
+                    decisions: {
+                        'boon': '',
+                        'after': '',
+                    }
+                },
+                {
                     name: 'Awakening DLC',
                     decisions: {
                         'architect': '',
@@ -794,9 +814,16 @@ export const defaultCreateWorldForm: CreateWorldForm = {
                 {
                     name: 'Act One',
                     decisions: {
+                        'smuggler_mercenary':'',
+                        'errant': '',
+                        'mercy': '',
+                        'martin' : '',
                         'ketojan': '',
                         'feynriel': '',
-                        'saemus': ''
+                        'saemus': '',
+                        'magistrate': '',
+                        'ghyslain': '',
+                        'danzig': ''
                     }
                 },
                 {

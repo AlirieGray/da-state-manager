@@ -218,10 +218,23 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
                 }
                 return game
             })}
+        case 'SET_EPILOGUE_ATTR':
+            const epilogueKey = action.payload.key
+            let newEpilogueChoices = {...state.games[0].quests[9].decisions}
+            newEpilogueChoices[`${epilogueKey}`] = action.payload.value
+
+            return {...state, games: state.games.map((game: Game, index) => {
+                if (index === 0) {
+                    let newQuests = [...state.games[0].quests]
+                    newQuests[9].decisions = newEpilogueChoices
+                    return {...game, quests: newQuests}
+                }
+                return game
+            })}
 
         case 'SET_AWAKENING_ATTR':
             const awakeKey = action.payload.key
-            let newAwakeChoices = {...state.games[0].quests[9].decisions}
+            let newAwakeChoices = {...state.games[0].quests[10].decisions}
             newAwakeChoices[`${awakeKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
@@ -235,7 +248,7 @@ export const editWorldForm = (state: World, action: WorldFormAction) => {
 
         case 'SET_DAO_COMPANION_ATTR':
             const compKey = action.payload.key
-            let newCompanionChoices = {...state.games[0].quests[10].decisions}
+            let newCompanionChoices = {...state.games[0].quests[11].decisions}
             newCompanionChoices[`${compKey}`] = action.payload.value
 
             return {...state, games: state.games.map((game: Game, index) => {
