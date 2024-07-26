@@ -11,8 +11,7 @@ import { StatusContext } from '../context/status'
 // todo: handle loading, API errors, etc
 export function useGetAllWorldstates(accessToken: string, refreshToken: string) {
     const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
-    const { setStatus } = useContext(StatusContext) as StatusContextType
-    const { setErrorMessage } = useContext(StatusContext) as StatusContextType
+    const { setStatus, setErrorMessage } = useContext(StatusContext) as StatusContextType
 
     const options = {
         method: 'GET',
@@ -93,6 +92,7 @@ export function useGetWorldstate(worldID: string, accessToken: string, refreshTo
 
 export function useDeleteWorldstate(worldID: string, accessToken: string, refreshToken: string) {
     const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
+    const { setStatus } = useContext(StatusContext) as StatusContextType
 
     const options = {
         method: 'DELETE',
@@ -103,29 +103,31 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
         }
     }
     
-    let err = ''
     const deleteWorld = async () => {
-        
         try {
-            // set fetch state to loading
+            setStatus(StatusType.LOADING)
             fetch(DELETE_WORLD_URL + `/${worldID}`, options).then(res => {
                 if (res.status !== 200) {
+                    setStatus(StatusType.ERROR)
                     console.error("error: ", res.statusText)
                     return -1
                 }
                 return res.json()
             }).then((json) => {
+                setStatus(StatusType.COMPLETE)
                 const filteredWorlds = worlds.filter(w => w.ID !== worldID)
                 setWorlds(filteredWorlds)
             }).catch((err) => {
+                setStatus(StatusType.ERROR)
                 return err
             })
         } catch(err) {
             console.log(err)
+            setStatus(StatusType.ERROR)
             // todo set fetch state to error
         }
     }
-    return [err, deleteWorld] as const
+    return [deleteWorld] as const
 }
 
 export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string, refreshToken: string) {

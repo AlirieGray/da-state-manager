@@ -8,9 +8,6 @@ import {AuthContext, UserContextType} from '../../context/auth'
 import './dashboard.css'
 import { useGetAllWorldstates } from '../../hooks/worldstate'
 
-// todo: use auth context
-// and protected routes
-// use context for nav page name and state
 function Dashboard() {
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
     setPageView(PageViewType.OVERVIEW)
@@ -19,7 +16,7 @@ function Dashboard() {
     const [worldToDelete, setWorldToDelete] = useState('')
     const [worldIDToDelete, setWorldIDToDelete] = useState('')
     const { accessToken, refreshToken } = useContext(AuthContext) as UserContextType
-    const [deleteWorldErr, deleteWorld] = useDeleteWorldstate(worldIDToDelete, accessToken, refreshToken)
+    const [deleteWorld] = useDeleteWorldstate(worldIDToDelete, accessToken, refreshToken)
     const [worlds, getWorlds] = useGetAllWorldstates(accessToken, refreshToken)
 
     useEffect(() => {
