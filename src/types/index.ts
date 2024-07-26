@@ -34,3 +34,5 @@ export type StatusContextType = {
 export * from './worldTypes'
 
 export * from './actions'
+
+export * from './auth'

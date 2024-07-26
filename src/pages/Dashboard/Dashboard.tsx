@@ -1,10 +1,10 @@
 import Worlds from './Worlds'
 import  {useContext, useState, useEffect} from 'react'
 import { PageViewContext } from '../../context/pageView'
-import { PageViewContextType, PageViewType } from '../../types'
+import { PageViewContextType, PageViewType, UserContextType } from '../../types'
 import Modal  from '../../components/Modal/Modal'
 import { useDeleteWorldstate } from '../../hooks/worldstate'
-import {AuthContext, UserContextType} from '../../context/auth'
+import { AuthContext } from '../../context/auth'
 import './dashboard.css'
 import { useGetAllWorldstates } from '../../hooks/worldstate'
 

@@ -2,12 +2,12 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
 import { PageViewContext } from '../../context/pageView'
-import { PageViewContextType, PageViewType, StatusContextType, StatusType } from '../../types'
+import { PageViewContextType, PageViewType, StatusContextType, StatusType, UserContextType } from '../../types'
 import './login.css'
 import { StatusContext } from '../../context/status'
 import { Oval } from 'react-loader-spinner'
 import { useLogin, useValidateSession } from '../../hooks/auth'
-import { AuthContext, UserContextType } from '../../context/auth'
+import { AuthContext } from '../../context/auth'
 
 function Login() {
     const [email, resetEmail, emailAttributes] = useInput('email', '')

@@ -1,9 +1,9 @@
-import { StatusContextType, StatusType } from '../types' 
+import { StatusContextType, StatusType, UserContextType } from '../types' 
 import { StatusContext } from '../context/status'
 import { useContext } from 'react'
-import { GET_SESSIONS_URL, LOGIN_URL } from '../config' 
-import {AuthContext, UserContextType} from '../context/auth'
-import {useNavigate} from 'react-router-dom'
+import { GET_SESSIONS_URL, LOGIN_URL, REGISTER_URL } from '../config' 
+import { AuthContext } from '../context/auth'
+import { useNavigate } from 'react-router-dom'
 
 export function useLogin(email: string, password: string) {
     const { setStatus, setErrorMessage } = useContext(StatusContext) as StatusContextType
@@ -20,7 +20,6 @@ export function useLogin(email: string, password: string) {
         try {
             setStatus(StatusType.LOADING)
             fetch(LOGIN_URL, requestOptions).then((res) => {
-                // todo: set auth 
                 if (res.status !== 200) {
                     throw new Error("Could not login")
                 } else {
@@ -47,6 +46,47 @@ export function useLogin(email: string, password: string) {
     }
 
     return [login] as const
+}
+
+export function useRegister(email: string, username: string, password: string) {
+    const { setStatus, setErrorMessage } = useContext(StatusContext) as StatusContextType
+    const { setAccessToken, setRefreshToken, setEmail, setUsername } = useContext(AuthContext) as UserContextType
+    const navigate = useNavigate()
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json'},
+        body: JSON.stringify({username, password, email})
+    }
+
+    const register = async () => {
+        try {
+            setStatus(StatusType.LOADING)
+            fetch(REGISTER_URL, requestOptions).then((res) => {
+                if (res.status !== 201) {
+                    setStatus(StatusType.ERROR)
+                    console.log("error, could not register!")
+                    return
+                }
+                return res.json()
+            }).then((resJSON) => {
+                setStatus(StatusType.COMPLETE)
+                const accessToken = resJSON['accessToken']
+                const refreshToken = resJSON['refreshToken']
+                setAccessToken(accessToken)
+                setRefreshToken(refreshToken)
+                setEmail(email)
+                setUsername(username)
+                navigate("/")
+            })
+            
+        } catch (err) {
+            setStatus(StatusType.ERROR)
+            setErrorMessage(`${err}`)
+        }
+    }
+
+    return [register] as const
 }
 
 export function useValidateSession() {

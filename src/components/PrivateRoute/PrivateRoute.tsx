@@ -1,6 +1,7 @@
-import {useContext} from 'react'
-import {AuthContext, UserContextType} from '../../context/auth'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/auth'
 import { Navigate } from 'react-router-dom'
+import { UserContextType } from '../../types'
 
 type ProtectedRouteProps = {
     outlet: JSX.Element

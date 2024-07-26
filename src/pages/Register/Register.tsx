@@ -1,12 +1,13 @@
 import React, { useState, useContext, useEffect} from 'react'
 import './register.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useInput from '../../hooks/useInput'
-import { AuthContext, UserContextType } from '../../context/auth'
+import { AuthContext } from '../../context/auth'
 import { PageViewContext } from '../../context/pageView'
-import { PageViewContextType, PageViewType } from '../../types'
-import { REGISTER_URL } from '../../config'
-import { useValidateSession } from '../../hooks/auth'
+import { PageViewContextType, PageViewType, StatusContextType, StatusType, UserContextType } from '../../types'
+import { StatusContext } from '../../context/status'
+import { useValidateSession, useRegister } from '../../hooks/auth'
+import { Oval } from 'react-loader-spinner'
 
 // todo: use text input component
 
@@ -14,9 +15,10 @@ function Register() {
     const [user, resetUser, userAttributes] = useInput('user', '')
     const [email, resetEmail, emailAttr] = useInput('email', '')
     const [password, setPassword] = useState('')
-    const { accessToken, setAccessToken, setRefreshToken, setEmail, setUsername } = useContext(AuthContext) as UserContextType
+    const { accessToken } = useContext(AuthContext) as UserContextType
     const { setPageView } = useContext(PageViewContext) as PageViewContextType
-    const navigate = useNavigate()
+    const { status, errorMessage } = useContext(StatusContext) as StatusContextType
+    const [register] = useRegister(email, user, password)
     const [getSession] = useValidateSession()
     setPageView(PageViewType.REGISTER)
 
@@ -26,39 +28,23 @@ function Register() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-        try {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-type': 'application/json'},
-                body: JSON.stringify({username: user, password, email})
-            }
-            fetch(REGISTER_URL, requestOptions).then((res) => {
-                if (res.status !== 201) {
-                    // handle error message
-                    console.log("error, could not register!")
-                    return
-                }
-                return res.json()
-            }).then((resJSON) => {
-                const accessToken = resJSON['accessToken']
-                const refreshToken = resJSON['refreshToken']
-                setAccessToken(accessToken)
-                setRefreshToken(refreshToken)
-                setEmail(email)
-                setUsername(user)
-                resetEmail()
-                resetUser()
-                navigate("/")
-            })
-            
-        } catch (err) {
-            console.error(err)
-        }
+        register()
     }
 
     return (
         <div className='registerWrapper'>
+            <div className='loadingSpinnerContainer'>
+                    {status === StatusType.LOADING && <Oval
+                        visible={true}
+                        height="40"
+                        width="40"
+                        color="#B60BEA"
+                        secondaryColor="#6c04a3"
+                        ariaLabel="oval-loading"
+                        wrapperStyle={{marginTop: "20px"}}
+                        wrapperClass=""
+                    />}
+            </div>
             <form onSubmit={handleSubmit} >
                 <div className='register'>
                     <div className='registerHeader'>
