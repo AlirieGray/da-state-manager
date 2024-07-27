@@ -12,6 +12,7 @@ function About() {
     return (
         <div className='aboutWrapper'>
             <h2>What's this website all about?</h2>
+
             <p>The Dragon Age State Journal was created as an alternative to the Dragon Age Keep, providing Dragon Age players with a way to manage custom world states
             that exist outside the canon of the games themselves and are therefore not possible to store in the Keep. For example, say... </p>
 
@@ -27,10 +28,10 @@ function About() {
 
             <p>This app was developed by one person (me,  <a className="aboutLink" href="https://www.aliriegray.com/" target="_blank" rel="noopener noreferrer">Alirie!</a>) FOR the Dragon Age community, and I'm very appreciative of all of you who help me maintain it by submitting feature requests, bug reports, side quests I've overlooked, and any and all feedback on how I can make this site as useful as possible to you all.</p>
 
-            <p>The best way to make sure I see your feedback is to submit an issue on the <a className="aboutLink" href="https://github.com/AlirieGray/da-state-manager" target="_blank" rel="noopener noreferrer">GitHub repository.</a> I also keep the ReadMe up to date with upcoming features I'm working on.</p>
-
-            <p>Short of that, you can always email me at: <a className="aboutLink" href="mailto:alirie.gray@gmail.com">alirie.gray@gmail.com</a></p>
+            <p>You can always reach me by email me at: <a className="aboutLink" href="mailto:alirie.gray@gmail.com">alirie.gray@gmail.com</a></p>
             
+            <p>Also feel free to submit an issue on the <a className="aboutLink" href="https://github.com/AlirieGray/da-state-manager" target="_blank" rel="noopener noreferrer">GitHub repository.</a> I try to keep the ReadMe up to date with upcoming features I'm working on.</p>
+
             <h2>Attributions</h2>
 
             <p>Resources and assets used by this website:</p>
