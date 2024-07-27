@@ -21,7 +21,7 @@ function CreateWorld() {
     }, [])
 
     const handleSubmit = () => {
-        if (get(formState, "name") === '') {
+        if (get(formState, "name", '').trim() === '') {
             setStatus(StatusType.ERROR)
             setErrorMessage("required field")
         } else {
