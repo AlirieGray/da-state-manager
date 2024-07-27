@@ -1,6 +1,6 @@
 import { Dispatch } from 'react'
 import { Game, WorldFormAction} from '../../types'
-import {get} from 'lodash'
+import { get } from 'lodash'
 import TextInput from '../TextInput/TextInput'
 import MultiSelectDropdown from '../MultiSelectDropdown/MultiSelectDropdown'
 import { MultiSelectOption, CompanionMap } from '../../types'

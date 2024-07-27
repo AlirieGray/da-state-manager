@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './textInput.css'
+import { StatusContext } from '../../context/status'
+import { StatusContextType, StatusType } from '../../types'
 
 interface TextInputProps {	
     handleChange: (value: string) => void
@@ -7,12 +9,14 @@ interface TextInputProps {
     multiLine?: boolean
     title: string	
     value: string	
+    required?: boolean
 }	
 
 // todo: prop to change style (for long form input, ex summary)
 
-function TextInput({handleChange, title, value, suggestedValues, multiLine}: TextInputProps) {	
+function TextInput({handleChange, title, value, suggestedValues, multiLine, required}: TextInputProps) {	
     const [showDropdown, setShowDropdown] = useState(false)
+    const { errorMessage, status, setErrorMessage, setStatus } = useContext(StatusContext) as StatusContextType
 
     const dropdown = () => {
         if (suggestedValues && showDropdown) {
@@ -61,7 +65,7 @@ function TextInput({handleChange, title, value, suggestedValues, multiLine}: Tex
 
     return (	
         <div className="textInputWrapper">	
-            <label> {title} </label>	
+            <label className={`${required ? 'required' : ''}`}> {title} </label>	
             <input 
                 className='textInput'
                 spellCheck='false'
@@ -74,10 +78,15 @@ function TextInput({handleChange, title, value, suggestedValues, multiLine}: Tex
                     }, 200)   
                 }}
                 onChange={(event) => {
+                    if (errorMessage.includes('required')) {
+                        setStatus(StatusType.COMPLETE)
+                        setErrorMessage('')
+                    }
                     setShowDropdown(false)
                     handleChange(event.target.value)
                 }} autoComplete='new-password'
             />	
+            {(required && status === StatusType.ERROR && errorMessage.includes('required')) && <span className="requiredError">{`${title} cannot be empty`}</span>}
             {dropdown()}
         </div>	
     )	

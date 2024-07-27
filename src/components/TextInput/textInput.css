@@ -13,6 +13,24 @@
 
 }
 
+.required::before {
+    color: red !important;
+    content: '*';
+}
+
+.required::after {
+    color: red !important;
+    font-style: italic;
+    padding-left: 15px;
+    content: 'Required';
+}
+
+.requiredError {
+    color: red;
+    margin-top: 4px;
+    font-size: 14px;
+}
+
 textarea {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

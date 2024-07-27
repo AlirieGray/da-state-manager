@@ -2,7 +2,7 @@
 import React, { Dispatch } from 'react'
 import { Tooltip as ReactTooltip } from "react-tooltip"
 import { CreateWorldForm, PageViewType, WorldFormAction} from '../../types'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Origins from './Origins'
 import DA2 from './DA2'
 import { get } from 'lodash'
@@ -36,13 +36,14 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
         <div className='worldFormContainer'>
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault()
-                handleSubmit()}} 
+                handleSubmit()}}
                 className='formWrapper'>
                 <div className='formHeader'>
                     <div className='formInputs'>
                         <TextInput 
                             title='World State Name' 
                             value={get(state, 'name')} 
+                            required={true}
                             handleChange={(value) => {dispatch({type: 'SET_WORLD_NAME', payload: value})}}/>
                         <TextInput 
                             title='Summary'
@@ -70,7 +71,7 @@ function WorldForm({view, id, handleSubmit, state, dispatch}: Props) {
                 </div>
                 <div className='selectGameButtonWrapper'>
                     <div className='selectLabel'>
-                        Select game: <img src={qMark} alt="Tooltip question mark" data-tooltip-id="select-game" />
+                        Select game <img src={qMark} style={{height:"25px", paddingLeft:'6px'}} alt="Tooltip question mark" data-tooltip-id="select-game" />
                     </div>
                     <div className="selectGameButtons">
                         <button className={((state.activeGame === 0) ? 'selectedGameButton' : 'selectGameButton')} onClick={(e: React.MouseEvent<HTMLButtonElement>) => {

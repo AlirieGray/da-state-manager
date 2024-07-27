@@ -92,7 +92,7 @@ export function useGetWorldstate(worldID: string, accessToken: string, refreshTo
 
 export function useDeleteWorldstate(worldID: string, accessToken: string, refreshToken: string) {
     const { worlds, setWorlds } = useContext(WorldsContext) as WorldContextType
-    const { setStatus } = useContext(StatusContext) as StatusContextType
+    const { setStatus, setErrorMessage } = useContext(StatusContext) as StatusContextType
 
     const options = {
         method: 'DELETE',
@@ -110,7 +110,7 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
                 if (res.status !== 200) {
                     setStatus(StatusType.ERROR)
                     console.error("error: ", res.statusText)
-                    return -1
+                    throw new Error("Could not create new World State")
                 }
                 return res.json()
             }).then((json) => {
@@ -124,15 +124,17 @@ export function useDeleteWorldstate(worldID: string, accessToken: string, refres
         } catch(err) {
             console.log(err)
             setStatus(StatusType.ERROR)
-            // todo set fetch state to error
+            setErrorMessage(`${err}`)
         }
     }
     return [deleteWorld] as const
 }
 
 export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: string, refreshToken: string) {
-    const reqBody = convertWorldStateToCreateReqBody(worldstate)
+    const { setStatus, setErrorMessage } = useContext(StatusContext) as StatusContextType
     const navigate = useNavigate()
+
+    const reqBody = convertWorldStateToCreateReqBody(worldstate)
 
     const options = {
         method: 'POST',
@@ -143,28 +145,32 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
         },
         body: reqBody // todo: type safety
     }
-    
-    let err = ''
+
 
     const postWorld = async () => {
         try {
             fetch(CREATE_WORLD_URL, options).then(res => {
                 if (res.status !== 201) {
                     console.error('error ', res.statusText)
-                    return -1
+                    console.log("error????")
+                    throw new Error("Could not create new World State")
                 }
                 return res.json()
             }).then(worldRes => {
                 const worldObj = convertWorldstateJSON(worldRes)
                 navigate(`/world/${worldObj.ID}/view`)
+            }).catch((e) => {
+                setStatus(StatusType.ERROR)
             })
         } catch (e) {
             console.error(e)
+            setStatus(StatusType.ERROR)
+            setErrorMessage(`${e}`)
             // todo set fetch state to err
         }
     }
 
-    return [err, postWorld] as const
+    return [postWorld] as const
 }
 
 export function usePutWorldstate(worldstate: World, accessToken: string, refreshToken: string) {
