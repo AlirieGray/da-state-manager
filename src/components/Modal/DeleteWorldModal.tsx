@@ -1,8 +1,13 @@
 import './modal.css'
 
-// TODO: type safety props
+type DeleteWorldModalProps = {
+    children: any
+    setModalOpen: (open: boolean) => void
+    deleteWorld: () => Promise<void>
+}
+
 // TODO error pop-ups/notifs (not modal...)
-function Modal({ children, setModalOpen, deleteWorld }: any) {
+function DeleteWorldModal({ children, setModalOpen, deleteWorld }: DeleteWorldModalProps) {
     return (
         <div className="modalContainer">
             <div className="modal">
@@ -29,4 +34,4 @@ function Modal({ children, setModalOpen, deleteWorld }: any) {
     )
 }
 
-export default Modal
+export default DeleteWorldModal

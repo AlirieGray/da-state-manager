@@ -30,7 +30,6 @@ export type StatusContextType = {
     setErrorMessage: (erroMessage: string) => void
 }
 
-
 export * from './worldTypes'
 
 export * from './actions'

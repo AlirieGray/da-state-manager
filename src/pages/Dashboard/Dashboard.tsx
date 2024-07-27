@@ -2,7 +2,7 @@ import Worlds from './Worlds'
 import  {useContext, useState, useEffect} from 'react'
 import { PageViewContext } from '../../context/pageView'
 import { PageViewContextType, PageViewType, UserContextType } from '../../types'
-import Modal  from '../../components/Modal/Modal'
+import DeleteWorldModal  from '../../components/Modal/DeleteWorldModal'
 import { useDeleteWorldstate } from '../../hooks/worldstate'
 import { AuthContext } from '../../context/auth'
 import './dashboard.css'
@@ -25,14 +25,13 @@ function Dashboard() {
 
     return (
         <>
-            {modalOpen && <Modal 
+            {modalOpen && <DeleteWorldModal 
                 setModalOpen={setModalOpen} 
-                worldIDToDelete={worldIDToDelete}
                 deleteWorld={deleteWorld}> 
                 <h1>Are you sure you want to delete this world state?</h1>
                 <p> World: {worldToDelete} </p>
                 <p>This action cannot be undone.</p>
-            </Modal>}
+            </DeleteWorldModal>}
             <Worlds 
                 worlds={worlds}
                 setModalOpen={setModalOpen} 

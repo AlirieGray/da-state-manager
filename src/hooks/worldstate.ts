@@ -175,6 +175,7 @@ export function usePostWorldstate(worldstate: CreateWorldForm, accessToken: stri
 
 export function usePutWorldstate(worldstate: World, accessToken: string, refreshToken: string) {
     const reqBody = convertWorldStateToCreateReqBody(worldstate)
+    const { setStatus, setErrorMessage } = useContext(StatusContext) as StatusContextType
     const navigate = useNavigate()
 
     const options = {
@@ -186,27 +187,30 @@ export function usePutWorldstate(worldstate: World, accessToken: string, refresh
         },
         body: reqBody // todo: type safety
     }
-    
-    let err = ''
 
     const putWorld = async () => {
         try {
             fetch(EDIT_WORLD_URL + `/${worldstate.ID}`, options).then(res => {
                 if (res.status !== 200) {
                     console.error('error ', res.statusText)
-                    return -1
+                    throw new Error('Could not update world state.')
                 }
                 return res.json()
             }).then(worldRes => {
                 navigate(`/world/${worldstate.ID}/view`)
+            }).catch((e) => {
+                setStatus(StatusType.ERROR)
+                setErrorMessage(`${e}`)
             })
         } catch (e) {
             console.error(e)
+            setStatus(StatusType.ERROR)
+            setErrorMessage(`${e}`)
             // todo set fetch state to err
         }
     }
 
-    return [err, putWorld] as const
+    return [putWorld] as const
 }
 
 // todo: move to util ?
