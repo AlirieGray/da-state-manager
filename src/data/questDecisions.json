@@ -1,0 +1,588 @@
+﻿{
+  "origins": [
+    {
+      "name": "Prologue",
+      "decisions": [
+        {
+          "prompt": "What were the events that led to the Warden's conscription into the Grey Wardens?",
+          "suggested": []
+        },
+        {
+          "prompt": "How did the Warden deal with the prisoner at Ostagar?",
+          "suggested": ["Ostagar prisoner was left to his fate",
+            "The Warden killed the Ostagar prisoner",
+            "The Warden stole food from the guard and gave it to the prisoner",
+            "The Warden convinced the guard to share his lunch with the prisoner",
+            "The Warden bought food from the guard and gave it to the prisoner",
+            "The Warden stole the key from the prisoner"]
+        }
+      ]
+    },
+    {
+      "name": "Lothering",
+      "decisions": [
+        {
+          "prompt": "Did the Warden recruit Leliana in Lothering?",
+          "suggested": [
+            "The Warden recruited Leliana in the tavern at Lothering",
+            "After initially declining, the Warden recruited Leliana after she made a second attempt when the party was leaving Lothering",
+            "Leliana did not join the Warden's campaign against the Blight"
+          ]
+        },
+        {
+          "prompt": "Did the Warden recruit Sten in Lothering?",
+          "suggested": [
+            "The Warden left Sten to his fate", "Sten joined the Warden in the campaign against the Fifth Blight"
+          ]
+        },
+        {
+          "prompt": "How did the Warden deal with the unscrupulous merchant?",
+          "suggested": [
+            "The Warden convinced the Lothering merchant to sell his goods at a fair price", "The Warden struck a profitable deal with the Lothering merchant", "The Warden did not deal with the Lothering merchant"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The Arl of Redcliffe",
+      "decisions": [
+        {
+          "prompt": "Did the Warden help Redcliffe prepare for the battle against the undead?",
+          "suggested": [
+            "The Warden did not help Redcliffe prepare to fight off the undead attacks",
+            "The Warden helped the people of Redcliffe prepare to fight off the undead attacks"
+          ]
+        },
+        {
+          "prompt": "Did the Warden help the village of Redcliffe fight the undead hordes at nightfall?",
+          "suggested": [
+            "The Warden departed Redcliffe without lending aid to its people. The ensuing casualties were nearly complete.",
+            "With the help of the Warden, the people of Redcliffe stood fast against the undead horde"
+          ]
+        },
+        {
+          "prompt": "What was Connor's fate?",
+          "suggested": [
+            "Connor did not survive", "Connor was possessed", "Connor survived, not possessed"
+          ]
+        },
+        {
+          "prompt": "hat was Isolde's fate?",
+          "suggested": [
+            "Isolde survived the events at Redcliffe castle", "Isolde sacrificed herself in a ritual to save her son"
+          ]
+        },
+        {
+          "prompt": "Did the Warden make a deal with the desire demon?",
+          "suggested": [
+            "The Warden did not make a deal with the desire demon",
+            "The Warden made a deal with the desire demon to acquire arcane secrets of blood magic",
+            "The Warden made a deal with the desire demon for pleasure",
+            "The Warden made a deal with the desire demon for love and approval",
+            "The Warden made a deal with the desire demon for increased talents"
+          ]
+        },
+        {
+          "prompt": "Did the Warden look for Owen's daughter, Valena?",
+          "suggested": [
+            "The Warden rescued Valena from Redcliffe Castle",
+            "The Warden promised Owen to look for Valena, but did not find her in the castle",
+            "The Warden did not promise Owen to look for Valena, and did not find her in the castle",
+            "The Warden killed Owen, Redcliffe's blacksmith, and did not find Valena in the castle",
+            "The Warden killed Owen, Redcliffe's blacksmith, and later found his daughter, Valena, in the castle. Valena left Redcliffe to live with her aunt in Killarney"
+          ]
+        },
+        {
+          "prompt": "What became of Bella?",
+          "suggested": [
+            "Bella left Redcliffe", "Bella took over ownership of the tavern", "Bella left to start a brewery", "Bella died in Redcliffe"
+          ]
+        },
+        {
+          "prompt": "What did the Warden do to help Kaitlyn find her brother Bevin?",
+          "suggested": [
+            "The Warden did not help Kaitlyn find her brother",
+            "The Warden found Bevin, and claimed a powerful heirloom sword from his family to help stand against the Blight, despite vowing to return it afterwards",
+            "The Warden found the missing young man and paid the family for their family sword",
+            "The Warden recovered Bevin safe and sound",
+            "The Warden scared Bevin straight, sending him running to the relative safety of the Redcliffe chantry",
+            "The Warden freed Bevin and took the sword, later returning it"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The Urn of Sacred Ashes",
+      "decisions": [
+        {
+          "prompt": "Did the Warden defile the Ashes of Andraste?",
+          "suggested": ["The Urn of Sacred Ashes was not defiled", "The Urn of Sacred Ashes was defiled"]
+        },
+        {
+          "prompt": "Did the Warden slay the High Dragon at the Temple of Sacred Ashes?",
+          "suggested": [
+            "The Warden slew the High Dragon at the Temple of Sacred Ashes", "The Warden did not slay the High Dragon at the Temple of Sacred Ashes"
+          ]
+        },
+        {
+          "prompt": "What became of Genitivi?",
+          "suggested": [
+            "Brother Genitivi spread the word of the existence of the Temple of Sacred Ashes",
+            "The Warden killed Brother Genitivi at the Temple of Sacred Ashes"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Broken Circle",
+      "decisions": [
+        {
+          "prompt": "Who did the Warden support at the Circle?",
+          "suggested": [
+            "The Warden saved the mages at the Circle and recruited them", "The Warden used the Right of Annulment and recruited the Templars"
+          ]
+        },
+        {
+          "prompt": "Did First Enchanter Irving survive?",
+          "suggested": ["First Enchanter Irving died in battle", "First Enchanter Irving survived"]
+        },
+        {
+          "prompt": "Did the Warden agree to Cullen's request?",
+          "suggested": ["The Warden agreed to Cullen's request", "The Warden did not agree to Cullen's request"]
+        }
+      ]
+    },
+    {
+      "name": "Nature of the Beast",
+      "decisions": [
+        {
+          "prompt": "Who did the Warden side with?",
+          "suggested": [
+            "The Warden eliminated the werewolf threat, forging an alliance with the Dalish.", "The Warden eliminated the Dalish and gained the werewolves as allies.", "The Dalish and Werewolves brokered a peace."
+          ]
+        },
+        {
+          "prompt": "What happened to Cammen and Gheyna?",
+          "suggested": [
+            "The Warden did not encounter Cammen and Gheyna", "The Warden broke up Cammen and Gheyna", "The Warden brought Cammen and Gheyna together"
+          ]
+        },
+        {
+          "prompt": "How did the Warden deal with Deygan?",
+          "suggested": [
+            "The Warden did not encounter Deygan", "The Warden returned Deygan to the Dalish camp", "The Warden killed Deygan"
+          ]
+        },
+        {
+          "prompt": "What was the fate of the halla?",
+          "suggested": [
+            "The Warden did not resolve the halla's illness", "The halla recovered, thanks to the Warden", "The halla was put down"
+          ]
+        },
+        {
+          "prompt": "Did the Warden tell Athras about his wife's fate?",
+          "suggested": [
+            "Athras never learned the true fate of his wife", "The Warden told Athras only that his wife had died", "The Warden told Athras that his wife had become a werewolf and died"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Paragon of her Kind",
+      "decisions": [
+        {
+          "prompt": "Who rules Orzammar?",
+          "suggested": [
+            "Bhelen was crowned king of Orzammar", "Harrowmont was crowned king of Orzammar"
+          ]
+        },
+        {
+          "prompt": "What happened to the Anvil of the Void?",
+          "suggested": [
+            "Cairdin and the Warden defeated Branka, and destroyed the Anvil of the Void",
+            "The Warden convinced Branka that her quest for the Anvil was self-destructive. Branka ultimately destroyed it before ending her own life.",
+            "Branka and the Warden defeated Caridin, preserving the Anvil of the Void"
+          ]
+        },
+        {
+          "prompt": "How did the Warden deal with Ruck?",
+          "suggested": [
+            "The Warden did not speak with Filda",
+            "The Warden found and left Ruck alive, but told his mother that he had died in the Deep Roads",
+            "The Warden told Filda the truth about her son's state",
+            "The Warden killed Ruck and lied to Filda about it",
+            "The Warden killed Ruck and told Filda the truth",
+            "The Warden killed Ruck, and told Filda that he died heroically"
+          ]
+        },
+        {
+          "prompt": "What happened to Zerlinda?",
+          "suggested": [
+            "Zerlinda remained in Dust Town",
+            "Zerlinda's father was convinced to take his daughter back", 
+            "Zerlinda left for the surface",
+            "Zerlinda was taken in by Burkel's chantry",
+            "Zerlinda left her son in the Deep Roads"
+          ]
+        },
+        {
+          "prompt": "Did Dagna leave Orzammar?",
+          "suggested": [
+            "Dagna remained in Orzammar",
+            "Dagna left to study magic at the Circle"
+          ]
+        },
+        {
+          "prompt": "Did Brother Burkel establish a chantry in Orzammar?",
+          "suggested": [
+            "The Warden did not help Burkel establish a chantry in Orzammar",
+            "The Warden convinced Shaper Czibor to allow Brother Burkel to form a chantry in Orzammar, but he was later killed protesting the Assembly's restrictions on the Andrastian converts."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "The Landsmeet",
+      "decisions": [
+        {
+          "prompt": "Who rules Ferelden?",
+          "suggested": [
+            "Alistair was crowned king of Ferelden",
+            "Alistair and Anora rule Ferelden together",
+            "Alistair and the Warden rule Ferelden together",
+            "Anora was crowned queen of Ferelden",
+            "Anora and the Warden rule Ferelden together"
+          ]
+        },
+        {
+          "prompt": "What became of Loghain at the Landsmeet?",
+          "suggested": [
+            "Loghain survived his judgment at the Landsmeet",
+            "Loghain was executed by the Warden",
+            "Loghain was executed by Alistair",
+            "Loghain was killed by Alistair in a duel"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Battle of Denerim",
+      "decisions": [
+        {
+          "prompt": "Did the Warden agree to complete Morrigan's dark ritual?",
+          "suggested": [
+            "Morrigan did not have a child after the Fifth Blight",
+            "Morrigan had an old god baby with the Warden",
+            "Morrigan had an old god baby with Alistair",
+            "Morrigan had an old god baby with Loghain",
+            "Morrigan had a human baby with the Warden"
+          ]
+        },
+        {
+          "prompt": "Who did the Warden select to lead the team that stayed behind at the gate during the battle?",
+          "suggested": [
+            "Oghren",
+            "Sten",
+            "Leliana",
+            "Shale",
+            "Zevran",
+            "Loghain",
+            "Alistair",
+            "Morrigan",
+            "Wynne"
+          ]
+        },
+        {
+          "prompt": "Who slew the Archdemon?",
+          "suggested": [
+            "The Warden killed the Archdemon", "Alistair killed the Archdemon", "Loghain killed the Archdemon"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Coronation & Epilogue",
+      "decisions": [
+        {
+          "prompt": "What boon did the Hero of Ferelden ask of the monarch?",
+          "suggested": [
+            "The Warden asked the monarch for title and riches, and was named the Teyrn of Gwaren.",
+            "The Warden asked the monarch for justice for the city elves, and was named bann of the Alienage.",
+            "The Warden asked the monarch for justice for the city elves, and Shianni was named bann of the Alienage.",
+            "The Warden asked for justice for the murder of the Cousland family, and the monarch gave Arl Howe's lands to the Grey Wardens.",
+            "The Warden only wished to continue serving the crown, and so was named Chancellor by the monarch.",
+            "The Warden asked the Monarch to grant independence to the Circle of Magi.",
+            "The Warden asked the Monarch to grant sovereignity to the Dalish elves."
+          ]
+        },
+        {
+          "prompt": "What did the Hero of Ferelden do after ending the Fifth Blight?",
+          "suggested": [
+            "The Warden was killed in the process of slaying the Archdemon in the Battle of Denerim",
+            "After ending the Fifth Blight, the Hero of Ferelden helped to rebuild the Grey Wardens",
+            "After the end of the Fifth Blight, the Warden decided to travel for a time with Leliana",
+            "After the end of the Fifth Blight, the Warden decided to travel for a time with Zevran",
+            "The Warden remained in Denerim as the new King Consort of Ferelden, alongside his wife, Queen Anora",
+            "The Warden remained in Denerim as the new Queen Consort of Ferelden, alongside her husband, Alistair",
+            "The Warden remained with King Alistair as his mistress",
+            "The Warden joined Sten on his return voyage to Par Vollen",
+            "The Warden joined Shale and Wynne on their quest to Tevinter to find a way for Shale to regain her mortality"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Awakening DLC",
+      "decisions": [
+        {
+          "prompt": "What happened to the Architect?",
+          "suggested": [
+            "The Warden killed the Architect",
+            "The Warden allowed the Architect to live"
+          ]
+        },
+        {
+          "prompt": "What became of Sigrun",
+          "suggested": [
+            "Sigrun disapproved of the Warden's decision to spare the Architect, and the Warden was forced to kill Sigrun in the ensuing confrontation",
+            "Sigrun left for her Calling in the Deep Roads after her time with the Warden",
+            "The Warden helped Sigrun make amends for her past and gave a ring to Mischa",
+            "Sigrun remained at the Warden's side for many years"
+          ]
+        },
+        {
+          "prompt": "What happened to Nathaniel?",
+          "suggested": [
+            "The Warden invoked the Right of Conscription on Nathaiel Howe, making him a Grey Warden",
+            "The Warden helped Nathaniel reunite with his sister, Delilah",
+            "The Warden Commander executed Nathaniel Howe"
+          ]
+        },
+        {
+          "prompt": "What became of Velanna?",
+          "suggested": [
+            "Velanna remained with the Wardens after facing the Architect, but later took off on her own, saying she had seen Seranni in the shadows.",
+            "Velanna disappeared after the assault on Vigil's Keep.",
+            "After the Warden killed the Architect, Velanna never saw her sister again, and this remained a point of friction between the two.",
+            "Velanna formed a deep friendship with the Warden, eventually changing her views on humankind."
+          ]
+        },
+        {
+          "prompt": "Did Oghren re-unite with Felsi?",
+          "suggested": [
+            "Oghren did not re-unite with Felsi.",
+            "Oghren and Felsi re-united with the help of the Warden.",
+            "Oghren and Felsi parted on bad terms."
+          ]
+        },
+        {
+          "prompt": "Did the Warden protect Vigil's keep or the city of Amaranthine?",
+          "suggested": [
+            "The Warden protected Vigil's keep",
+            "The Warden protected the city of Amaranthine",
+            "The Warden found a way to protect both Vigil's Keep and Amaranthine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Witch Hunt DLC",
+      "decisions": [
+        {
+          "prompt": "Did the Warden go through the Eluvian with Morrigan?",
+          "suggested": [
+            "The Warden did not go through the eluvian with Morrigan",
+            "The Warden went through the eluvian with Morrigan",
+            "The Warden stabbed Morrigan"
+          ]
+        }
+      ]
+    }
+  ],
+  "da2": [
+    {
+      "name": "Act One",
+      "decisions": [
+        {
+          "prompt": "Did Hawke join the smugglers or mercenaries?",
+          "suggested": [
+            "In order to gain entry into Kirkwall, Hawke entered the service of Athenril, a smuggler.",
+            "In order to gain entry into Kirkwall, Hawke entered the service of Meeran, a mercenary."
+          ]
+        },
+        {
+          "prompt": "How did Hawke handle Ser Thrask's secret?",
+          "suggested": [
+            "Hawke assured Ser Thrask that his secret was safe.",
+            "Hawke used her knowledge of Ser Thrask's mage daughter to blackmail him."
+          ]
+        },
+        {
+          "prompt": "How did Hawke handle the cave of fugitive apostates?",
+          "suggested": [
+            "Hawke defended the fugitive mages from Templar capture, killing Ser Karras and his men.",
+            "Hawke convinced the Templars to search elsewhere for the fugitive mages.",
+            "Hawke turned the mages over to the Templars."
+          ]
+        },
+        {
+          "prompt": "Did Hawke return Martin's cargo?",
+          "suggested": [
+            "Hawke did not return Martin's cargo.",
+            "After receiving his goods, Martin set up a small, illicit shop in the Hanged Man."
+          ]
+        },
+        {
+          "prompt": "How did Hawke deal with Ketojan?",
+          "suggested": [
+            "Hawke defended Ketojan from the Qunari, and then Ketojan took his own life.",
+            "Hawke handed Ketojan over to the Qunari, who executed him."
+          ]
+        },
+        {
+          "prompt": "Did Hawke send Feynriel to the Circle or the Dalish?",
+          "suggested": [
+            "Hawke sent Feynriel to the Dalish.",
+            "Hawke sent Feynriel to the Circle."
+          ]
+        },
+        {
+          "prompt": "Did Hawke return Saemus to the Viscount?",
+          "suggested": [
+            "Saemus was rescued from the mercenary group holding him hostage.",
+            "Saemus was not returned to his father."
+          ]
+        },
+        {
+          "prompt": "Was Kelder killed?",
+          "suggested": [
+            "Hawke killed Kelder.",
+            "Hawke returned Kelder to his father, Magistrate Vanard."
+          ]
+        },
+        {
+          "prompt": "Was Danzig killed?",
+          "suggested": [
+            "Hawke killed the slaver Danzig.",
+            "Fenris killed the slaver Danzig",
+            "Hawke did not kill Danzig"
+          ]
+        },
+        {
+          "prompt": "What did Hawke tell Ghyslain about his wife's death?",
+          "suggested": [
+            "Hawke did not find Ninette",
+            "Hawke told Ghyslain that his wife had died, but spared him the grisly details.",
+            "Hawke told Ghyslain the full truth of his wife's death."
+          ]
+        },
+        {
+          "prompt": "Did Hawke find the miners who'd gone missing from the Bone Pit?",
+          "suggested": [
+            "Hawke didn't solve the mystery of the missing miners",
+            "Hawke didn't solve the mystery of the missing miners"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Act Two",
+      "decisions": [
+        {
+          "prompt": "What happened to Feynriel after his ordeal in the Fade?",
+          "suggested": [
+            "Feynriel left for Tevinter",
+            "Feynriel was made Tranquil",
+            "Feynriel became possessed"
+          ]
+        },
+        {
+          "prompt": "Did Hawke side with Petrice?",
+          "suggested": [
+            "Petrice received no aid from Hawke in her plans to villify the Qunari of Kirkwall",
+            "With Hawke's help, Petrice was able to blame the death of the Viscount's son on the Qunari."
+          ]
+        },
+        {
+          "prompt": "Did Isabela return after stealing the Tome?",
+          "suggested": [
+            "Isabela left for good with the stolen Tome",
+            "Isabela returned the Tome to Hawke and the Qunari"
+          ]
+        },
+        {
+          "prompt": "Was Isabela turned over to the Arishok?",
+          "suggested": [
+            "Hawke did not turn Isabela over to the Arishok, resulting in a violent conflict",
+            "Hawke turned Isabela over to the Arishok"
+          ]
+        },
+        {
+          "prompt": "What was the Arishok's fate?",
+          "suggested": [
+            "Hawke defeated the Arishok in single combat",
+            "Hawke killed the Arishok in an all-out battle",
+            "The Arishok returned to Par Vollen with his Antaam"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Act Three",
+      "decisions": [
+        {
+          "prompt": "What became of the conspirators?",
+          "suggested": []
+        },
+        {
+          "prompt": "Did Hawke let Zevran go?",
+          "suggested": [
+            "Hawke did not find Zevran",
+            "Hawke handed Zevran over to Nuncio and the Crows",
+            "Hawke didn't turn Zevran over to Nuncio. Zevran returned the favor by supporting the Champion in the final battle between the mages and templars."
+          ]
+        },
+        {
+          "prompt": "Did Hawke approve of Anders's actions at the Chantry?",
+          "suggested": [
+            "No amount of explanation could convince Hawke that Anders was in the right.",
+            "Hawke backed Anders's actions, perhaps moved by his claims that such things were inevitable."
+          ]
+        },
+        {
+          "prompt": "What happened to Anders?",
+          "suggested": [
+            "Hawke executed Anders",
+            "Anders is alive and well"
+          ]
+        },
+        {
+          "prompt": "Who did Hawke side with in the final battle?",
+          "suggested": [
+            "Hawke went to the defense of the mages as the Gallows burned",
+            "The templars counted on the Champion of Kirkwall as an ally while they put down the rebellious mages"
+          ]
+        },
+        {
+          "prompt": "Who joined Hawke in the final battle?",
+          "suggested": [
+            "All of Hawke's companions fought at Hawke's side in the final battle",
+            "Sebastian left Hawke after Hawke spared Anders",
+            "Merrill left Hawke after Hawke decided to side with the Templars, and Hawke killed her in the final battle",
+            "Fenris left Hawke after Hawke decided to side with the mages, and Hawke killed him in the final battle",
+            "Fenris left Hawke after Hawke decided to side with the mages, but was later moved to rejoin Hawke",
+            "Aveline left Hawke after Hawke decided to side with the mages",
+            "After Hawke spared his life and then sided with the Templars, Anders confronted Hawke in the Gallows and Hawke was forced to kill him",
+            "After Hawke spared his life and then sided with the mages, Anders resumed his place at Hawke's side"
+          ]
+        }
+      ]
+    }
+  ],
+  "inquisition": [
+    
+  ],
+  "veilguard": [
+    
+  ]
+}

@@ -20,7 +20,7 @@ function Nav() {
         <div className='navWrapper'>
             <div className='navContainer'> 
                 <div>
-                    <Link className='homeButton' to="/"> World State Journal </Link>
+                    <Link className='homeButton' to="/"> Thedas Journal </Link>
                 </div>   
                 {pageView !== PageViewType.LOGIN && pageView !== PageViewType.REGISTER && (
                     <div>
@@ -28,6 +28,7 @@ function Nav() {
                             <Menu right width= { '200px' } >
                                 <Link id="menuDashboard" className='menu-item' to="/">  Dashboard </Link>
                                 <Link id="menuCreate" className='menu-item' to="/create">  New World State </Link>
+                                {/*<Link id="menuCreate" className='menu-item' to="/new">  Create World State </Link>*/}
                                 <Link id="menuAbout" className='menu-item' to="/about">  About </Link>
                                 <span id="menuLogout" className='menu-item' onClick={logout}>  Logout </span>
                             </Menu>
@@ -39,6 +40,9 @@ function Nav() {
                             
                             {pageView === PageViewType.CREATING && <span className='navButtonSelected'>New World State</span>}
                             {pageView !== PageViewType.CREATING && <Link className='navButton' to="/create">New World State </Link>}
+
+                            {/*{pageView === PageViewType.CREATING && <span className='navButtonSelected'>Create World State</span>}*/}
+                            {/*{pageView !== PageViewType.CREATING && <Link className='navButton' to="/new">Create World State </Link>}*/}
                             
                             {pageView === PageViewType.ABOUT && <span className='navButtonSelected'>About</span>}
                             {pageView !== PageViewType.ABOUT && <Link className='navButton' to="/about">About </Link>}

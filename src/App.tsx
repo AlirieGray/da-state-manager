@@ -11,6 +11,7 @@ import PageViewContextProvider from './context/pageView'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import EditWorld from './pages/EditWorld/EditWorld'
 import ViewWorld from './pages/ViewWorld/ViewWorld'
+import CreateNewWorld from './pages/CreateNewWorld/CreateNewWorld'
 import About from './pages/About/About'
 import WorldsContextProvider from './context/worlds'
 import LoadingContextProvider from './context/status'
@@ -53,6 +54,7 @@ function App() {
                 <Route path='/world/:id/edit' element={<PrivateRoute outlet={<EditWorld />} />} />
                 <Route path='/world/:id/view' element={<PrivateRoute outlet={<ViewWorld />} />} />
                 <Route path='/create' element={<PrivateRoute outlet={<CreateWorld />} />} />
+                  <Route path='/new' element={<PrivateRoute outlet={<CreateNewWorld />} />} />
               </Routes>
             </div>
           </WorldsContextProvider>
