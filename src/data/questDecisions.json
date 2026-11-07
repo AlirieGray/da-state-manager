@@ -580,9 +580,201 @@
     }
   ],
   "inquisition": [
-    
+    {
+      "name": "Champions of the Just",
+      "decisions": [
+        {
+          "prompt": "Did the Templars assist the Inquisition?",
+          "suggested": [
+            "The Inquisitor did not go to Therinfal Redoubt",
+            "The Inquisitor offered redemption to the remaining templars, who joined the Inquisition as allies",
+            "The Inquisitor disbanded the templar order and conscripted the remaining templars into service of the Inquisition"
+          ]
+        },
+        {
+          "prompt": "What became of Ser Barris?",
+          "suggested": [
+            "Ser Barris did not survive the battle agains the corrupted templars",
+            "Ser Barris joined forced with the Inquisitor, fought agains the corrupted templars, and survived the battle",
+            "Ser Barris joined forces with the Inquisitor, fought against the corrupted templars, and was promoted to knight-commander"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "In Hushed Whispers",
+      "decisions": [
+        {
+          "prompt": "Did the mages assist the Inquisition?",
+          "suggested": [
+            "The Inquisition did not reach out to the mages in Redcliffe for assistance",
+            "After defeating a plot to eliminate the Inquisitor, the Inquisition offered the mages a chance to redeem themselves as free allies",
+            "After defeating a plot to eliminate the Inquisitor, the Inquisition pressed the mages back into the Circles, now under the watch and protection of Inquisition forces"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Here Lies the Abyss",
+      "decisions": [
+        {
+          "prompt": "What became of the Grey Wardens?",
+          "suggested": [
+            "The Grey Wardens were banished from Orlais",
+            "The Grey Wardens were recruited by the Inquisition"
+          ]
+        },
+        {
+          "prompt": "Who sacrificed themselves to stop the Nightmare Demon?",
+          "suggested": [
+            "Hawke remained in the Fade to stop the Nightmare Demon",
+            "Alistair Theirin remained in the Fade to stop the Nightmare Demon",
+            "Loghain MacTir remained in the Fade to stop the Nightmare Demon",
+            "Jean-Marc Stroud remained in the Fade to stop the Nightmare Demon"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wicked Eyes and Wicked Hearts",
+      "decisions": [
+        {
+          "prompt": "Who ended up as the ruling monarch of Orlais?",
+          "suggested": [
+            "Celene remained the Empress of Orlais",
+            "Empress Celene, Gaspard, and Briala reached a truce.",
+            "Empress Celene reconciled with Briala.",
+            "Gaspard became Emperor of Orlais",
+            "Briala assumed power, with Gaspard acting as puppet leader in Orlais"
+          ]
+        },
+        {
+          "prompt": "What became of Grand Duchess Florianne?",
+          "suggested": [
+            "Florianne survived the events at the Winter Palace and was sentenced to encloisterment",
+            "Florianne survived the events at the Winter Palace and was recruited as an agent of the Inquisition",
+            "Florianne survived the events at the Winter Palace and was sentenced to farm work",
+            "Florianne survived the events at the Winter Palace and was exiled",
+            "Florianne survived the events at the Winter Palace and was made the Inquisition's court jester",
+            "Florianne was killed at the Winter Palace"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "What Pride Had Wrought",
+      "decisions": [
+        {
+          "prompt": "Who drank from the Well of Sorrows?",
+          "suggested": [
+            "Morrigan drank from the Well of Sorrows", "The Inquisitor drank from the Well of Sorrows"
+          ]
+        },
+        {
+          "prompt": "How did the Inquisitor handle the rituals and the guardians of the Temple of Mythal?",
+          "suggested": [
+            "The Inquisitor respected the temple's traditions and forged an alliance with the guardians protecting it",
+            "The Inquisitor completed the rituals, but did not ally with the temple guardians",
+            "The Inquisitor followed a quicker route through the temple's underground, making enemies of the guardians"
+          ]
+        },
+        {
+          "prompt": "What became of Abelas?",
+          "suggested": [
+            "Abelas left the Temple alive and well.","Abelas was killed by Morrigan."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Doom Upon All the World",
+      "decisions": [
+        {
+          "prompt": "Who became the next Divine?",
+          "suggested": [
+            "Cassandra became the Divine",
+            "Leliana became the Divine",
+            "Vivienne became the Divine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trespasser DLC",
+      "decisions": [
+        {
+          "prompt": "What was the final fate of the Inquisition?",
+          "suggested": [
+            "The Inquisition was preserved as a peacekeeping force reporting directly to Divine Victoria",
+            "The Inquisition was formally disbanded"
+          ]
+        },
+        {
+          "prompt": "What was the Inquisitor's final goal regarding Solas?",
+          "suggested": [
+            "The Inquisitor considers Solas beyond redemption and commits to stopping him at all costs",
+            "The Inquisitor believes that Solas is making a tragic mistake and intends to redeem Solas, if possible"
+          ]
+        }
+      ]
+    }
   ],
   "veilguard": [
-    
+    {
+      "name": "The Minrathous Job",
+      "decisions": []
+    },
+    {
+      "name": "Ruin's Reach",
+      "decisions": []
+    },
+    {
+      "name": "Awakening",
+      "decisions": []
+    },
+    {
+      "name": "Tevinter Nights",
+      "decisions": []
+    },
+    {
+      "name": "Anvallenim",
+      "decisions": []
+    },
+    {
+      "name": "Older Blood, Older Oaths",
+      "decisions": []
+    },
+    {
+      "name": "Fire, Feather, and Fade",
+      "decisions": []
+    },
+    {
+      "name": "No Sacrifice Greater",
+      "decisions": []
+    },
+    {
+      "name": "Bonds and Blackened Wings",
+      "decisions": []
+    },
+    {
+      "name": "The Blood of Arlathan",
+      "decisions": []
+    },
+    {
+      "name": "As Shadows Fall",
+      "decisions": []
+    },
+    {
+      "name": "The Best Tales",
+      "decisions": []
+    },
+    {
+      "name": "The Last Gambit",
+      "decisions": []
+    },
+    {
+      "name": "The Dread Wolf Rises",
+      "decisions": []
+    }
   ]
 }

@@ -114,7 +114,7 @@ function Inquisition({ gameState, onChange }: InquisitionProps) {
                         suggestedValues={[
                             'The Inquisition did not reach out to the mages in Redcliffe for assistance',
                             'After defeating a plot to eliminate the Inquisitor, the Inquisition offered the mages a chance to redeem themselves as free allies',
-                            'After defeating a plot to elimiate the Inquisitor, the Inquisition pressed the mages back into the Circles, now under the watch and protection of Inquisition forces'
+                            'After defeating a plot to eliminate the Inquisitor, the Inquisition pressed the mages back into the Circles, now under the watch and protection of Inquisition forces'
                         ]}
                         handleChange={(value) => onChange({type: 'SET_IHW_ATTR', payload: {key: 'mages', value}})} />
                 </div>
